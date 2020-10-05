@@ -1,0 +1,153 @@
+<template>
+  <v-container class="mt-12 mb-12">
+    <v-container>
+      <v-card color="#f3f3f3">
+        <v-layout row>
+          <v-flex md7 xs12>
+            <div class="pa-5">
+              <v-img src="https://picsum.photos/510/300?random"></v-img>
+            </div>
+            <div color="transparent" class="d-flex justify-center">
+             <libraryModel/>
+            </div>
+            <v-layout>
+              <v-flex md12>
+                <v-container fluid>
+                  <v-row dense>
+                    <v-col
+                      class="pa-md-5"
+                      v-for="card in cards"
+                      :key="card.title"
+                      cols="12"
+                      md="4"
+                      sm="5"
+                      xs="5"
+                    >
+                      <v-card>
+                        <v-img
+                          :src="card.src"
+                          class="white--text align-end"
+                          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+                        >
+                        </v-img>
+                      </v-card>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-flex>
+            </v-layout>
+          </v-flex>
+          <v-flex md5 xs12 class="pa-md-12 pa-6">
+            <div class="heading3 mb-4">
+              Chilled Fish & Inc Fish Alternatives
+              <v-progress-linear
+                color="#2c547c"
+                rounded
+                height="2"
+                value="100"
+              ></v-progress-linear>
+            </div>
+            <div class="heading3 mb-4">Not Poodle - M&S</div>
+            <div class="heading2 mb-4">
+              <span class="heading">Ingredients:</span>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
+              voluptatum numquam excepturi perspiciatis temporibus et laborum
+              aliquid, quis dicta consectetur odio sint est unde eius facere ab
+              provident cum! Harum.
+            </div>
+            <span class="heading">Nutritional table:</span>
+            <v-img
+              src="../../assets/Nutrition.jpg"
+              class="white--text align-end"
+            >
+            </v-img>
+            <div class="pt-4">
+              <v-btn min-width="50%" rounded color="#c7ced5" class="heading2">
+                Download Page
+              </v-btn>
+            </div>
+            <div class="pt-4">
+              <v-btn min-width="50%" rounded color="#2c547c" dark>
+                Download Image
+              </v-btn>
+            </div>
+            <div class="pt-4">
+             
+              <v-btn text color="#2c547c" to="/products">
+                <v-icon left> mdi-arrow-left</v-icon>
+                back
+              </v-btn>
+            </div>
+          </v-flex>
+        </v-layout>
+      </v-card>
+    </v-container>
+  </v-container>
+</template>
+
+<style scoped>
+.card {
+  color: rgba(141, 171, 228, 0.411);
+  border: 1px solid red;
+}
+.heading {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #2c547c;
+}
+.addLibrary {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #2c547c;
+}
+.heading2 {
+  text-align: start;
+  font-size: 1rem;
+  color: #2c547c;
+}
+.heading3 {
+  text-align: start;
+  font-size: 1.5em;
+  color: #2c547c;
+  font-weight: bold;
+}
+.categoryTitle {
+  text-align: center;
+}
+</style>
+<script>
+import LibraryModel from '../SingleProduct/libraryModel'
+export default {
+  components: {LibraryModel},
+  data() {
+    return {
+      dialog: false,
+      items: [
+        {
+          src:
+            "https://vfcadvisors.com/wp-content/uploads/2019/07/alcohol-2048x1365.jpg",
+        },
+      ],
+      cards: [
+        {
+          title: "Pre-fab homes",
+          src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+          flex: 4,
+        },
+        {
+          title: "Pre-fab homes",
+          src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+          flex: 4,
+        },
+        {
+          title: "Pre-fab homes",
+          src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+          flex: 4,
+        },
+      ],
+    };
+  },
+};
+</script>
