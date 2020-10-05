@@ -11,7 +11,8 @@
             mobileCardText: $vuetify.breakpoint.smAndDown,
             largeCardText: $vuetify.breakpoint.mdAndUp,
           }"
-          >Chilled</v-card-title
+        >
+          {{ this.$route.params.id }}</v-card-title
         >
       </v-img>
       <v-layout>
@@ -54,45 +55,15 @@ import axios from "axios";
 export default {
   data: () => ({
     products: "",
-    cards: [
-      {
-        title: "Chilled fish and seafood",
-        src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
-        flex: 4,
-      },
-      {
-        title: "Chilled fish and seafood",
-        src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
-        flex: 4,
-      },
-      {
-        title: "Favorite road trips",
-        src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
-        flex: 4,
-      },
-      {
-        title: "Fresh Meat",
-        src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-        flex: 4,
-      },
-      {
-        title: "Favorite road trips",
-        src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
-        flex: 4,
-      },
-      {
-        title: "Fresh Meat",
-        src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-        flex: 4,
-      },
-    ],
+    new: this.$route.params.id,
   }),
   mounted() {
     axios
-      .get("http://localhost:3200/findAllSubCategory/cool")
+      .get("http://localhost:3200/findAllSubCategory/" + this.$route.params.id)
+
       .then((response) => {
         this.products = response.data;
-        console.log("sub", response);
+        console.log("sub-category", response);
 
         // this.response=console.log.data
       })

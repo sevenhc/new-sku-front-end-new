@@ -5,22 +5,26 @@ import Products from "./Views/ProductScreen.vue";
 import SingleProduct from "./Views/SingleProduct.vue";
 import InsightsScreen from "./Views/InsightsScreen.vue";
 import LibraryScreen from "./Views/LibraryScreen.vue";
+import Sub from "./components/SubCategory/sub2.vue";
 
 export default [
   {
     path: "/",
     component: Home,
+  },  {
+    path: "/sub/:id",
+    component: Sub,
   },
   {
     path: "/CatagoriesScreen",
     component: CatagoriesScreen,
   },
   {
-    path: "/SubCategory",
+    path: "/SubCategory/:id",
     component: SubCategory,
   },
   {
-    path: "/Products",
+    path: "/Products/:id",
     component: Products,
   },
   {

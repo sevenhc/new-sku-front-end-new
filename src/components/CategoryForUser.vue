@@ -24,12 +24,13 @@
               sm="12"
               xs="12"
             >
-              <v-card to="subcategory">
+              <v-card>
                 <v-img
-                  src="https://cdn.vuetifyjs.com/images/cards/plane.jpg"
+                  :src="'https://new-sku.herokuapp.com/' + product.path"
                   class="white--text align-end"
                   gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                   height="250px"
+                  @click="singleItem(product.category)"
                 >
                   <v-card-actions>
                     <v-card-title
@@ -69,57 +70,29 @@ import axios from "axios";
 export default {
   data() {
     return {
-      products:"",
-      items: [
-        {
-          src:
-            "https://vfcadvisors.com/wp-content/uploads/2019/07/alcohol-2048x1365.jpg",
-        },
-      ],
-      cards: [
-        {
-          title: "Pre-fab homes",
-          src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
-          flex: 4,
-        },
-        {
-          title: "Pre-fab homes",
-          src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
-          flex: 4,
-        },
-        {
-          title: "Favorite road trips",
-          src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
-          flex: 4,
-        },
-        {
-          title: "Best airlines",
-          src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-          flex: 4,
-        },
-        {
-          title: "Favorite road trips",
-          src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
-          flex: 4,
-        },
-        {
-          title: "Chiled",
-          src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-          flex: 4,
-        },
-      ],
+      products: "",
+
       slidesHeading: "welcome to NewSku.",
       slideText:
         "Consequat irure proident reprehenderit mollit elit magna nostrud labore aute deserunt. Esse id voluptate occaecat nisi velit nulla anim in eu ad sit. ",
     };
   },
-
+  methods: {
+    singleItem(category) {
+      return (
+        category,
+        console.log(category),
+        this.$router.push({ path: "/Sub/" + category })
+      ); //?category=baverage
+    },
+  },
   mounted() {
     axios
-      .get("http://localhost:3200/findAllCategory")
+      .get("https://new-sku.herokuapp.com/findAllCategory")
+
       .then((response) => {
         this.products = response.data;
-        console.log(response);
+        console.log("image path", response.data);
 
         // this.response=console.log.data
       })

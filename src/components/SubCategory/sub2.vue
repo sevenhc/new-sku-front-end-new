@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card to="/SingleProduct">
+    <v-card>
       <v-img
         class="white--text align-end"
         height="200px"
@@ -11,7 +11,8 @@
             mobileCardText: $vuetify.breakpoint.smAndDown,
             largeCardText: $vuetify.breakpoint.mdAndUp,
           }"
-          >{{ this.$route.params.id }}</v-card-title
+        >
+          {{ this.$route.params.id }}</v-card-title
         >
       </v-img>
       <v-layout>
@@ -33,10 +34,11 @@
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="250px"
+                    @click="singleItem(product.sub_category)"
                   >
                   </v-img>
                   <v-card-title class="cardTitle">
-                    {{ product.title }}
+                    {{ product.sub_category }}
                   </v-card-title>
                 </v-card>
               </v-col>
@@ -50,21 +52,59 @@
 
 <script>
 import axios from "axios";
-
 export default {
   data: () => ({
     products: "",
+    // new: this.$route.params.id,
+
+    cards: [
+      {
+        title: "Chilled fish and seafood",
+        src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+        flex: 4,
+      },
+      {
+        title: "Chilled fish and seafood",
+        src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+        flex: 4,
+      },
+      {
+        title: "Favorite road trips",
+        src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
+        flex: 4,
+      },
+      {
+        title: "Fresh Meat",
+        src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
+        flex: 4,
+      },
+      {
+        title: "Favorite road trips",
+        src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
+        flex: 4,
+      },
+      {
+        title: "Fresh Meat",
+        src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
+        flex: 4,
+      },
+    ],
   }),
+  methods: {
+    singleItem(sub_category) {
+      return (
+        sub_category,
+        console.log(sub_category),
+        this.$router.push({ path: "/products/" + sub_category })
+      ); //?category=baverage
+    },
+  },
   mounted() {
     axios
-      .get(
-        "https://new-sku.herokuapp.com/findAllProductsBySub/" +
-          this.$route.params.id
-      )
+      .get("https://new-sku.herokuapp.com/findAllSubCategory/" + this.$route.params.id)
       .then((response) => {
         this.products = response.data;
-        console.log(response);
-
+        console.log("sub", response.data);
         // this.response=console.log.data
       })
       .catch((error) => {
@@ -86,8 +126,5 @@ export default {
   text-align: left;
   font-size: 3rem;
   font-weight: bold;
-}
-.cardTitle {
-  color: #2c547c;
 }
 </style>
