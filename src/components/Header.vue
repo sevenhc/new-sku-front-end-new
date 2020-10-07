@@ -14,7 +14,23 @@
       </v-flex>
       <v-flex md2 xs11 class="ml-3" align-self-end>
         <v-row>
-          <v-btn text large class="" to="/catagoriesScreen" color="#2c547c"
+          <v-btn
+            text
+            large
+            class=""
+            v-if="isLoggedIn == false"
+            disabled
+            to="/catagoriesScreen"
+            color="primary"
+            >category</v-btn
+          >
+          <v-btn
+            v-else
+            text
+            large
+            class=""
+            to="/catagoriesScreen"
+            color="#2c547c"
             >category</v-btn
           >
           <v-btn text large class="" to="/Insights" color="#2c547c"
@@ -22,14 +38,31 @@
           >
         </v-row>
       </v-flex>
-      <v-flex md2 xs11 class="ml-3" align-self-center>
-        <v-row>
-          <v-btn text large class="" to="/catagoriesScreen" color="#2c547c"
+      <v-flex md2 xs11 class="ml-3" align-self-end>
+        <v-row v-if="isLoggedIn == false">
+          <v-btn text large class="" to="/LoginSignup" color="#2c547c"
             >logIn</v-btn
           >
-          <!-- <p class="mt-11 barLS">|</p> -->
-          <v-btn text large class="" to="/nm" color="#2c547c"
+          <v-divider value="6" vertical></v-divider>
+
+          <v-btn text large class="" to="/CreateAccount" color="#2c547c"
             >SignUp</v-btn
+          >
+        </v-row>
+        <v-row v-else>
+          <v-btn text large class="" to="/LoginSignup" color="#2c547c">{{
+            user
+          }}</v-btn>
+          <v-divider value="6" vertical></v-divider>
+
+          <v-btn
+            text
+            large
+            class=""
+            to="/LoginSignup"
+            @click="logout"
+            color="#2c547c"
+            >Log Out</v-btn
           >
         </v-row>
       </v-flex>
@@ -46,7 +79,31 @@
 </template>
 
 <script>
-export default {};
+import { mapState, mapGetters } from "vuex";
+
+export default {
+  computed: {
+    ...mapState(["user"]),
+    ...mapGetters([
+      "userName",
+      "mobile",
+      "email",
+      "userId",
+      "town",
+      "fullName",
+      "landLine",
+      "isLoggedIn",
+      "deliveryAddress",
+    ]),
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("logout").then(() => {
+        this.$router.push("/").catch((err) => console.log(err));
+      });
+    },
+  },
+};
 </script>
 
 <style>

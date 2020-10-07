@@ -1,0 +1,136 @@
+<template>
+  <v-container>
+    <v-card flat>
+      <v-layout row justify-space-around>
+        <v-flex md4 xs12>
+          <v-card flat color="grey lighten-2">
+            <p class="title text-center">Log In</p>
+          </v-card>
+          <v-flex md12 xs11>
+            <v-form ref="form">
+              <v-card-title>User Name</v-card-title>
+              <div class="new">
+                <v-text-field
+                  v-model="username"
+                  solo
+                  :rules="[rules.required]"
+                  label="Enter your user name"
+                  clearable
+                  class="ml-4"
+                  :append-icon="'mdi-badge-account'"
+                ></v-text-field>
+              </div>
+              <v-card-title>PASSWORD</v-card-title>
+              <div class="new">
+                <v-text-field
+                  v-model="password"
+                  :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                  :type="show1 ? 'text' : 'password'"
+                  :rules="[rules.required, rules.min]"
+                  solo
+                  label="Enter your password"
+                  clearable
+                  class="ml-4"
+                  @click:append="show1 = !show1"
+                ></v-text-field>
+              </div>
+            </v-form>
+            <v-btn
+              class="ml-4"
+              width="97%"
+              large
+              color="#2c547c"
+              dark
+              @click="login"
+              >Sign In</v-btn
+            >
+            <v-btn
+              class="ml-4 mt-6"
+              width="97%"
+              large
+              color="#2c547c"
+              dark
+              @click="logout"
+              >log out</v-btn
+            >
+            <!-- <v-btn text class medium color="orange" to="/LoginSignup"
+              >Lost your password?</v-btn
+            > -->
+          </v-flex>
+        </v-flex>
+
+        <v-flex md4 xs12>
+          <v-flex md12 xs12>
+            <v-card flat color="grey lighten-2">
+              <p class="title text-center">New Customer</p>
+            </v-card>
+            <v-card-title>Create a Account</v-card-title>
+            <v-card-subtitle
+              >Sign up for a free account at our store. Registration is quick
+              and easy. It allows you to be able to order from our shop. To
+              start shopping click register.</v-card-subtitle
+            >
+            <v-btn
+              class="mb-12 ml-4"
+              outlined
+              color="#2c547c"
+              to="/CreateAccount"
+              >Create A Acccount</v-btn
+            >
+          </v-flex>
+        </v-flex>
+      </v-layout>
+    </v-card>
+  </v-container>
+</template>
+<style>
+.titles {
+  color: aqua;
+  text-align: end;
+}
+.new {
+  margin-top: -2%;
+}
+</style>
+<script>
+export default {
+  data() {
+    return {
+      username: "",
+      password: "",
+      show1: false,
+      rules: {
+        required: (value) => !!value || "*Required.",
+        counterMin: (value) =>
+          value.length >= 3 || "Minimum length is 3 characters",
+        counterMax: (value) =>
+          value.length <= 20 || "Minimum length is 20 characters",
+        min: (v) => v.length >= 8 || "Min 8 characters",
+        email: (value) => {
+          const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return pattern.test(value) || "Invalid e-mail.";
+        },
+      },
+    };
+  },
+  methods: {
+    login() {
+      if (this.$refs.form.validate()) {
+        let username = this.username;
+        let password = this.password;
+        console.log(username, password);
+        this.$store
+          .dispatch("login", { username, password })
+          .then(() => this.$router.push("/"))
+          .catch((err) => console.log(err))
+          .location.reload();
+      }
+    },
+    logout() {
+      this.$store.dispatch("logout").then(() => {
+        this.$router.push("/").catch((err) => console.log(err));
+      });
+    },
+  },
+};
+</script>

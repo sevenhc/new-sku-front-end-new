@@ -18,7 +18,9 @@
             <template v-slot:append>
               <v-fade-transition leave-absolute>
                 <div class="ml-12">
-                  <v-btn rounded large color="#2c547c" dark>search</v-btn>
+                  <v-btn rounded large color="#2c547c" dark
+                    >search<v-icon>mdi-magnify</v-icon></v-btn
+                  >
                 </div>
               </v-fade-transition>
             </template>

@@ -6,12 +6,16 @@ import SingleProduct from "./Views/SingleProduct.vue";
 import InsightsScreen from "./Views/InsightsScreen.vue";
 import LibraryScreen from "./Views/LibraryScreen.vue";
 import Sub from "./components/SubCategory/sub2.vue";
+import LoginSignup from "./components/LogIn/LoginSignup.vue";
+import CreateAccount from "./Views/CreateAcc.vue";
+// import store from "./store";
 
 export default [
   {
     path: "/",
     component: Home,
-  },  {
+  },
+  {
     path: "/sub/:id",
     component: Sub,
   },
@@ -34,8 +38,20 @@ export default [
   {
     path: "/Insights",
     component: InsightsScreen,
-  },{
+  },
+  {
     path: "/MyLibrary/:id",
     component: LibraryScreen,
   },
+  {
+    path: "/LoginSignup",
+    component: LoginSignup,
+  },
+  {
+    path: "/CreateAccount",
+    component: CreateAccount,
+  },
+  
 ];
+
+

@@ -4,6 +4,7 @@ import vuetify from "./plugins/vuetify";
 import VueRouter from "vue-router";
 
 import Routes from "./route";
+import store from "./store";
 
 Vue.use(VueRouter);
 
@@ -19,6 +20,8 @@ Vue.config.productionTip = false;
 
 new Vue({
   vuetify,
+  store,
+
   render: (h) => h(App),
   router: router,
 }).$mount("#app");
