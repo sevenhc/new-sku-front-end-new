@@ -73,7 +73,7 @@ export default {
         title: this.title,
       };
       axios
-        .post("http://localhost:3200/library/addLibrary", article)
+        .post("https://new-sku.herokuapp.com/library/addLibrary", article)
         .then(
           (response) => (this.articleId = response.data.id),
           this.$forceUpdate()
@@ -86,7 +86,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:3200/library/findAllLibrary")
+      .get("https://new-sku.herokuapp.com/library/findAllLibrary")
       .then((response) => {
         this.products = response.data;
         console.log("library", response.data);

@@ -137,7 +137,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:3200/findProductById/" + this.$route.params.id)
+      .get("https://new-sku.herokuapp.com/findProductById/" + this.$route.params.id)
       .then((response) => {
         this.product = response.data;
         console.log("sub", response.data);

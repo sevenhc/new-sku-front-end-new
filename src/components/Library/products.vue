@@ -64,7 +64,7 @@ export default {
   mounted() {
     axios
       .get(
-        "http://localhost:3200/library/findAllItemsByLibrary/" +
+        "https://new-sku.herokuapp.com/library/findAllItemsByLibrary/" +
           this.$route.params.id
       )
       .then((response) => {
