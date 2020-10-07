@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card to="/SingleProduct">
+    <v-card>
       <v-img
         class="white--text align-end"
         height="200px"
@@ -33,6 +33,7 @@
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="250px"
+                    @click="singleItem(product.id)"
                   >
                   </v-img>
                   <v-card-title class="cardTitle">
@@ -55,6 +56,15 @@ export default {
   data: () => ({
     products: "",
   }),
+  methods: {
+    singleItem(id) {
+      return (
+        id,
+        console.log(id),
+        this.$router.push({ path: "/SingleProduct/" + id })
+      ); //?category=baverage
+    },
+  },
   mounted() {
     axios
       .get(

@@ -28,14 +28,14 @@ export default [
     component: Products,
   },
   {
-    path: "/SingleProduct",
+    path: "/SingleProduct/:id",
     component: SingleProduct,
   },
   {
     path: "/Insights",
     component: InsightsScreen,
   },{
-    path: "/MyLibrary",
+    path: "/MyLibrary/:id",
     component: LibraryScreen,
   },
 ];

@@ -5,10 +5,16 @@
         <v-layout row>
           <v-flex md7 xs12>
             <div class="pa-5">
-              <v-img src="https://picsum.photos/510/300?random"></v-img>
+              <v-img
+                :src="'https://new-sku.herokuapp.com/' + product.path"
+              ></v-img>
             </div>
             <div color="transparent" class="d-flex justify-center">
-             <libraryModel/>
+              <libraryModel 
+              :product_id="product.id"
+              :name="product.title"
+              :path="product.path"
+              ></libraryModel>
             </div>
             <v-layout>
               <v-flex md12>
@@ -16,8 +22,8 @@
                   <v-row dense>
                     <v-col
                       class="pa-md-5"
-                      v-for="card in cards"
-                      :key="card.title"
+                      v-for="index in 3"
+                      :key="index"
                       cols="12"
                       md="4"
                       sm="5"
@@ -25,7 +31,7 @@
                     >
                       <v-card>
                         <v-img
-                          :src="card.src"
+                          :src="'https://new-sku.herokuapp.com/' + product.path"
                           class="white--text align-end"
                           gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                         >
@@ -39,7 +45,7 @@
           </v-flex>
           <v-flex md5 xs12 class="pa-md-12 pa-6">
             <div class="heading3 mb-4">
-              Chilled Fish & Inc Fish Alternatives
+              {{ product.title }}
               <v-progress-linear
                 color="#2c547c"
                 rounded
@@ -47,7 +53,9 @@
                 value="100"
               ></v-progress-linear>
             </div>
-            <div class="heading3 mb-4">Not Poodle - M&S</div>
+            <div class="heading3 mb-4">
+              {{ product.category }} - {{ product.sub_category }}
+            </div>
             <div class="heading2 mb-4">
               <span class="heading">Ingredients:</span>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
@@ -72,7 +80,6 @@
               </v-btn>
             </div>
             <div class="pt-4">
-             
               <v-btn text color="#2c547c" to="/products">
                 <v-icon left> mdi-arrow-left</v-icon>
                 back
@@ -118,36 +125,27 @@
 }
 </style>
 <script>
-import LibraryModel from '../SingleProduct/libraryModel'
+import axios from "axios";
+import LibraryModel from "../SingleProduct/libraryModel";
 export default {
-  components: {LibraryModel},
+  components: { LibraryModel },
   data() {
     return {
+      product: "",
       dialog: false,
-      items: [
-        {
-          src:
-            "https://vfcadvisors.com/wp-content/uploads/2019/07/alcohol-2048x1365.jpg",
-        },
-      ],
-      cards: [
-        {
-          title: "Pre-fab homes",
-          src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
-          flex: 4,
-        },
-        {
-          title: "Pre-fab homes",
-          src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
-          flex: 4,
-        },
-        {
-          title: "Pre-fab homes",
-          src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
-          flex: 4,
-        },
-      ],
     };
+  },
+  mounted() {
+    axios
+      .get("http://localhost:3200/findProductById/" + this.$route.params.id)
+      .then((response) => {
+        this.product = response.data;
+        console.log("sub", response.data);
+        // this.response=console.log.data
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>
