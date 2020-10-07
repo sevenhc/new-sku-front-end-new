@@ -32,7 +32,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "http://localhost:3200/api/auth/signin",
+          url: "https://new-sku.herokuapp.com/api/auth/signin",
           data: user,
           method: "POST",
         })
@@ -58,7 +58,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "http://173.82.235.105:8081/api/auth/signup",
+          url: "https://new-sku.herokuapp.com/api/auth/signup",
           data: user,
           method: "POST",
         })

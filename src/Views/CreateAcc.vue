@@ -110,8 +110,7 @@ export default {
     register: function() {
       if (this.$refs.form.validate()) {
         let data = {
-          firstName: this.User.firstName,
-          lastName: this.User.lastName,
+   
           email: this.User.email,
           username: this.User.username,
           password: this.User.password,
