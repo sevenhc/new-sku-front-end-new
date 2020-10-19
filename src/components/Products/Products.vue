@@ -67,7 +67,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:3000/product/getall/" + this.$route.params.id)
+      .get("https://new-sku.herokuapp.comgetall/" + this.$route.params.id)
       .then((response) => {
         this.products = response.data;
         console.log(response);
