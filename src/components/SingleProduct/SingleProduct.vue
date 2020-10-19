@@ -10,10 +10,10 @@
               ></v-img>
             </div>
             <div color="transparent" class="d-flex justify-center">
-              <libraryModel 
-              :product_id="product.id"
-              :name="product.title"
-              :path="product.path"
+              <libraryModel
+                :product_id="product.id"
+                :name="product.title"
+                :path="product.path"
               ></libraryModel>
             </div>
             <v-layout>
@@ -135,9 +135,16 @@ export default {
       dialog: false,
     };
   },
+  computed() {
+    this.new = this.products;
+    console.log("asasas", this.products);
+  },
   mounted() {
+    console.log(this.new);
     axios
-      .get("https://new-sku.herokuapp.com/findProductById/" + this.$route.params.id)
+      .get(
+        "https://new-sku.herokuapp.com/findProductById/" + this.$route.params.id
+      )
       .then((response) => {
         this.product = response.data;
         console.log("sub", response.data);

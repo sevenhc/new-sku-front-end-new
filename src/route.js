@@ -8,6 +8,7 @@ import LibraryScreen from "./Views/LibraryScreen.vue";
 import Sub from "./components/SubCategory/sub2.vue";
 import LoginSignup from "./components/LogIn/LoginSignup.vue";
 import CreateAccount from "./Views/CreateAcc.vue";
+import AdminHome from "../src/Admin/admin.home.vue";
 // import store from "./store";
 
 export default [
@@ -32,7 +33,8 @@ export default [
     component: Products,
   },
   {
-    path: "/SingleProduct/:id",
+    name: "SingleProduct",
+    path: "/SingleProduct",
     component: SingleProduct,
   },
   {
@@ -51,7 +53,8 @@ export default [
     path: "/CreateAccount",
     component: CreateAccount,
   },
-  
+  {
+    path: "/Admin/Home",
+    component: AdminHome,
+  },
 ];
-
-

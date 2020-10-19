@@ -1,10 +1,13 @@
-    <template>
+<template>
   <v-footer dark padless>
     <v-flex>
       <v-card class="flex" color="#" flat tile>
         <v-card-title>
-          <strong class="display-1
-          ">newSku</strong>
+          <strong
+            class="display-1
+          "
+            >newSku</strong
+          >
 
           <v-spacer></v-spacer>
           <v-btn
@@ -15,8 +18,7 @@
             dark
             icon
           >
-            <v-icon size="24px">{{ user }}</v-icon
-            >
+            <v-icon size="24px">{{ user }}</v-icon>
           </v-btn>
 
           <v-btn v-for="icon in icons" :key="icon" class="mx-4" dark icon>
@@ -32,7 +34,7 @@
   </v-footer>
 </template>
 
-    <script>
+<script>
 export default {
   data: () => ({
     icons: ["mdi-facebook", "mdi-linkedin"],

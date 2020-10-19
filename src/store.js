@@ -35,7 +35,7 @@ export default new Vuex.Store({
           url: "https://new-sku.herokuapp.com/api/auth/signin",
           data: user,
           method: "POST",
-        })
+        })``
           .then((resp) => {
             const token = resp.data.accessToken;
             const username = resp.data.username;

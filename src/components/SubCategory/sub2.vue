@@ -30,15 +30,15 @@
               >
                 <v-card>
                   <v-img
-                    :src="'https://new-sku.herokuapp.com/' + product.path"
+                    :src="'http://localhost:3000/' + product.ThumbnailImage"
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="250px"
-                    @click="singleItem(product.sub_category)"
+                    @click="singleItem(product.SubCategoryID)"
                   >
                   </v-img>
                   <v-card-title class="cardTitle">
-                    {{ product.sub_category }}
+                    {{ product.SubCategoryName }}
                   </v-card-title>
                 </v-card>
               </v-col>
@@ -101,7 +101,7 @@ export default {
   },
   mounted() {
     axios
-      .get("https://new-sku.herokuapp.com/findAllSubCategory/" + this.$route.params.id)
+      .get("http://localhost:3000/subCategory/getAll/" + this.$route.params.id)
       .then((response) => {
         this.products = response.data;
         console.log("sub", response.data);

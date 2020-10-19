@@ -18,7 +18,7 @@
             <v-col
               class="pa-3"
               v-for="product in products"
-              :key="product.id"
+              :key="product.CategoryID"
               cols="12"
               md="4"
               sm="12"
@@ -26,16 +26,16 @@
             >
               <v-card>
                 <v-img
-                  :src="'https://new-sku.herokuapp.com/' + product.path"
+                  :src="'http://localhost:3000/' + product.ThumbnailImage"
                   class="white--text align-end"
                   gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                   height="250px"
-                  @click="singleItem(product.category)"
+                  @click="singleItem(product.CategoryID)"
                 >
                   <v-card-actions>
                     <v-card-title
                       class="categoryTitle"
-                      v-text="product.category"
+                      v-text="product.CategoryName"
                     ></v-card-title>
                   </v-card-actions>
                 </v-img>
@@ -88,7 +88,7 @@ export default {
   },
   mounted() {
     axios
-      .get("https://new-sku.herokuapp.com/findAllCategory")
+      .get("http://localhost:3000/category/getAll")
 
       .then((response) => {
         this.products = response.data;

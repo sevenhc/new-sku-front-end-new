@@ -29,15 +29,15 @@
               >
                 <v-card>
                   <v-img
-                    :src="'https://new-sku.herokuapp.com/' + product.path"
+                    :src="'http://localhost:3000/' + product.Thumbnail"
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="250px"
-                    @click="singleItem(product.id)"
+                    @click="singleItem(product.ProductID)"
                   >
                   </v-img>
                   <v-card-title class="cardTitle">
-                    {{ product.title }}
+                    {{ product.ProductName }}
                   </v-card-title>
                 </v-card>
               </v-col>
@@ -61,16 +61,13 @@ export default {
       return (
         id,
         console.log(id),
-        this.$router.push({ path: "/SingleProduct/" + id })
+        this.$router.push({ name: "SingleProduct", params: { data: this.products } })
       ); //?category=baverage
     },
   },
   mounted() {
     axios
-      .get(
-        "https://new-sku.herokuapp.com/findAllProductsBySub/" +
-          this.$route.params.id
-      )
+      .get("http://localhost:3000/product/getall/" + this.$route.params.id)
       .then((response) => {
         this.products = response.data;
         console.log(response);
