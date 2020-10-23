@@ -20,12 +20,12 @@
                 <v-container>
                   <v-row>
                     <v-text-field
-                      v-model="title"
+                      v-model="LibraryName"
                       :rules="nameRules"
                       :counter="10"
                       required
                     ></v-text-field>
-                    <v-btn @click="created" color="#2c547c" class="mt-5" text
+                    <v-btn @click="created()" color="#2c547c" class="mt-5" text
                       >Add New Library</v-btn
                     >
                   </v-row>
@@ -57,7 +57,7 @@ export default {
     product_id: Number,
   },
   data: () => ({
-    title: "",
+    LibraryName: "",
     dialog: false,
     valid: false,
     lastname: "",
@@ -68,19 +68,16 @@ export default {
   }),
   methods: {
     created() {
-      // POST request using axios with error handling
-      const article = {
-        title: this.title,
-      };
+      console.log(this.LibraryName);
       axios
-        .post("https://new-sku.herokuapp.com/library/addLibrary", article)
-        .then(
-          (response) => (this.articleId = response.data.id),
-          this.$forceUpdate()
-        )
-        .catch((error) => {
-          this.errorMessage = error.message;
-          console.error("There was an error!", error);
+        .post("http://localhost:3000/library/addNew", {
+          LibraryName: this.LibraryName,
+          ClientID: 1,
+        })
+        .then((response) => {
+          const data = response.data;
+          console.log(data);
+          this.dialog = false;
         });
     },
   },

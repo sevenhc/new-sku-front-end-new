@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card  to="/Products">
+    <v-card to="/Products">
       <v-img
         class="white--text align-end"
         height="200px"
@@ -14,73 +14,33 @@
           >Insights</v-card-title
         >
       </v-img>
-      <v-layout >
+      <v-layout>
         <v-flex md12>
           <v-container fluid class="pa-md-12">
-            <p class="heading3">Will we ever embarace insects</p>
-            <p class="heading">February 15th, 2016</p>
-            <div class="pa-md-12"> 
+            <p class="heading3">{{ insight.InsightTitle }}</p>
+            <p class="heading">{{ insight.CreatedDate }}</p>
+            <div class="pa-md-12">
               <v-img
                 class="pa-12"
                 width="100%"
                 height="50%"
-                src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+                :src="'http://localhost:3000/' + insight.ThumbnailPath"
               >
               </v-img>
             </div>
             <p class="heading2 mt-12">
-              Qui proident ea aliquip et. Cupidatat qui tempor anim do mollit
-              cupidatat amet pariatur duis magna. Aliquip id cillum eu nisi
-              adipisicing nisi nisi. Do in et aute excepteur dolor qui. Dolor
-              laboris occaecat eiusmod anim. Excepteur elit mollit nisi occaecat
-              Lorem. Id eiusmod irure laboris aliquip ipsum cillum pariatur.
-              Incididunt in deserunt magna velit do in ex voluptate aliqua ea.
-              Lorem incididunt ea laborum reprehenderit minim esse v veniam
-              proident sint adipisicing. Pariatur eiusmod pariatur officia
-              tempor tempor dolore non ea esse dolore ullamco adipisicing qui
-              ea. Cupidatat mollit laboris tempor sunt enim consectetur. Laboris
-              do minim sint duis consectetur labore culpa Lorem nisi adipisicing
-              qui aute ipsum magna. Duis labore Lorem id esse cillum dolor amet
-              nisi pariatur quis eu occaecat. Eiusmod id minim nulla dolor culpa
-              nostrud enim sit reprehenderit irure. Incididunt sint sint et in
-              ad et Lorem sint aute elit. Adipisicing proident elit nostrud
-              occaecat esse aliqua quis commodo.
+              {{ insight.Description }}
             </p>
             <p class="heading2 mt-7">
-              Qui proident ea aliquip et. Cupidatat qui tempor anim do mollit
-              cupidatat anim laborum dolore irure occaecat. Commodo id cillum
-              enim aliqua. Duis ullamco magna pariatur ullamco aliqua consequat
-              laboris ipsum commodo reprehenderit laboris ea et. Aliqua dolore
-              elit ad proident amet pariatur duis magna. Aliquip id cillum eu
-              nisi adipisicing nisi nisi. Do in et aute excepteur dolor qui.
-              Dolor laboris occaecat eiusmod anim. Excepteur elit mollit nisi
-              occaecat Lorem. Id eiusmod irure laboris aliquip ipsum cillum
-              pariatur. Incididunt in deserunt magna velit do in ex voluptate
-              aliqua ea. Lorem incididunt ea laborum reprehenderit minim esse v
-              veniam proident sint adipisicing. Pariatur eiusmod pariatur
-              officia tempor tempor dolore non ea esse dolore ullamco
-              adipisicing qui ea. Cupidatat mollit laboris tempor sunt enim
-              consectetur. Laboris do minim sint duis consectetur labore culpa
-              Lorem nisi adipisicing qui aute ipsum magna. Duis labore Lorem id
-              esse cillum dolor amet nisi pariatur quis eu occaecat. Eiusmod id
-              minim nulla dolor culpa nostrud enim sit reprehenderit irure.
-              Incididunt sint sint et in ad et Lorem sint aute elit. Adipisicing
-              proident elit nostrud occaecat esse aliqua quis commodo.
+              {{ insight.Description }}
             </p>
             <p class="heading2 mt-7">
-              Qui proident ea aliquip et. Cupidatat qui tempor anim do mollit
-              cupidatat anim laborum dolore irure occaecat. Commodo id cillum
-              enim aliqua. Duis ullamco magna pariatur ullamco aliqua consequat
-              laboris ipsum commodo reprehenderit laboris ea et. Aliqua dolore
-              elit ad proident amet pariatur duis magna. Aliquip id cillum eu
-              nisi adipisicing nisi nisi. Do in et aute excepteur dolor qui.
-              Dolor laboris occaecat eiusmod anim. Excepteur elit mollit nisi
-              occaecat Lorem. Id eiusmod ß
+              {{ insight.Description }}
             </p>
             <v-btn text color="#2c547c" to="/">
-                <v-icon left> mdi-arrow-left</v-icon>
-                back to home
-              </v-btn>
+              <v-icon left> mdi-arrow-left</v-icon>
+              back to home
+            </v-btn>
           </v-container>
         </v-flex>
       </v-layout>
@@ -89,12 +49,29 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data: () => ({
+    insight: "",
     title: "Chilled fish and seafood",
     src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
     flex: 4,
   }),
+  mounted() {
+    axios
+      .get("http://localhost:3000/insight/getInsById/" + this.$route.params.id)
+
+      .then((response) => {
+        this.insight = response.data[0];
+        console.log("insight", this.insight);
+
+        // this.response=console.log.data
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
 };
 </script>
 

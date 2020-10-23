@@ -7,7 +7,7 @@
             <v-icon v-text="item.icon"></v-icon>
           </v-list-item-icon>
           <v-list-item-content @click="singleItem(item.id, item.title)">
-            <v-list-item-title v-text="item.title"></v-list-item-title>
+            <v-list-item-title v-text="item.LibraryName"></v-list-item-title>
             <v-list-item-description
               v-text="item.createdAt"
             ></v-list-item-description>
@@ -87,9 +87,9 @@ export default {
   },
   mounted() {
     axios
-      .get("https://new-sku.herokuapp.com/library/findAllLibrary")
+      .get("http://localhost:3000/library/getAll/1")
       .then((response) => {
-        this.librarys = response.data;
+        this.librarys = response.data[0];
         console.log("library", response.data);
         // this.response=console.log.data
       })

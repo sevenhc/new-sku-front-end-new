@@ -9,6 +9,7 @@ import Sub from "./components/SubCategory/sub2.vue";
 import LoginSignup from "./components/LogIn/LoginSignup.vue";
 import CreateAccount from "./Views/CreateAcc.vue";
 import AdminHome from "../src/Admin/admin.home.vue";
+import InsightsList from "../src/components/insights/InsightsList.vue";
 // import store from "./store";
 
 export default [
@@ -34,12 +35,16 @@ export default [
   },
   {
     name: "SingleProduct",
-    path: "/SingleProduct",
+    path: "/SingleProduct/:id",
     component: SingleProduct,
   },
   {
-    path: "/Insights",
+    path: "/Insights/:id",
     component: InsightsScreen,
+  },
+  {
+    path: "/InsightsList",
+    component: InsightsList,
   },
   {
     path: "/MyLibrary/:id",

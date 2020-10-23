@@ -29,15 +29,15 @@
               >
                 <v-card>
                   <v-img
-                    :src="'http://localhost:3000/' + product.Thumbnail"
+                    :src="'http://localhost:3000/' + product.ThumbnailPath"
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="250px"
-                    @click="singleItem(product.ProductID)"
+                    @click="singleItem(product.InsightID)"
                   >
                   </v-img>
                   <v-card-title class="cardTitle">
-                    {{ product.ProductName }}
+                    {{ product.InsightTitle }}
                   </v-card-title>
                 </v-card>
               </v-col>
@@ -57,15 +57,19 @@ export default {
     products: "",
   }),
   methods: {
-    singleItem(ProductID) {
+    singleItem(InsightID) {
       return (
-        ProductID, console.log("id",ProductID), this.$router.push({ path: "/SingleProduct/" + ProductID })
+        InsightID,
+        console.log(InsightID),
+        this.$router.push({
+          path: "/Insights/" + InsightID,
+        })
       ); //?category=baverage
     },
   },
   mounted() {
     axios
-      .get("http://localhost:3000/product/getAll/" + this.$route.params.id)
+      .get("http://localhost:3000/insight/getAll")
       .then((response) => {
         this.products = response.data;
         console.log(response);

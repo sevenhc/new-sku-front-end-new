@@ -1,76 +1,129 @@
 <template>
   <v-container>
     <v-layout row wrap justify-center>
-      <v-flex md5 xs12>
-        <p class="title text-center">Create an Account</p>
+      <v-flex md8 xs12>
         <v-form ref="form">
-          <v-flex md12 xs11>
-            <v-card-title class="lables">User Name</v-card-title>
-            <div class="new">
-              <v-text-field
-                v-model="User.username"
-                solo
-                label="Enter your username "
-                clearable
-                class="ml-4"
-                :rules="[rules.required, rules.counterMax, rules.counterMin]"
-              ></v-text-field>
-            </div>
-            <v-card-title class="lables">Email</v-card-title>
-            <div class="new">
-              <v-text-field
-                v-model="User.email"
-                solo
-                label="Enter your e-mail"
-                clearable
-                class="ml-4"
-                :rules="[rules.required, rules.email]"
-              ></v-text-field>
-            </div>
+          <v-card>
+            <v-layout row wrap justify-center class="pa-2">
+              <v-flex md9 xs12>
+                <p class="title text-center">Create an Account</p>
+                <v-form>
+                  <v-flex md12 xs11>
+                    <v-layout row wrap>
+                      <v-flex md6>
+                        <v-card-title class="lables">clientName</v-card-title>
+                        <div class="new">
+                          <v-text-field
+                            v-model="User.username"
+                            solo
+                            label="Enter your username "
+                            clearable
+                            class="ml-4"
+                            :rules="[
+                              rules.required,
+                              rules.counterMax,
+                              rules.counterMin,
+                            ]"
+                          ></v-text-field>
+                        </div>
+                      </v-flex>
+                      <v-flex md6>
+                        <v-card-title class="lables">Company</v-card-title>
+                        <div class="new">
+                          <v-text-field
+                            v-model="User.company"
+                            solo
+                            label=" Company"
+                            clearable
+                            class="ml-4"
+                            :rules="[
+                              rules.required,
+                              rules.counterMax,
+                              rules.counterMin,
+                            ]"
+                          ></v-text-field>
+                        </div>
+                      </v-flex>
+                      <v-flex md6>
+                        <v-card-title class="lables">Email</v-card-title>
+                        <div class="new">
+                          <v-text-field
+                            v-model="User.email"
+                            solo
+                            label="Enter your e-mail"
+                            clearable
+                            class="ml-4"
+                            :rules="[rules.required, rules.email]"
+                          ></v-text-field>
+                        </div>
+                      </v-flex>
 
-            <v-card-title class="lables">Password</v-card-title>
-            <div class="new">
-              <v-text-field
-                v-model="User.password"
-                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                :rules="[rules.required, rules.min]"
-                :type="show1 ? 'text' : 'password'"
-                solo
-                label="Enter your password"
-                clearable
-                class="ml-4"
-                @click:append="show1 = !show1"
-              ></v-text-field>
-            </div>
+                      <v-flex md6>
+                        <v-card-title class="lables">Mobile</v-card-title>
+                        <div class="new">
+                          <v-text-field
+                            v-model="User.mobile"
+                            solo
+                            label="Mobile"
+                            clearable
+                            class="ml-4"
+                          ></v-text-field>
+                        </div>
+                      </v-flex>
 
-            <v-card-title class="lables">Confirm Password</v-card-title>
-            <div class="new">
-              <v-text-field
-                v-model="User.confirmPassword"
-                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                :rules="[rules.required, rules.min]"
-                :type="show2 ? 'text' : 'password'"
-                solo
-                label="Re-enter your password"
-                clearable
-                class="ml-4"
-                @click:append="show2 = !show2"
-              ></v-text-field>
-            </div>
+                      <v-flex md6>
+                        <v-card-title class="lables">Password</v-card-title>
+                        <div class="new">
+                          <v-text-field
+                            v-model="User.password"
+                            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                            :rules="[rules.required, rules.min]"
+                            :type="show1 ? 'text' : 'password'"
+                            solo
+                            label="Enter your password"
+                            clearable
+                            class="ml-4"
+                            @click:append="show1 = !show1"
+                          ></v-text-field>
+                        </div>
+                      </v-flex>
+                      <v-flex md6>
+                        <v-card-title class="lables"
+                          >Client Password</v-card-title
+                        >
+                        <div class="new">
+                          <v-text-field
+                            v-model="User.confirmPassword"
+                            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                            :rules="[rules.required, rules.min]"
+                            :type="show2 ? 'text' : 'password'"
+                            solo
+                            label="Re-enter your password"
+                            clearable
+                            class="ml-4"
+                            @click:append="show2 = !show2"
+                          ></v-text-field>
+                        </div>
+                      </v-flex>
+                    </v-layout>
 
-            <v-btn
-              class="ml-4"
-              width="97%"
-              large
-              color="#2c547c"
-              dark
-              @click="register"
-              >Sign Up</v-btn
-            >
-            <v-btn text class="mt-2" medium color="#2c547c" to="/"
-              >or return to Store</v-btn
-            >
-          </v-flex>
+                    <v-btn
+                      class="ml-4"
+                      width="97%"
+                      large
+                      color="#2c547c"
+                      dark
+                      @click="register"
+                      >Sign Up</v-btn
+                    >
+                    <v-btn text class="mt-2" medium color="#2c547c" to="/"
+                      >or return to Store</v-btn
+                    >
+                  </v-flex>
+                </v-form>
+              </v-flex>
+            </v-layout>
+          </v-card>
         </v-form>
       </v-flex>
     </v-layout>
@@ -82,8 +135,8 @@ export default {
   data() {
     return {
       User: {
-        firstName: "",
-        lastName: "",
+        mobile: "",
+        company: "",
         email: "",
         username: "",
         password: "",
@@ -103,6 +156,10 @@ export default {
           const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           return pattern.test(value) || "Invalid e-mail.";
         },
+        password: (value) => {
+          const passPattern = this.User.password == this.User.confirmPassword;
+          return passPattern.test(value) || "Invalid password.";
+        },
       },
     };
   },
@@ -110,11 +167,14 @@ export default {
     register: function() {
       if (this.$refs.form.validate()) {
         let data = {
-   
-          email: this.User.email,
-          username: this.User.username,
-          password: this.User.password,
+          Email: this.User.email,
+          ClientName: this.User.username,
+          ClientPassword: this.User.password,
+          IsTrial: true,
+          Mobile: this.User.mobile,
+          Company: this.User.company,
         };
+        console.log(data);
         this.$store
           .dispatch("register", data)
           .then(() => this.$router.push("/"))

@@ -6,7 +6,7 @@
           <v-flex md7 xs12>
             <div class="pa-5">
               <v-img
-                :src="'https://new-sku.herokuapp.com/' + product.path"
+                :src="'http://localhost:3000/' + product.Thumbnail"
               ></v-img>
             </div>
             <div color="transparent" class="d-flex justify-center">
@@ -31,7 +31,9 @@
                     >
                       <v-card>
                         <v-img
-                          :src="'https://new-sku.herokuapp.com/' + product.path"
+                          :src="
+                            'http://localhost:3000/' + product.NutritionalTable
+                          "
                           class="white--text align-end"
                           gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                         >
@@ -45,7 +47,7 @@
           </v-flex>
           <v-flex md5 xs12 class="pa-md-12 pa-6">
             <div class="heading3 mb-4">
-              {{ product.title }}
+              {{ product.ProductName }}
               <v-progress-linear
                 color="#2c547c"
                 rounded
@@ -54,14 +56,11 @@
               ></v-progress-linear>
             </div>
             <div class="heading3 mb-4">
-              {{ product.category }} - {{ product.sub_category }}
+              {{ product.ProductName }} - {{ product.ProductName }}
             </div>
             <div class="heading2 mb-4">
               <span class="heading">Ingredients:</span>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus
-              voluptatum numquam excepturi perspiciatis temporibus et laborum
-              aliquid, quis dicta consectetur odio sint est unde eius facere ab
-              provident cum! Harum.
+              {{ product.Ingredients }}
             </div>
             <span class="heading">Nutritional table:</span>
             <v-img
@@ -142,12 +141,10 @@ export default {
   mounted() {
     console.log(this.new);
     axios
-      .get(
-        "https://new-sku.herokuapp.com/findProductById/" + this.$route.params.id
-      )
+      .get("http://localhost:3000/product/getById/" + this.$route.params.id)
       .then((response) => {
-        this.product = response.data;
-        console.log("sub", response.data);
+        this.product = response.data[0];
+        console.log("product", response.data);
         // this.response=console.log.data
       })
       .catch((error) => {

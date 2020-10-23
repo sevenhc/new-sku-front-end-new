@@ -32,17 +32,17 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "https://new-sku.herokuapp.com/api/auth/signin",
+          url: "http://localhost:3000/client/logIn",
           data: user,
           method: "POST",
-        })``
+        })
           .then((resp) => {
             const token = resp.data.accessToken;
-            const username = resp.data.username;
+            const username = resp.data[0].ClientName;
+
+            console.log("user name", resp.data[0].ClientName);
             localStorage.setItem("token", token);
             localStorage.setItem("username", username);
-            console.log(username);
-            // Add the following line:
             axios.defaults.headers.common["Authorization"] = token;
             commit("auth_success", token, username);
             resolve(resp);
@@ -51,6 +51,7 @@ export default new Vuex.Store({
             commit("auth_error");
             localStorage.removeItem("token");
             reject(err);
+            // console.log("asd", err);
           });
       });
     },
@@ -58,13 +59,16 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "https://new-sku.herokuapp.com/api/auth/signup",
+          url: "http://localhost:3000/client/addNew",
           data: user,
           method: "POST",
         })
           .then((resp) => {
             const token = resp.data.token;
             const user = resp.data.user;
+            const username = resp.data.ClientName;
+            console.log("user name", username);
+            localStorage.setItem("username", username);
             localStorage.setItem("token", token);
             console.log(token);
             // Add the following line:

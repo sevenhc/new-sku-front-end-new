@@ -8,13 +8,13 @@
           </v-card>
           <v-flex md12 xs11>
             <v-form ref="form">
-              <v-card-title>User Name</v-card-title>
+              <v-card-title>Email </v-card-title>
               <div class="new">
                 <v-text-field
                   v-model="username"
                   solo
                   :rules="[rules.required]"
-                  label="Enter your user name"
+                  label="Enter your Email"
                   clearable
                   class="ml-4"
                   :append-icon="'mdi-badge-account'"
@@ -116,14 +116,14 @@ export default {
   methods: {
     login() {
       if (this.$refs.form.validate()) {
-        let username = this.username;
-        let password = this.password;
-        console.log(username, password);
+        let Email = this.username;
+        let ClientPassword = this.password;
+        console.log(Email, ClientPassword);
         this.$store
-          .dispatch("login", { username, password })
+          .dispatch("login", { Email, ClientPassword })
           .then(() => this.$router.push("/"))
-          .catch((err) => console.log(err))
-          .location.reload();
+          .catch((err) => console.log(err));
+        // .location.reload();
       }
     },
     logout() {

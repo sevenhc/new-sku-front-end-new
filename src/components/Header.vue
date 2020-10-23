@@ -33,7 +33,7 @@
             color="#2c547c"
             >category</v-btn
           >
-          <v-btn text large class="" to="/Insights" color="#2c547c"
+          <v-btn text large class="" to="/InsightsList" color="#2c547c"
             >Insights</v-btn
           >
         </v-row>
@@ -50,9 +50,7 @@
           >
         </v-row>
         <v-row v-else>
-          <v-btn text large class="" to="/LoginSignup" color="#2c547c">{{
-            user
-          }}</v-btn>
+          <v-btn text large class="" color="#2c547c">{{ user }}</v-btn>
           <v-divider value="6" vertical></v-divider>
 
           <v-btn

@@ -3,7 +3,7 @@
     <v-container>
       <v-row>
         <v-text-field
-          v-model="firstname"
+          v-model="LibraryName"
           :rules="nameRules"
           :counter="10"
           required
@@ -14,16 +14,30 @@
   </v-form>
 </template>
 <script>
+import axios from "axios";
 export default {
   data: () => ({
     valid: false,
-    firstname: "",
-    lastname: "",
+    LibraryName: "",
     nameRules: [
       (v) => !!v || "Library Name is required",
       (v) => v.length <= 10 || "Name must be less than 10 characters",
     ],
   }),
+  methods: {
+    sendFile() {
+      axios
+        .post("http://localhost:3000/library/addNew", {
+          LibraryName: this.LibraryName,
+          ClientID: 1,
+        })
+        .then((response) => {
+          const data = response.data;
+          console.log(data);
+          this.dialog = false;
+        });
+    },
+  },
 };
 </script>
 <style>
