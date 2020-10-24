@@ -9,6 +9,7 @@ export default new Vuex.Store({
     status: "",
     token: localStorage.getItem("token") || "",
     user: localStorage.getItem("username") || "",
+    clientID: localStorage.getItem("clientID") || "",
   },
   mutations: {
     auth_request(state) {
@@ -21,6 +22,12 @@ export default new Vuex.Store({
     },
     auth_error(state) {
       state.status = "error";
+    },
+    auth_error_new(state) {
+      state.status = "fucked";
+    },
+    auth_success_new(state) {
+      state.status = "abc";
     },
     logout(state) {
       state.status = "";
@@ -39,19 +46,28 @@ export default new Vuex.Store({
           .then((resp) => {
             const token = resp.data.accessToken;
             const username = resp.data[0].ClientName;
+            const clientID = resp.data[0].ClientID;
+            console.log("datam", resp.data[0].Message);
+            console.log("data2", resp.data);
+            if (resp.data[0].Message == "Username or Password invalied.") {
+              commit("auth_error_new");
+            } else {
+              commit("auth_success_new", token, username);
+              console.log("user name", resp.data[0].ClientName);
+              console.log("ClientID", resp.data[0].ClientID);
+              localStorage.setItem("token", token);
+              localStorage.setItem("username", username);
+              localStorage.setItem("clientID", clientID);
+              axios.defaults.headers.common["Authorization"] = token;
+            }
 
-            console.log("user name", resp.data[0].ClientName);
-            localStorage.setItem("token", token);
-            localStorage.setItem("username", username);
-            axios.defaults.headers.common["Authorization"] = token;
-            commit("auth_success", token, username);
             resolve(resp);
           })
           .catch((err) => {
             commit("auth_error");
             localStorage.removeItem("token");
             reject(err);
-            // console.log("asd", err);
+            console.log("asd", err);
           });
       });
     },

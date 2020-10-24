@@ -1,15 +1,15 @@
 <template>
   <div>
     <v-card>
-      <p class="name pa-3">{{ libary.title }}</p>
+      <p class="name pa-3">{{ libary[0].LibraryName }}</p>
       <v-layout>
         <v-flex md12>
           <v-container fluid>
             <v-row dense>
               <v-col
                 class="pa-4"
-                v-for="card in products"
-                :key="card.title"
+                v-for="card in libary"
+                :key="card.ProductID"
                 cols="12"
                 md="4"
                 sm="11"
@@ -17,7 +17,7 @@
               >
                 <v-card>
                   <v-img
-                    :src="'https://new-sku.herokuapp.com/' + card.path"
+                    :src="'http://new-sku-back-end.herokuapp.com/' + card.Thumbnail"
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="250px"
@@ -25,10 +25,10 @@
                   </v-img>
                   <v-card-actions>
                     <p class="text-end pa-2">
-                      {{ card.name }}
+                      {{ card.ProductName }}
                     </p>
                     <v-spacer></v-spacer>
-                    <v-btn icon @click="download(card.path)" class="text-end">
+                    <v-btn icon @click="download(card.Thumbnail)" class="text-end">
                       <v-icon>mdi-download</v-icon>
                     </v-btn>
                   </v-card-actions>
@@ -64,14 +64,11 @@ export default {
   mounted() {
     axios
       .get(
-        "https://new-sku.herokuapp.com/library/findAllItemsByLibrary/" +
-          this.$route.params.id
+        "http://new-sku-back-end.herokuapp.com/library/items/getAll/" + this.$route.params.id
       )
       .then((response) => {
         this.libary = response.data;
-        this.products = response.data.library_names;
-        console.log("laibrary Products-->", response.data.library_names);
-        console.log("laibrary-->", response.data);
+        console.log("laibrary data-->", this.libary);
         // this.response=console.log.data
       })
       .catch((error) => {
@@ -81,7 +78,7 @@ export default {
   methods: {
     download(path) {
       console.log(path);
-      window.location.href = "https://new-sku.herokuapp.com/" + path;
+      window.location.href = "http://new-sku-back-end.herokuapp.com/" + path;
     },
   },
 };

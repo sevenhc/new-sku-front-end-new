@@ -59,7 +59,7 @@ export default {
   }),
   mounted() {
     axios
-      .get("http://localhost:3200/findAllSubCategory/" + this.$route.params.id)
+      .get("http://new-sku-back-end.herokuapp.com/findAllSubCategory/" + this.$route.params.id)
 
       .then((response) => {
         this.products = response.data;

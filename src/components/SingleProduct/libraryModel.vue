@@ -10,8 +10,11 @@
           <v-layout row wrap class="pa-12 justify-space-between">
             <v-flex md7>
               <div class="pa-5">
-                <p>{{ name }}</p>
-                <v-img :src="'https://new-sku.herokuapp.com/' + path"></v-img>
+                <p class="heading3 mb-4">{{ productName }}</p>
+                <v-img
+                  aspect-ratio="1.7"
+                  :src="'http://new-sku-back-end.herokuapp.com/' + mainImage"
+                ></v-img>
               </div>
             </v-flex>
             <v-flex md5>
@@ -32,11 +35,7 @@
                 </v-container>
               </v-form>
               <v-divider></v-divider>
-              <ModelList
-                :product_id="product_id"
-                :name="name"
-                :path="path"
-              ></ModelList>
+              <ModelList :product_id="product_id"></ModelList>
             </v-flex>
           </v-layout>
         </v-card>
@@ -52,9 +51,9 @@ import axios from "axios";
 export default {
   components: { ModelList },
   props: {
-    name: String,
-    path: String,
     product_id: Number,
+    mainImage: String,
+    productName: String,
   },
   data: () => ({
     LibraryName: "",
@@ -70,7 +69,7 @@ export default {
     created() {
       console.log(this.LibraryName);
       axios
-        .post("http://localhost:3000/library/addNew", {
+        .post("http://new-sku-back-end.herokuapp.com/library/addNew", {
           LibraryName: this.LibraryName,
           ClientID: 1,
         })
@@ -103,5 +102,11 @@ export default {
 }
 .rounded-card {
   border-radius: 24px;
+}
+.heading3 {
+  text-align: start;
+  font-size: 1.5em;
+  color: #2c547c;
+  font-weight: bold;
 }
 </style>

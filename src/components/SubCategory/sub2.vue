@@ -30,7 +30,10 @@
               >
                 <v-card>
                   <v-img
-                    :src="'http://localhost:3000/' + product.ThumbnailImage"
+                    :src="
+                      'http://new-sku-back-end.herokuapp.com/' +
+                        product.ThumbnailImage
+                    "
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="250px"
@@ -56,39 +59,6 @@ export default {
   data: () => ({
     products: "",
     // new: this.$route.params.id,
-
-    cards: [
-      {
-        title: "Chilled fish and seafood",
-        src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
-        flex: 4,
-      },
-      {
-        title: "Chilled fish and seafood",
-        src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
-        flex: 4,
-      },
-      {
-        title: "Favorite road trips",
-        src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
-        flex: 4,
-      },
-      {
-        title: "Fresh Meat",
-        src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-        flex: 4,
-      },
-      {
-        title: "Favorite road trips",
-        src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
-        flex: 4,
-      },
-      {
-        title: "Fresh Meat",
-        src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-        flex: 4,
-      },
-    ],
   }),
   methods: {
     singleItem(sub_category) {
@@ -101,7 +71,10 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:3000/subCategory/getAll/" + this.$route.params.id)
+      .get(
+        "http://new-sku-back-end.herokuapp.com/subCategory/getAll/" +
+          this.$route.params.id
+      )
       .then((response) => {
         this.products = response.data;
         console.log("sub", response.data);

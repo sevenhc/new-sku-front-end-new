@@ -8,11 +8,10 @@
             contain
             src="../assets/logo.jpg"
             transition="scale-transition"
-            width="400"
           ></v-img>
         </router-link>
       </v-flex>
-      <v-flex md2 xs11 class="ml-3" align-self-end>
+      <v-flex md4 xs11 class="ml-3" align-self-end>
         <v-row>
           <v-btn
             text
@@ -35,6 +34,9 @@
           >
           <v-btn text large class="" to="/InsightsList" color="#2c547c"
             >Insights</v-btn
+          >
+          <v-btn text large class="" to="/MyLibrary" color="#2c547c"
+            >MyLibrary</v-btn
           >
         </v-row>
       </v-flex>
@@ -67,13 +69,6 @@
     </v-layout>
     <v-divider></v-divider>
   </v-flex>
-
-  <!-- <v-spacer></v-spacer>
-
-    <v-btn text medium class="mt-4" color="#2c547c">logIn</v-btn>
-    <p class="mt-4 barLS">|</p>
-
-    <v-btn text medium class="mt-4" color="#2c547c">SignUp</v-btn> -->
 </template>
 
 <script>
@@ -81,7 +76,7 @@ import { mapState, mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["user"]),
+    ...mapState(["user", "userName"]),
     ...mapGetters([
       "userName",
       "mobile",

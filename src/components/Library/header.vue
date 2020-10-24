@@ -1,25 +1,43 @@
 <template>
   <v-container grid-list-xs>
     <div class="d-flex justify-center flex-row-reverse">
-      <p class="pa-2 mobile">VEGITARIAN</p>
+      <p class="pa-2 mobile">{{ name }}</p>
       <v-spacer></v-spacer>
       <v-spacer></v-spacer>
-       <v-select
-          :items="items"
-          label="Your Library"
-          solo
-          min-width="10%"
-          color="primary"
-        ></v-select>
+      <v-select
+        :items="names"
+        label="Your Library"
+        solo
+        min-width="10%"
+        color="primary"
+      ></v-select>
     </div>
   </v-container>
 </template>
 
 <script>
+import axios from "axios";
 export default {
-   data: () => ({
-      items: ['Vegitarian', 'Cold Meats'],
-    }),
+  data: () => ({
+    librarys: "",
+    names: [],
+  }),
+  mounted() {
+    axios
+      .get("http://new-sku-back-end.herokuapp.com/library/getAll/1")
+      .then((response) => {
+        this.librarys = response.data;
+        this.librarynames = response.data[0].LibraryName;
+        for (const i of Object.keys(this.librarys)) {
+          this.new= this.librarys[i];
+          this.names = this.new.LibraryName;
+          console.log("name", this.names);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
 };
 </script>
 

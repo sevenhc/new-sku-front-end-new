@@ -29,7 +29,7 @@
               >
                 <v-card>
                   <v-img
-                    :src="'http://localhost:3000/' + product.Thumbnail"
+                    :src="'http://new-sku-back-end.herokuapp.com/' + product.Thumbnail"
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="250px"
@@ -65,7 +65,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:3000/product/getAll/" + this.$route.params.id)
+      .get("http://new-sku-back-end.herokuapp.com/product/getAll/" + this.$route.params.id)
       .then((response) => {
         this.products = response.data;
         console.log(response);

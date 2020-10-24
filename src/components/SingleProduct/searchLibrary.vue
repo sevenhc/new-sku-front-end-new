@@ -27,7 +27,7 @@ export default {
   methods: {
     sendFile() {
       axios
-        .post("http://localhost:3000/library/addNew", {
+        .post("http://new-sku-back-end.herokuapp.com/library/addNew", {
           LibraryName: this.LibraryName,
           ClientID: 1,
         })

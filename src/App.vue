@@ -1,9 +1,7 @@
 <template>
   <v-app>
     <Header />
-
-      <router-view></router-view>
- 
+    <router-view></router-view>
     <Fotter />
   </v-app>
 </template>

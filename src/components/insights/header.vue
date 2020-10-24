@@ -24,7 +24,7 @@
                 class="pa-12"
                 width="100%"
                 height="50%"
-                :src="'http://localhost:3000/' + insight.ThumbnailPath"
+                :src="'http://new-sku-back-end.herokuapp.com/' + insight.ThumbnailPath"
               >
               </v-img>
             </div>
@@ -60,7 +60,7 @@ export default {
   }),
   mounted() {
     axios
-      .get("http://localhost:3000/insight/getInsById/" + this.$route.params.id)
+      .get("http://new-sku-back-end.herokuapp.com/insight/getInsById/" + this.$route.params.id)
 
       .then((response) => {
         this.insight = response.data[0];

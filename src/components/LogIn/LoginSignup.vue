@@ -44,6 +44,17 @@
               @click="login"
               >Sign In</v-btn
             >
+            <v-alert
+              color="red"
+              v-model="alert"
+              class="ml-4"
+              elevation="24"
+              dismissible
+              width="97%"
+              text
+              type="error"
+              >Username or Password invalied.!</v-alert
+            >
             <v-btn
               class="ml-4 mt-6"
               width="97%"
@@ -58,7 +69,6 @@
             > -->
           </v-flex>
         </v-flex>
-
         <v-flex md4 xs12>
           <v-flex md12 xs12>
             <v-card flat color="grey lighten-2">
@@ -93,9 +103,12 @@
 }
 </style>
 <script>
+import { mapState, mapGetters } from "vuex";
+
 export default {
   data() {
     return {
+      alert: false,
       username: "",
       password: "",
       show1: false,
@@ -113,6 +126,39 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapState(["user"]),
+    ...mapGetters([
+      "userName",
+      "mobile",
+      "email",
+      "userId",
+      "town",
+      "fullName",
+      "landLine",
+      "isLoggedIn",
+      "deliveryAddress",
+    ]),
+    count() {
+      return this.$store.state.status;
+    },
+  },
+  watch: {
+    count() {
+      console.log("status-->", this.$store.state.status);
+      this.newStatus = this.$store.state.status;
+      console.log("newStatus-->", this.newStatus);
+      if (this.newStatus == "fucked") {
+        console.log("wrong password");
+        this.alert = true;
+      }
+      if (this.newStatus == "abc") {
+        console.log("good");
+        this.$router.push("/");
+        window.location.reload();
+      }
+    },
+  },
   methods: {
     login() {
       if (this.$refs.form.validate()) {
@@ -121,9 +167,25 @@ export default {
         console.log(Email, ClientPassword);
         this.$store
           .dispatch("login", { Email, ClientPassword })
-          .then(() => this.$router.push("/"))
+
+          .then(() => {
+            this.toRoute(this.isLoggedIn);
+            // window.location.reload();
+            // this.interval = setInterval(() => this.toRoute(), 10);
+            // if (this.isLoggedIn) {
+            //   this.$router.push("/");
+            //   console.log("isLogCheck");
+            // }
+          })
           .catch((err) => console.log(err));
-        // .location.reload();
+      }
+    },
+    toRoute() {
+      // this.$router.push("/");
+      console.log("toRoute", this.isLoggedIn);
+      if (this.isLoggedIn == true) {
+        console.log("legedIn");
+        this.$router.push("/");
       }
     },
     logout() {

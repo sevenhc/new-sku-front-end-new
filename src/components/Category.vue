@@ -1,9 +1,10 @@
-
 <template>
   <v-container class="mt-12">
     <v-layout>
       <v-flex>
         <div class="heading">How it works</div>
+       
+
         <div class="heading2 pa-3">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
           consequatur amet dolorem harum numquam ipsam rem ea sequi sed, et
@@ -113,4 +114,4 @@ export default {
     };
   },
 };
-</script>   
+</script>

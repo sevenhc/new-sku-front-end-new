@@ -6,14 +6,17 @@
           <v-flex md7 xs12>
             <div class="pa-5">
               <v-img
-                :src="'http://localhost:3000/' + product.Thumbnail"
+                :src="
+                  'http://new-sku-back-end.herokuapp.com/' + product.Thumbnail
+                "
+                aspect-ratio="1.7"
               ></v-img>
             </div>
             <div color="transparent" class="d-flex justify-center">
               <libraryModel
-                :product_id="product.id"
-                :name="product.title"
-                :path="product.path"
+                :product_id="product.ProductID"
+                :mainImage="product.Thumbnail"
+                :productName="product.ProductName"
               ></libraryModel>
             </div>
             <v-layout>
@@ -32,8 +35,10 @@
                       <v-card>
                         <v-img
                           :src="
-                            'http://localhost:3000/' + product.NutritionalTable
+                            'http://new-sku-back-end.herokuapp.com/' +
+                              product.NutritionalTable
                           "
+                          aspect-ratio="1.7"
                           class="white--text align-end"
                           gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                         >
@@ -141,7 +146,10 @@ export default {
   mounted() {
     console.log(this.new);
     axios
-      .get("http://localhost:3000/product/getById/" + this.$route.params.id)
+      .get(
+        "http://new-sku-back-end.herokuapp.com/product/getById/" +
+          this.$route.params.id
+      )
       .then((response) => {
         this.product = response.data[0];
         console.log("product", response.data);

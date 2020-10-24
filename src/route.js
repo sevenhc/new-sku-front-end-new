@@ -5,6 +5,7 @@ import Products from "./Views/ProductScreen.vue";
 import SingleProduct from "./Views/SingleProduct.vue";
 import InsightsScreen from "./Views/InsightsScreen.vue";
 import LibraryScreen from "./Views/LibraryScreen.vue";
+import LibraryScreenSelect from "./Views/LibraryScreenSelect.vue";
 import Sub from "./components/SubCategory/sub2.vue";
 import LoginSignup from "./components/LogIn/LoginSignup.vue";
 import CreateAccount from "./Views/CreateAcc.vue";
@@ -49,6 +50,10 @@ export default [
   {
     path: "/MyLibrary/:id",
     component: LibraryScreen,
+  },
+  {
+    path: "/MyLibrary",
+    component: LibraryScreenSelect,
   },
   {
     path: "/LoginSignup",

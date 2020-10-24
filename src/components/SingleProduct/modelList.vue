@@ -13,7 +13,7 @@
             ></v-list-item-description>
           </v-list-item-content>
           <v-list-item-action>
-            <v-btn icon @click="addItem(name, path, product_id, item.id)">
+            <v-btn icon @click="addItem(product_id, item.LibraryNameID)">
               <v-icon color="grey lighten-1">mdi-bookmark-plus</v-icon>
             </v-btn>
           </v-list-item-action>
@@ -27,41 +27,39 @@ import axios from "axios";
 
 export default {
   props: {
-    name: String,
-    path: String,
-    product_id: String,
+    product_id: Number,
   },
   data: () => ({
     librarys: "",
     newId: "https",
   }),
   methods: {
-    singleItem(id, title) {
+    singleItem(LibraryNameID) {
       return (
-        id,
-        title,
-        console.log("toNewRoute", id, title),
-        this.$router.push({ path: "/MyLibrary/" + id })
+        LibraryNameID,
+        console.log("toNewRoute", LibraryNameID),
+        this.$router.push({ path: "/MyLibrary/" + LibraryNameID })
       ); //?category=baverage
     },
-    addItem(name, path, product_id, id) {
-      console.log(name, path, product_id, id);
+    addItem(product_id, LibraryNameID) {
+      console.log(product_id, LibraryNameID);
       this.newId = this.id;
 
       const newItem = {
-        name: this.name,
-        path: this.path,
-        product_id: this.product_id,
-        libraryNameId: id,
+        ProductID: this.product_id,
+        LibraryID: LibraryNameID,
       };
       console.log("itemToPost", newItem);
       axios
-        .post("http://localhost:3200/library/addLibraryItem", newItem)
+        .post(
+          "http://new-sku-back-end.herokuapp.com/library/items/addNew",
+          newItem
+        )
         .then(
           (response) => (this.libraryNameId = response.data),
           this.$forceUpdate(),
           console.log("Posted", newItem),
-          this.singleItem(id)
+          this.singleItem(LibraryNameID)
         )
         .catch((error) => {
           this.errorMessage = error.message;
@@ -74,7 +72,10 @@ export default {
         title: this.title,
       };
       axios
-        .post("http://localhost:3200/library/addLibrary", article)
+        .post(
+          "http://new-sku-back-end.herokuapp.com/library/addLibrary",
+          article
+        )
         .then(
           (response) => (this.articleId = response.data.id),
           this.$forceUpdate()
@@ -87,7 +88,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://localhost:3000/library/getAll/1")
+      .get("http://new-sku-back-end.herokuapp.com/library/getAll/1")
       .then((response) => {
         this.librarys = response.data[0];
         console.log("library", response.data);
