@@ -1,33 +1,22 @@
 <template>
-  <div class="container">
+  <v-row justify="space-around">
+    <v-col cols="12" sm="10" md="6">
+      <v-sheet elevation="10" class="py-4 px-1">
+        <p class="text-center">Please select Category</p>
+
+        <v-chip-group mandatory active-class="primary--text">
+          <v-chip
+            v-for="tag in librarys"
+            :key="tag"
+            @click="Library(tag.LibraryNameID)"
+          >
+            {{ tag.LibraryName }}
+          </v-chip>
+        </v-chip-group>
+      </v-sheet>
+    </v-col>
     <v-card>
-      <v-row justify="space-around">
-        <v-col cols="12" sm="10" md="8">
-          <v-sheet elevation="10" class="py-4 px-1">
-            <p class="text-center heading">Please select Library Name</p>
-            <v-chip-group
-              mandatory
-              active-class="red--text text--accent-4 "
-              justify="space-around"
-            >
-              <v-chip
-                v-for="tag in librarys"
-                :key="tag"
-                class="ma-2"
-                @click="selectLibrary(tag.LibraryNameID)"
-                color="indigo darken-3"
-                outlined
-              >
-                <v-icon left>
-                  mdi-fire
-                </v-icon>
-                {{ tag.LibraryName }}
-              </v-chip>
-            </v-chip-group>
-          </v-sheet>
-        </v-col>
-      </v-row>
-      <p class="name pa-3">{{ LibraryName }}</p>
+      <p class="name pa-3">{{ libary[0].LibraryName }}</p>
       <v-layout>
         <v-flex md12>
           <v-container fluid>
@@ -44,7 +33,7 @@
                 <v-card>
                   <v-img
                     :src="
-                      'https://new-sku-back-end.herokuapp.com/' + card.Thumbnail
+                      'http://new-sku-back-end.herokuapp.com/' + card.Thumbnail
                     "
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
@@ -82,47 +71,31 @@
         </v-btn>
       </v-row>
     </v-card>
-  </div>
+  </v-row>
 </template>
-
 <script>
 import axios from "axios";
 export default {
   data: () => ({
-    librarys: "",
-    newss: ["asd", "sasas"],
-    news: [],
-    names: [],
-    products: "",
     libary: "",
+    librarys: "",
+    tags: [
+      "Work",
+      "Home Improvement",
+      "Vacation",
+      "Food",
+      "Drawers",
+      "Shopping",
+      "Art",
+      "Tech",
+      "Creative Writing",
+    ],
   }),
   methods: {
-    selectLibrary(LibraryNameID) {
-      this.LibraryNewID = LibraryNameID;
-      console.log("lib ID", this.LibraryNewID);
-      this.newData(this.LibraryNewID);
-    },
-    newData() {
-      axios
-        .get(
-          "http://new-sku-back-end.herokuapp.com/library/items/getAll/" +
-            this.LibraryNewID
-        )
-        .then((response) => {
-          this.libary = response.data;
-          console.log("laibrary data-->", this.LibraryNewID);
-          // this.response=console.log.data
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-    download(path) {
-      console.log(path);
-      window.location.href = "http://new-sku-back-end.herokuapp.com/" + path;
+    Library(LibraryNameID) {
+      return LibraryNameID, console.log(LibraryNameID);
     },
   },
-
   mounted() {
     axios
       .get("http://new-sku-back-end.herokuapp.com/library/getAll/1")
@@ -143,36 +116,17 @@ export default {
       .catch((error) => {
         console.log(error);
       });
+
+    axios
+      .get("http://new-sku-back-end.herokuapp.com/library/items/getAll/" + 211)
+      .then((response) => {
+        this.libary = response.data;
+        console.log("laibrary data-->", this.libary);
+        // this.response=console.log.data
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>
-
-<style>
-.chipClass {
-  color: red;
-}
-.Library {
-  margin-top: 1%;
-}
-.mobile {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #2c547c;
-}
-.large {
-  padding: 4%;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #2c547c;
-}
-
-.heading {
-  text-align: start;
-  font-weight: bold;
-  font-size: 2rem;
-  color: #2c547c;
-}
-</style>
-ß

@@ -9,14 +9,19 @@ import LibraryScreenSelect from "./Views/LibraryScreenSelect.vue";
 import Sub from "./components/SubCategory/sub2.vue";
 import LoginSignup from "./components/LogIn/LoginSignup.vue";
 import CreateAccount from "./Views/CreateAcc.vue";
-import AdminHome from "../src/Admin/admin.home.vue";
 import InsightsList from "../src/components/insights/InsightsList.vue";
+import swiperLibrary from "./components/Library/swiperLibrary.vue";
+import ResetPassword from "./components/LogIn/ResetPassword.vue";
 // import store from "./store";
 
 export default [
   {
     path: "/",
     component: Home,
+  },
+  {
+    path: "/client/ResetPassword/:id",
+    component: ResetPassword,
   },
   {
     path: "/sub/:id",
@@ -64,7 +69,7 @@ export default [
     component: CreateAccount,
   },
   {
-    path: "/Admin/Home",
-    component: AdminHome,
+    path: "/swiperLibrary",
+    component: swiperLibrary,
   },
 ];

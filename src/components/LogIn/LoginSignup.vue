@@ -33,6 +33,11 @@
                   class="ml-4"
                   @click:append="show1 = !show1"
                 ></v-text-field>
+                <div class="text-end mb-3">
+                  <v-btn text medium color="#2c547c" @click="forgotMail()"
+                    >Forgot Password?</v-btn
+                  >
+                </div>
               </div>
             </v-form>
             <v-btn
@@ -91,9 +96,46 @@
         </v-flex>
       </v-layout>
     </v-card>
+    <v-row justify="center">
+      <v-dialog v-model="dialog" max-width="40%">
+        <v-card>
+          <v-card-text>
+            <v-card-title class="heading">
+              Please Enter Your e-mail Address
+            </v-card-title>
+            <div class="pa-6">
+              <v-text-field
+                v-model="email"
+                append-icon="mdi-email-outline"
+                solo
+                class="px-12"
+                label="Enter your e-mail"
+                clearable
+              ></v-text-field>
+            </div>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+
+            <v-btn color="#2c547c" text @click="dialog = false">
+              Cancel
+            </v-btn>
+            <v-btn color="#2c547c" text @click="sendFile()">
+              Send Link
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-row>
   </v-container>
 </template>
 <style>
+.heading {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  color: #2c547c;
+}
 .titles {
   color: aqua;
   text-align: end;
@@ -104,13 +146,15 @@
 </style>
 <script>
 import { mapState, mapGetters } from "vuex";
-
+import axios from "axios";
 export default {
   data() {
     return {
       alert: false,
       username: "",
       password: "",
+      dialog: false,
+      email: "",
       show1: false,
       rules: {
         required: (value) => !!value || "*Required.",
@@ -160,6 +204,15 @@ export default {
     },
   },
   methods: {
+    sendFile() {
+      console.log(this.email);
+
+      try {
+        axios.post("http://localhost:3000/client/forgetPassword/" + this.email);
+      } catch (error) {
+        console.log(error);
+      }
+    },
     login() {
       if (this.$refs.form.validate()) {
         let Email = this.username;
@@ -179,6 +232,9 @@ export default {
           })
           .catch((err) => console.log(err));
       }
+    },
+    forgotMail() {
+      this.dialog = true;
     },
     toRoute() {
       // this.$router.push("/");
