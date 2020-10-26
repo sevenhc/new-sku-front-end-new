@@ -103,12 +103,12 @@
             <v-card-title class="heading">
               Please Enter Your e-mail Address
             </v-card-title>
-            <div class="pa-6">
+            <div class="pa-lg-6">
               <v-text-field
                 v-model="email"
                 append-icon="mdi-email-outline"
                 solo
-                class="px-12"
+                class="px-md-12"
                 label="Enter your e-mail"
                 clearable
               ></v-text-field>
@@ -208,7 +208,7 @@ export default {
       console.log(this.email);
 
       try {
-        axios.post("http://localhost:3000/client/forgetPassword/" + this.email);
+        axios.post("https://new-sku.herokuapp.com/client/forgetPassword/" + this.email);
       } catch (error) {
         console.log(error);
       }

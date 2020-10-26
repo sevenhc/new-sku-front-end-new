@@ -10,7 +10,7 @@
                 <v-form v-model="valid">
                   <v-flex md12 xs11>
                     <v-layout row wrap>
-                      <v-flex md6>
+                      <v-flex md6 xs12>
                         <v-card-title class="lables">Password</v-card-title>
                         <div class="new">
                           <v-text-field
@@ -97,7 +97,7 @@ export default {
   },
   created() {
     var currentUrl = window.location.pathname;
-    var newUrl = "http://localhost:3000" + currentUrl;
+    var newUrl = "https://new-sku.herokuapp.com" + currentUrl;
 
     console.log("url--->", currentUrl);
     console.log("url newUrl--->", newUrl);
@@ -110,7 +110,7 @@ export default {
       this.$refs.form.validate();
 
       try {
-        axios.put("http://localhost:3000" + currentUrln, {
+        axios.put("https://new-sku.herokuapp.com" + currentUrln, {
           ClientPassword: this.password,
         });
         console.log(this.password);

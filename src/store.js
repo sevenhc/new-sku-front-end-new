@@ -39,7 +39,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "http://localhost:3000/client/logIn",
+          url: "http://new-sku-back-end.herokuapp.com/client/logIn",
           data: user,
           method: "POST",
         })
@@ -75,7 +75,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "http://localhost:3000/client/addNew",
+          url: "http://new-sku-back-end.herokuapp.com/client/addNew",
           data: user,
           method: "POST",
         })
