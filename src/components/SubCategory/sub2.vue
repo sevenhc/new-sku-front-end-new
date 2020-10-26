@@ -12,7 +12,7 @@
             largeCardText: $vuetify.breakpoint.mdAndUp,
           }"
         >
-          {{ this.$route.params.id }}</v-card-title
+          {{ CategoryName }}</v-card-title
         >
       </v-img>
       <v-layout>
@@ -58,6 +58,7 @@ import axios from "axios";
 export default {
   data: () => ({
     products: "",
+    CategoryName: "",
     // new: this.$route.params.id,
   }),
   methods: {
@@ -70,6 +71,8 @@ export default {
     },
   },
   mounted() {
+    this.newId = this.$route.params.id;
+    console.log(this.newId);
     axios
       .get(
         "http://new-sku-back-end.herokuapp.com/subCategory/getAll/" +
@@ -78,6 +81,19 @@ export default {
       .then((response) => {
         this.products = response.data;
         console.log("sub", response.data);
+        // this.response=console.log.data
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    axios
+      .get(
+        "https://new-sku-back-end.herokuapp.com/category/GetCategoryByID/" +
+          this.newId
+      )
+      .then((response) => {
+        this.CategoryName = response.data[0].CategoryName;
+        console.log("subCategory-Name", this.CategoryName);
         // this.response=console.log.data
       })
       .catch((error) => {

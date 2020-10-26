@@ -2,7 +2,7 @@
   <v-row justify="space-around">
     <v-col cols="12" sm="10" md="6">
       <v-sheet elevation="10" class="py-4 px-1">
-        <p class="text-center">Please select Category</p>
+        <p class="text-center">Please select Categoryz</p>
 
         <v-chip-group mandatory active-class="primary--text">
           <v-chip
@@ -43,6 +43,7 @@
                   <v-card-actions>
                     <p class="text-end pa-2">
                       {{ card.ProductName }}
+                     z {{ card.ProductID }}
                     </p>
                     <v-spacer></v-spacer>
                     <v-btn

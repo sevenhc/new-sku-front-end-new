@@ -88,7 +88,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://new-sku-back-end.herokuapp.com/library/getAll/1")
+      .get("http://new-sku-back-end.herokuapp.com/library/getAll/2")
       .then((response) => {
         this.librarys = response.data[0];
         console.log("library", response.data);

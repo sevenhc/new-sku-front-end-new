@@ -1,6 +1,18 @@
 <template>
   <div class="container">
-    <v-card>
+    <v-alert
+      v-model="alert"
+      dismissible
+      color="cyan"
+      class="pa-5"
+      border="left"
+      elevation="2"
+      colored-border
+      icon="mdi-earth-box-plus"
+    >
+      Please select library names to view Products!
+    </v-alert>
+    <v-card class="">
       <v-row justify="space-around">
         <v-col cols="12" sm="10" md="8">
           <v-sheet elevation="10" class="py-4 px-1">
@@ -49,6 +61,7 @@
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="250px"
+                    @click="singleItem(card.ProductID)"
                   >
                   </v-img>
                   <v-card-actions>
@@ -94,6 +107,7 @@ export default {
     news: [],
     names: [],
     products: "",
+    alert: true,
     libary: "",
   }),
   methods: {
@@ -101,6 +115,13 @@ export default {
       this.LibraryNewID = LibraryNameID;
       console.log("lib ID", this.LibraryNewID);
       this.newData(this.LibraryNewID);
+    },
+    singleItem(ProductID) {
+      return (
+        ProductID,
+        console.log("id", ProductID),
+        this.$router.push({ path: "/SingleProduct/" + ProductID })
+      ); //?category=baverage
     },
     newData() {
       axios
@@ -125,7 +146,7 @@ export default {
 
   mounted() {
     axios
-      .get("http://new-sku-back-end.herokuapp.com/library/getAll/1")
+      .get("http://new-sku-back-end.herokuapp.com/library/getAll/5")
       .then((response) => {
         this.librarys = response.data[0];
 
@@ -143,11 +164,15 @@ export default {
       .catch((error) => {
         console.log(error);
       });
+    setTimeout(() => (this.alert = false), 3000);
   },
 };
 </script>
 
 <style>
+.cardnew {
+  margin-top: -20%;
+}
 .chipClass {
   color: red;
 }

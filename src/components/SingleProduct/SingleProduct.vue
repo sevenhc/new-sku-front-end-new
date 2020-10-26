@@ -3,7 +3,7 @@
     <v-container>
       <v-card color="#f3f3f3">
         <v-layout row>
-          <v-flex md7 xs12>
+          <v-flex md7 xs12 align-self-center>
             <div class="pa-5">
               <v-img
                 :src="
@@ -25,8 +25,8 @@
                   <v-row dense>
                     <v-col
                       class="pa-md-5"
-                      v-for="index in 3"
-                      :key="index"
+                      v-for="image in newImages"
+                      :key="image.index"
                       cols="12"
                       md="4"
                       sm="5"
@@ -35,8 +35,7 @@
                       <v-card>
                         <v-img
                           :src="
-                            'http://new-sku-back-end.herokuapp.com/' +
-                              product.NutritionalTable
+                            'http://new-sku-back-end.herokuapp.com/' + image
                           "
                           aspect-ratio="1.7"
                           class="white--text align-end"
@@ -50,6 +49,7 @@
               </v-flex>
             </v-layout>
           </v-flex>
+
           <v-flex md5 xs12 class="pa-md-12 pa-6">
             <div class="heading3 mb-4">
               {{ product.ProductName }}
@@ -69,8 +69,11 @@
             </div>
             <span class="heading">Nutritional table:</span>
             <v-img
-              src="../../assets/Nutrition.jpg"
-              class="white--text align-end"
+              aspect-ratio="2.5"
+              :src="
+                'http://new-sku-back-end.herokuapp.com/' +
+                  product.NutritionalTable
+              "
             >
             </v-img>
             <div class="pt-4">
@@ -137,6 +140,7 @@ export default {
     return {
       product: "",
       dialog: false,
+      newImages: "",
     };
   },
   computed() {
@@ -152,7 +156,10 @@ export default {
       )
       .then((response) => {
         this.product = response.data[0];
+        this.images = response.data[0].Images;
+        this.newImages = JSON.parse(this.images);
         console.log("product", response.data);
+        console.log("Images", this.newImages);
         // this.response=console.log.data
       })
       .catch((error) => {

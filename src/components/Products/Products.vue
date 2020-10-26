@@ -11,7 +11,7 @@
             mobileCardText: $vuetify.breakpoint.smAndDown,
             largeCardText: $vuetify.breakpoint.mdAndUp,
           }"
-          >{{ this.$route.params.id }}</v-card-title
+          >{{ subCategoryName }}</v-card-title
         >
       </v-img>
       <v-layout>
@@ -29,7 +29,10 @@
               >
                 <v-card>
                   <v-img
-                    :src="'http://new-sku-back-end.herokuapp.com/' + product.Thumbnail"
+                    :src="
+                      'http://new-sku-back-end.herokuapp.com/' +
+                        product.Thumbnail
+                    "
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="250px"
@@ -55,21 +58,42 @@ import axios from "axios";
 export default {
   data: () => ({
     products: "",
+    subCategoryName: "",
   }),
   methods: {
     singleItem(ProductID) {
       return (
-        ProductID, console.log("id",ProductID), this.$router.push({ path: "/SingleProduct/" + ProductID })
+        ProductID,
+        console.log("id", ProductID),
+        this.$router.push({ path: "/SingleProduct/" + ProductID })
       ); //?category=baverage
     },
   },
   mounted() {
     axios
-      .get("http://new-sku-back-end.herokuapp.com/product/getAll/" + this.$route.params.id)
+      .get(
+        "http://new-sku-back-end.herokuapp.com/product/getAll/" +
+          this.$route.params.id
+      )
       .then((response) => {
         this.products = response.data;
         console.log(response);
 
+        // this.response=console.log.data
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    axios
+      .get(
+        "https://new-sku-back-end.herokuapp.com/subCategory/GetSubCategoryByID/" +
+          this.$route.params.id
+      )
+      .then((response) => {
+        this.subCategoryName = response.data[0].SubCategoryName;
+        console.log("subCategory-Name", this.subCategoryName);
+        (this.CategoryID = this.$route.params.id),
+          console.log("wow", this.CategoryID);
         // this.response=console.log.data
       })
       .catch((error) => {

@@ -28,14 +28,61 @@
                       :counter="10"
                       required
                     ></v-text-field>
-                    <v-btn @click="created()" color="#2c547c" class="mt-5" text
+                    <v-btn
+                      @click="createLibrary()"
+                      color="#2c547c"
+                      class="mt-5"
+                      text
                       >Add New Library</v-btn
                     >
                   </v-row>
                 </v-container>
               </v-form>
               <v-divider></v-divider>
-              <ModelList :product_id="product_id"></ModelList>
+              <!-- <ModelList :product_id="product_id"></ModelList> -->
+              <v-card class="mx-auto" flat>
+                <v-list dense>
+                  <v-list-item-group v-model="item" color="primary">
+                    <v-list-item v-for="(item, i) in librarys" :key="i">
+                      <v-list-item-icon>
+                        <v-icon v-text="item.icon"></v-icon>
+                      </v-list-item-icon>
+                      <v-list-item-content
+                        @click="singleItem(item.id, item.title)"
+                      >
+                        <v-list-item-title
+                          v-text="item.LibraryName"
+                        ></v-list-item-title>
+                        <v-list-item-description
+                          v-text="item.createdAt"
+                        ></v-list-item-description>
+                      </v-list-item-content>
+                      <v-list-item-action>
+                        <v-btn
+                          icon
+                          @click="addItem(product_id, item.LibraryNameID)"
+                        >
+                          <v-icon color="grey lighten-1"
+                            >mdi-bookmark-plus</v-icon
+                          >
+                        </v-btn>
+                      </v-list-item-action>
+                    </v-list-item>
+                  </v-list-item-group>
+                  <v-alert
+                    v-model="alert"
+                    dismissible
+                    color="cyan"
+                    class="pa-5"
+                    border="left"
+                    elevation="2"
+                    colored-border
+                    icon="mdi-earth-box-plus"
+                  >
+                    <strong>{{ productName }}</strong> added to your Library
+                  </v-alert>
+                </v-list>
+              </v-card>
             </v-flex>
           </v-layout>
         </v-card>
@@ -45,11 +92,11 @@
 </template>
 
 <script>
-import ModelList from "../SingleProduct/modelList";
+// import ModelList from "../SingleProduct/modelList";
 import axios from "axios";
 
 export default {
-  components: { ModelList },
+  // components: { ModelList },
   props: {
     product_id: Number,
     mainImage: String,
@@ -57,8 +104,10 @@ export default {
   },
   data: () => ({
     LibraryName: "",
+    librarys: "",
     dialog: false,
     valid: false,
+    alert: false,
     lastname: "",
     nameRules: [
       (v) => !!v || "Library Name is required",
@@ -66,25 +115,74 @@ export default {
     ],
   }),
   methods: {
-    created() {
+    getAllLibraries() {
+      console.log("getAll");
+      axios
+        .get("http://new-sku-back-end.herokuapp.com/library/getAll/5")
+        .then((response) => {
+          this.librarys = response.data[0];
+          console.log("library", response.data);
+          // this.response=console.log.data
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    singleItem(LibraryNameID) {
+      return (
+        LibraryNameID,
+        console.log("toNewRoute", LibraryNameID),
+        this.$router.push({ path: "/MyLibrary/" + LibraryNameID })
+      ); //?category=baverage
+    },
+    createLibrary() {
       console.log(this.LibraryName);
       axios
         .post("http://new-sku-back-end.herokuapp.com/library/addNew", {
           LibraryName: this.LibraryName,
-          ClientID: 1,
+          ClientID: 5,
         })
         .then((response) => {
           const data = response.data;
-          console.log(data);
-          this.dialog = false;
+          console.log("new Library", data);
+          // this.librarys.push(data);
+          this.getAllLibraries();
+        });
+    },
+    addItem(product_id, LibraryNameID) {
+      console.log(product_id, LibraryNameID);
+      this.newId = this.id;
+
+      const newItem = {
+        ProductID: this.product_id,
+        LibraryID: LibraryNameID,
+      };
+      console.log("itemToPost", newItem);
+      axios
+        .post(
+          "http://new-sku-back-end.herokuapp.com/library/items/addNew",
+          newItem
+        )
+        .then(
+          (response) => (this.libraryNameId = response.data),
+          this.$forceUpdate(),
+          console.log("Posted", newItem),
+          // this.singleItem(LibraryNameID)
+          (this.alert = true),
+          setTimeout(() => (this.dialog = false), 2000),
+          setTimeout(() => (this.alert = false), 2000)
+        )
+        .catch((error) => {
+          this.errorMessage = error.message;
+          console.error("There was an error!", error);
         });
     },
   },
   mounted() {
     axios
-      .get("https://new-sku.herokuapp.com/library/findAllLibrary")
+      .get("http://new-sku-back-end.herokuapp.com/library/getAll/5")
       .then((response) => {
-        this.products = response.data;
+        this.librarys = response.data[0];
         console.log("library", response.data);
         // this.response=console.log.data
       })
