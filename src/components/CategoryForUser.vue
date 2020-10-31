@@ -3,7 +3,7 @@
     <v-layout>
       <v-flex xs12 md12>
         <div class="heading">Search by category</div>
-        <div class="heading2">
+        <div class="heading2 pa-3">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
           consequatur amet dolorem harum numquam ipsam rem ea sequi sed, et
           totam tempora repellendus autem quia beatae, aperiam ratione hic
@@ -11,7 +11,7 @@
         </div>
       </v-flex>
     </v-layout>
-    <v-layout>
+    <v-layout class="mt-md-12">
       <v-flex md12 xs12>
         <v-container fluid>
           <v-row dense>

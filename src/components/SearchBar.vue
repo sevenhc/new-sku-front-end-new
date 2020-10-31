@@ -1,13 +1,12 @@
 <template>
   <v-container>
-    <v-layout row wrap>
-      <v-flex md12>
+    <v-layout row wrap class=" justify-space-around">
+      <v-flex md6>
         <v-flex>
-          <p class="heading">Key word search</p>
+          <p class="heading mt-12">Key word search</p>
         </v-flex>
-        <v-flex md4 align-self-center mt-md-10>
+        <v-flex md12 class=" ustify-space-around" mt-md-10>
           <v-text-field
-            width="1000px"
             solo
             clearable
             rounded

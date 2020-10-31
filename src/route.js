@@ -12,6 +12,7 @@ import CreateAccount from "./Views/CreateAcc.vue";
 import InsightsList from "../src/components/insights/InsightsList.vue";
 import swiperLibrary from "./components/Library/swiperLibrary.vue";
 import ResetPassword from "./components/LogIn/ResetPassword.vue";
+import store from "./store";
 // import store from "./store";
 
 export default [
@@ -26,42 +27,124 @@ export default [
   {
     path: "/sub/:id",
     component: Sub,
+    beforeEnter: (to, from, next) => {
+      console.log(store.getters);
+      if (!store.getters["isLoggedIn"]) {
+        return next({
+          name: "LoginSignup",
+        });
+      }
+      next();
+    },
   },
   {
     path: "/CatagoriesScreen",
     component: CatagoriesScreen,
+    beforeEnter: (to, from, next) => {
+      console.log(store.getters);
+      if (!store.getters["isLoggedIn"]) {
+        return next({
+          name: "LoginSignup",
+        });
+      }
+      next();
+    },
   },
   {
     path: "/SubCategory/:id",
     component: SubCategory,
+    beforeEnter: (to, from, next) => {
+      console.log(store.getters);
+      if (!store.getters["isLoggedIn"]) {
+        return next({
+          name: "LoginSignup",
+        });
+      }
+      next();
+    },
   },
   {
     path: "/Products/:id",
     component: Products,
+    beforeEnter: (to, from, next) => {
+      console.log(store.getters);
+      if (!store.getters["isLoggedIn"]) {
+        return next({
+          name: "LoginSignup",
+        });
+      }
+      next();
+    },
   },
   {
     name: "SingleProduct",
     path: "/SingleProduct/:id",
     component: SingleProduct,
+    beforeEnter: (to, from, next) => {
+      console.log(store.getters);
+      if (!store.getters["isLoggedIn"]) {
+        return next({
+          name: "LoginSignup",
+        });
+      }
+      next();
+    },
   },
   {
     path: "/Insights/:id",
     component: InsightsScreen,
+    beforeEnter: (to, from, next) => {
+      console.log(store.getters);
+      if (!store.getters["isLoggedIn"]) {
+        return next({
+          name: "LoginSignup",
+        });
+      }
+      next();
+    },
   },
   {
     path: "/InsightsList",
     component: InsightsList,
+    beforeEnter: (to, from, next) => {
+      console.log(store.getters);
+      if (!store.getters["isLoggedIn"]) {
+        return next({
+          name: "LoginSignup",
+        });
+      }
+      next();
+    },
   },
   {
     path: "/MyLibrary/:id",
     component: LibraryScreen,
+    beforeEnter: (to, from, next) => {
+      console.log(store.getters);
+      if (!store.getters["isLoggedIn"]) {
+        return next({
+          name: "LoginSignup",
+        });
+      }
+      next();
+    },
   },
   {
     path: "/MyLibrary",
     component: LibraryScreenSelect,
+    beforeEnter: (to, from, next) => {
+      console.log(store.getters);
+      if (!store.getters["isLoggedIn"]) {
+        return next({
+          name: "LoginSignup",
+        });
+      }
+      next();
+    },
   },
   {
     path: "/LoginSignup",
+    name: "LoginSignup",
     component: LoginSignup,
   },
   {
@@ -71,5 +154,14 @@ export default [
   {
     path: "/swiperLibrary",
     component: swiperLibrary,
+    beforeEnter: (to, from, next) => {
+      console.log(store.getters);
+      if (!store.getters["isLoggedIn"]) {
+        return next({
+          name: "LoginSignup",
+        });
+      }
+      next();
+    },
   },
 ];

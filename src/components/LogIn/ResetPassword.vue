@@ -97,7 +97,7 @@ export default {
   },
   created() {
     var currentUrl = window.location.pathname;
-    var newUrl = "https://new-sku.herokuapp.com" + currentUrl;
+    var newUrl = "http://localhost:8080" + currentUrl;
 
     console.log("url--->", currentUrl);
     console.log("url newUrl--->", newUrl);
@@ -110,7 +110,7 @@ export default {
       this.$refs.form.validate();
 
       try {
-        axios.put("https://new-sku.herokuapp.com" + currentUrln, {
+        axios.put("http://localhost:3000" + currentUrln, {
           ClientPassword: this.password,
         });
         console.log(this.password);
