@@ -2,8 +2,10 @@
   <v-container class="mt-12">
     <v-layout>
       <v-flex>
-        <div class="heading">How it works</div>
-       
+        <div class="heading">
+          How it works
+          <v-divider width="10%"></v-divider>
+        </div>
 
         <div class="heading2 pa-3">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
@@ -29,16 +31,14 @@
               <v-card>
                 <v-img
                   :src="card.src"
-                  class="white--text align-end"
-                  gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+                  class="white--text"
                   height="250px"
                 >
-                  <v-card-actions>
-                    <v-card-title
-                      class="categoryTitle"
-                      v-text="card.title"
-                    ></v-card-title>
-                  </v-card-actions>
+                  <div class="imageNameBack">
+                    <div>
+                      <p class="categoryTitle" v-text="card.title"></p>
+                    </div>
+                  </div>
                 </v-img>
               </v-card>
             </v-col>
@@ -53,7 +53,6 @@
 .heading {
   text-align: center;
   font-weight: bold;
-
   font-size: 2rem;
   color: #2c547c;
 }
@@ -64,6 +63,12 @@
 }
 .categoryTitle {
   text-align: center;
+  margin-bottom: 210px;
+  background-color: rgba(17, 17, 17, 0.671);
+  min-width: 100%;
+  font-size: 1.4rem;
+  padding:3%;
+ 
 }
 </style>
 <script>

@@ -1,7 +1,12 @@
 <template>
   <v-app>
-    <Header />
-    <router-view></router-view>
+    <v-app-bar app>
+      <Header />
+    </v-app-bar>
+    <v-main>
+      <router-view></router-view>
+    </v-main>
+
     <Fotter />
   </v-app>
 </template>

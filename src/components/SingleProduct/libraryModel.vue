@@ -13,7 +13,7 @@
                 <p class="heading3 mb-4">{{ productName }}</p>
                 <v-img
                   aspect-ratio="1.7"
-                  :src="'http://new-sku-back-end.herokuapp.com/' + mainImage"
+                  :src="'http://134.209.188.201:81/' + mainImage"
                 ></v-img>
               </div>
             </v-flex>
@@ -94,8 +94,23 @@
 <script>
 // import ModelList from "../SingleProduct/modelList";
 import axios from "axios";
+import { mapState, mapGetters } from "vuex";
 
 export default {
+  computed: {
+    ...mapState(["user", "clientID"]),
+    ...mapGetters([
+      "userName",
+      "mobile",
+      "email",
+      "userId",
+      "town",
+      "fullName",
+      "landLine",
+      "isLoggedIn",
+      "deliveryAddress",
+    ]),
+  },
   // components: { ModelList },
   props: {
     product_id: Number,
@@ -118,7 +133,10 @@ export default {
     getAllLibraries() {
       console.log("getAll");
       axios
-        .get("http://new-sku-back-end.herokuapp.com/library/getAll/5")
+        .get(
+          "library/getAll/" +
+            this.clientID
+        )
         .then((response) => {
           this.librarys = response.data[0];
           console.log("library", response.data);
@@ -138,9 +156,9 @@ export default {
     createLibrary() {
       console.log(this.LibraryName);
       axios
-        .post("http://new-sku-back-end.herokuapp.com/library/addNew", {
+        .post("library/addNew", {
           LibraryName: this.LibraryName,
-          ClientID: 5,
+          ClientID: this.clientID,
         })
         .then((response) => {
           const data = response.data;
@@ -160,7 +178,7 @@ export default {
       console.log("itemToPost", newItem);
       axios
         .post(
-          "http://new-sku-back-end.herokuapp.com/library/items/addNew",
+          "library/items/addNew",
           newItem
         )
         .then(
@@ -180,7 +198,9 @@ export default {
   },
   mounted() {
     axios
-      .get("http://new-sku-back-end.herokuapp.com/library/getAll/5")
+      .get(
+        "library/getAll/" + this.clientID
+      )
       .then((response) => {
         this.librarys = response.data[0];
         console.log("library", response.data);

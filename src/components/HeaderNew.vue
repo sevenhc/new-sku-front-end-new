@@ -1,19 +1,19 @@
 <template>
   <v-flex>
-    <v-layout row class="justify-space-between">
-      <v-flex md3 xs11 to="/" class="ml-12" align-self-center>
+    <v-layout row class="justify-space-between" >
+      <v-flex md3 xs11 to="/" class="ml-12">
         <router-link to="/">
           <v-img
             width="50%"
             height="50%"
             class="shrink ma-3"
             contain
-            src="../assets/logo.png"
+            src="../assets/logo.jpg"
             transition="scale-transition"
           ></v-img>
         </router-link>
       </v-flex>
-      <v-flex md3 xs11 class="ml-3" align-self-center>
+      <v-flex md3 xs11 class="ml-3" align-self-end>
         <v-row>
           <v-btn
             text
@@ -42,7 +42,7 @@
           >
         </v-row>
       </v-flex>
-      <v-flex md3 xs7 class="ml-3  justify-xs-center" align-self-center>
+      <v-flex md3 xs7 class="ml-3  justify-xs-center" align-self-end >
         <v-row v-if="isLoggedIn == false">
           <v-btn text large class="" to="/LoginSignup" color="#2c547c"
             >logIn</v-btn

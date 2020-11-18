@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-card>
       <v-img
         class="white--text align-end"
@@ -23,16 +23,13 @@
                 v-for="product in products"
                 :key="product.id"
                 cols="12"
-                md="4"
+                md="3"
                 sm="11"
                 xs="11"
               >
                 <v-card>
                   <v-img
-                    :src="
-                      'http://new-sku-back-end.herokuapp.com/' +
-                        product.Thumbnail
-                    "
+                    :src="'http://134.209.188.201:81/' + product.Thumbnail"
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="250px"
@@ -71,10 +68,7 @@ export default {
   },
   mounted() {
     axios
-      .get(
-        "http://new-sku-back-end.herokuapp.com/product/getAll/" +
-          this.$route.params.id
-      )
+      .get("product/getAll/" + this.$route.params.id)
       .then((response) => {
         this.products = response.data;
         console.log(response);
@@ -85,10 +79,7 @@ export default {
         console.log(error);
       });
     axios
-      .get(
-        "https://new-sku-back-end.herokuapp.com/subCategory/GetSubCategoryByID/" +
-          this.$route.params.id
-      )
+      .get("subCategory/GetSubCategoryByID/" + this.$route.params.id)
       .then((response) => {
         this.subCategoryName = response.data[0].SubCategoryName;
         console.log("subCategory-Name", this.subCategoryName);

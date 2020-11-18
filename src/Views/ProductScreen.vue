@@ -1,6 +1,6 @@
 <template>
   <div>
-    <DateAndFilter />
+    <!-- <DateAndFilter /> -->
     <Products />
 
     <div color="transparent" class="d-flex justify-center mb-6" flat>
@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import DateAndFilter from "../components/SubCategory/DateAndFilter";
+// import DateAndFilter from "../components/SubCategory/DateAndFilter";
 import Products from "../components/Products/Products";
 export default {
   components: {
-    DateAndFilter,
+    // DateAndFilter,
     Products,
   },
 };

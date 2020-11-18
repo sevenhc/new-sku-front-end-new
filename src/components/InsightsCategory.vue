@@ -1,9 +1,9 @@
 <template>
-  <div class="mt-12 mb-7">
+  <div class="mt-12 mb-7 card">
     <v-container>
-      <v-card color="#e1e6e8">
+      <v-card flat>
         <v-layout row wrap justify-space-between>
-          <v-flex md6 xs12>
+          <v-flex md4 xs12>
             <div
               :class="{
                 mobile: $vuetify.breakpoint.smAndDown,
@@ -20,10 +20,8 @@
             >
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
               consequatur amet dolorem harum numquam ipsam rem ea sequi sed, et
-              totam tempora repellendus autem quia beatae, aperiam ratione hic
-              saepe?amet dolorem harum numquam ipsam rem ea sequi sed, et totam
-              tempora repellendus autem quia beatae, aperiam ratione hic saepe?
-              <div class="text-center pa-4">
+              totam tempora repele, aperiam ratione hic saepe?
+              <div class="text-left mt-3">
                 <v-btn to="/Insights" text color="#2c547c">
                   Read More
                   <v-icon color="#2c547c"> mdi-arrow-right</v-icon>
@@ -31,8 +29,11 @@
               </div>
             </div>
           </v-flex>
-          <v-flex md6 xs12 class="text--center pa-3">
-            <v-img src="https://picsum.photos/510/300?random"></v-img>
+          <v-flex md8 xs12 class="text--center pa-3">
+            <v-img
+              aspect-ratio="2.6"
+              src="https://picsum.photos/510/300?random"
+            ></v-img>
           </v-flex>
         </v-layout>
       </v-card>
@@ -41,10 +42,6 @@
 </template>
 
 <style scoped>
-.card {
-  color: rgba(135, 173, 243, 0.411);
-  border: 1px solid red;
-}
 .mobile {
   text-align: left;
   padding: 7%;

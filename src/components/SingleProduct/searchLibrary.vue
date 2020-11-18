@@ -15,7 +15,23 @@
 </template>
 <script>
 import axios from "axios";
+import { mapState, mapGetters } from "vuex";
+
 export default {
+  computed: {
+    ...mapState(["user", "clientID"]),
+    ...mapGetters([
+      "userName",
+      "mobile",
+      "email",
+      "userId",
+      "town",
+      "fullName",
+      "landLine",
+      "isLoggedIn",
+      "deliveryAddress",
+    ]),
+  },
   data: () => ({
     valid: false,
     LibraryName: "",

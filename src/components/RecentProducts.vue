@@ -1,7 +1,7 @@
 <template>
-  <div class="mt-12 mb-12">
-    <v-container-fluid>
-      <v-card color="#e1e6e8">
+  <div class="mt-12 mb-12 card">
+    <v-container>
+      <div color="#e1e6e8">
         <v-layout row>
           <v-flex xs12>
             <div class="heading pt-9 pl-9">New Sku's out this week</div>
@@ -31,15 +31,14 @@
             </div>
           </v-flex>
         </v-layout>
-      </v-card>
-    </v-container-fluid>
+      </div>
+    </v-container>
   </div>
 </template>
 
 <style scoped>
 .card {
-  color: rgba(135, 173, 243, 0.411);
-  border: 1px solid red;
+  background-color: #e1e6e8;
 }
 .heading {
   text-align: left;

@@ -1,5 +1,5 @@
 <template>
-  <div><DateAndFilter /><SubCategory /></div>
+  <v-container><DateAndFilter /><SubCategory /></v-container>
 </template>
 
 <script>

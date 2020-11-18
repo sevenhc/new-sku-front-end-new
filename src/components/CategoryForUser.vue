@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-md-12">
+  <v-container class="mt-md-12">
     <v-layout>
       <v-flex xs12 md12>
         <div class="heading">Search by category</div>
@@ -26,25 +26,23 @@
             >
               <v-card>
                 <v-img
-                  :src="
-                    'http://new-sku-back-end.herokuapp.com/' +
-                      product.ThumbnailImage
-                  "
+                  :src="'http://134.209.188.201:81/' + product.ThumbnailImage"
                   :lazy-src="
-                    'http://new-sku-back-end.herokuapp.com/' +
-                      product.ThumbnailImage
+                    'http://134.209.188.201:81/' + product.ThumbnailImage
                   "
                   class="white--text align-end"
                   gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                   height="250px"
                   @click="singleItem(product.CategoryID)"
                 >
-                  <v-card-actions>
-                    <v-card-title
-                      class="categoryTitle"
-                      v-text="product.CategoryName"
-                    ></v-card-title>
-                  </v-card-actions>
+                  <div class="imageNameBack">
+                    <div>
+                      <p
+                        class="categoryTitle"
+                        v-text="product.CategoryName"
+                      ></p>
+                    </div>
+                  </div>
                 </v-img>
               </v-card>
             </v-col>
@@ -52,7 +50,7 @@
         </v-container>
       </v-flex>
     </v-layout>
-  </div>
+  </v-container>
 </template>
 
 <style scoped>
@@ -70,6 +68,14 @@
 }
 .categoryTitle {
   text-align: center;
+}
+.categoryTitle {
+  text-align: center;
+  margin-bottom: 210px;
+  background-color: rgba(17, 17, 17, 0.671);
+  min-width: 100%;
+  font-size: 1.4rem;
+  padding: 3%;
 }
 </style>
 <script>
@@ -95,7 +101,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://new-sku-back-end.herokuapp.com/category/getAll")
+      .get("category/getAll")
 
       .then((response) => {
         this.products = response.data;

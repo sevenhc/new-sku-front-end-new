@@ -1,16 +1,24 @@
 <template>
-  <v-container class="mt-12 mb-12">
-    <v-container>
+  <v-container fluid class="mt-12 mb-12">
+    <div id="printMe">
       <v-card color="#f3f3f3">
         <v-layout row>
           <v-flex md7 xs12 align-self-center>
             <div class="pa-5">
               <v-img
-                :src="
-                  'http://new-sku-back-end.herokuapp.com/' + product.Thumbnail
-                "
+                :src="'http://134.209.188.201:81/' + product.Thumbnail"
                 aspect-ratio="1.7"
-              ></v-img>
+              >
+                <div align="end" class=" align-self-baseline">
+                  <v-icon
+                    color="success"
+                    @click="
+                      downloadWithAxios(product.Thumbnail, product.ProductName)
+                    "
+                    >mdi-download</v-icon
+                  >
+                </div>
+              </v-img>
             </div>
             <div color="transparent" class="d-flex justify-center">
               <libraryModel
@@ -34,13 +42,20 @@
                     >
                       <v-card>
                         <v-img
-                          :src="
-                            'http://new-sku-back-end.herokuapp.com/' + image
-                          "
+                          :src="'http://134.209.188.201:81/' + image"
                           aspect-ratio="1.7"
                           class="white--text align-end"
                           gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                         >
+                          <div align="end" class=" align-self-baseline">
+                            <v-icon
+                              color="success"
+                              @click="
+                                downloadWithAxios(image, product.ProductName)
+                              "
+                              >mdi-download</v-icon
+                            >
+                          </div>
                         </v-img>
                       </v-card>
                     </v-col>
@@ -70,14 +85,29 @@
             <span class="heading">Nutritional table:</span>
             <v-img
               aspect-ratio="2.5"
-              :src="
-                'http://new-sku-back-end.herokuapp.com/' +
-                  product.NutritionalTable
-              "
+              :src="'http://134.209.188.201:81/' + product.NutritionalTable"
             >
+              <div align="end" class=" align-self-baseline">
+                <v-icon
+                  color="success"
+                  @click="
+                    downloadWithAxios(
+                      product.NutritionalTable,
+                      product.ProductName
+                    )
+                  "
+                  >mdi-download</v-icon
+                >
+              </div>
             </v-img>
             <div class="pt-4">
-              <v-btn min-width="50%" rounded color="#c7ced5" class="heading2">
+              <v-btn
+                @click="print()"
+                min-width="50%"
+                rounded
+                color="#c7ced5"
+                class="heading2"
+              >
                 Download Page
               </v-btn>
             </div>
@@ -95,7 +125,7 @@
           </v-flex>
         </v-layout>
       </v-card>
-    </v-container>
+    </div>
   </v-container>
 </template>
 
@@ -131,9 +161,13 @@
   text-align: center;
 }
 </style>
+
 <script>
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 import axios from "axios";
 import LibraryModel from "../SingleProduct/libraryModel";
+
 export default {
   components: { LibraryModel },
   data() {
@@ -147,13 +181,60 @@ export default {
     this.new = this.products;
     console.log("asasas", this.products);
   },
+
+  methods: {
+    print() {
+      // Pass the element id here
+      this.$htmlToPaper("printMe");
+    },
+    download() {
+      const doc = new jsPDF();
+      const contentHtml = this.$refs.content.innerHTML;
+      doc.save(contentHtml, 10, 10, {
+        width: 170,
+      });
+      doc.save("sample.pdf");
+    },
+
+    downloadWithCSS() {
+      const doc = new jsPDF();
+      /** WITH CSS */
+      var canvasElement = document.createElement("canvas");
+      html2canvas(this.$refs.content, { canvas: canvasElement }).then(function(
+        canvas
+      ) {
+        const img = canvas.toDataURL("image/jpeg", 0.8);
+        doc.addImage(img, "JPEG", 20, 20);
+        doc.save("sample.pdf");
+      });
+    },
+    forceFileDownload(response, ProductName) {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", ProductName + ".png"); //or any other extension
+      document.body.appendChild(link);
+      link.click();
+    },
+
+    downloadWithAxios(Thumbnail, ProductName) {
+      var url = "http://new-sku-back-end.herokuapp.com/" + Thumbnail;
+      console.log(url, ProductName);
+      axios({
+        method: "get",
+        url,
+        responseType: "arraybuffer",
+      })
+        .then((response) => {
+          this.forceFileDownload(response, ProductName);
+        })
+        .catch(() => console.log("error occured"));
+    },
+  },
   mounted() {
     console.log(this.new);
     axios
-      .get(
-        "http://new-sku-back-end.herokuapp.com/product/getById/" +
-          this.$route.params.id
-      )
+      .get("product/getById/" + this.$route.params.id)
       .then((response) => {
         this.product = response.data[0];
         this.images = response.data[0].Images;

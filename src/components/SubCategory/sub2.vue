@@ -1,9 +1,10 @@
 <template>
-  <v-container>
+  <v-container fluid>
+    <DateAndFilter />
     <v-card>
       <v-img
         class="white--text align-end"
-        height="200px"
+        height="180px"
         src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
       >
         <v-card-title
@@ -12,7 +13,7 @@
             largeCardText: $vuetify.breakpoint.mdAndUp,
           }"
         >
-          {{ CategoryName }}</v-card-title
+          {{ CategoryName }} gfhjk</v-card-title
         >
       </v-img>
       <v-layout>
@@ -24,16 +25,13 @@
                 v-for="product in products"
                 :key="product.id"
                 cols="12"
-                md="4"
+                md="3"
                 sm="11"
                 xs="11"
               >
                 <v-card>
                   <v-img
-                    :src="
-                      'http://new-sku-back-end.herokuapp.com/' +
-                        product.ThumbnailImage
-                    "
+                    :src="'http://134.209.188.201:81/' + product.ThumbnailImage"
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="250px"
@@ -55,8 +53,10 @@
 
 <script>
 import axios from "axios";
+import DateAndFilter from "./DateAndFilter";
 export default {
   data: () => ({
+    components: { DateAndFilter },
     products: "",
     CategoryName: "",
     // new: this.$route.params.id,
@@ -75,8 +75,7 @@ export default {
     console.log(this.newId);
     axios
       .get(
-        "http://new-sku-back-end.herokuapp.com/subCategory/getAll/" +
-          this.$route.params.id
+        "http://134.209.188.201:81/subCategory/getAll/" + this.$route.params.id
       )
       .then((response) => {
         this.products = response.data;
@@ -87,10 +86,7 @@ export default {
         console.log(error);
       });
     axios
-      .get(
-        "https://new-sku-back-end.herokuapp.com/category/GetCategoryByID/" +
-          this.newId
-      )
+      .get("http://134.209.188.201:81/category/GetCategoryByID/" + this.newId)
       .then((response) => {
         this.CategoryName = response.data[0].CategoryName;
         console.log("subCategory-Name", this.CategoryName);

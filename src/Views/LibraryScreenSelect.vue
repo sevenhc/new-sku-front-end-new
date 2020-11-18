@@ -100,7 +100,23 @@
 
 <script>
 import axios from "axios";
+import { mapState, mapGetters } from "vuex";
+
 export default {
+  computed: {
+    ...mapState(["user", "clientID"]),
+    ...mapGetters([
+      "userName",
+      "mobile",
+      "email",
+      "userId",
+      "town",
+      "fullName",
+      "landLine",
+      "isLoggedIn",
+      "deliveryAddress",
+    ]),
+  },
   data: () => ({
     librarys: "",
     newss: ["asd", "sasas"],
@@ -146,7 +162,9 @@ export default {
 
   mounted() {
     axios
-      .get("http://new-sku-back-end.herokuapp.com/library/getAll/5")
+      .get(
+        "http://new-sku-back-end.herokuapp.com/library/getAll/" + this.clientID
+      )
       .then((response) => {
         this.librarys = response.data[0];
 

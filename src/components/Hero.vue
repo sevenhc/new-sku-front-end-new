@@ -7,7 +7,7 @@
     <v-carousel-item
       v-for="(item, i) in items"
       :key="i"
-      gradient="to bottom, rgba(0,0,0,.6), rgba(0,0,0,.5)"
+      gradient="to bottom, rgba(0,0,0,.7), rgba(0,0,0,.8)"
       :src="item.src"
       reverse-transition="fade-transition"
       transition="fade-transition"
@@ -49,7 +49,7 @@
   color: #ffffff;
 }
 .large {
-  padding: 4%;
+  /* padding: 4%; */
   text-align: center;
   font-size: 6rem;
   font-weight: bold;
@@ -76,8 +76,10 @@
   color: #ffffff;
 }
 .large2 {
-  text-align: left;
-  font-size: 1rem;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-top: -44px;
   color: #ffffff;
 }
 </style>
@@ -91,9 +93,9 @@ export default {
             "https://vfcadvisors.com/wp-content/uploads/2019/07/alcohol-2048x1365.jpg",
         },
       ],
-      slidesHeading: "welcome to NewSku.",
+      slidesHeading: "Welcome to NewSku.",
       slideText:
-        "Consequat irure proident reprehenderit mollit elit magna nostrud labore aute deserunt. Esse id voluptate occaecat nisi velit nulla anim in eu ad sit. ",
+        "Consequat irure proident reprehenderit mollit elit magna nostrud labore aute deserunt. t magna nostrud labore aute deserunt. Esse id voluptate occaecat nisi velit nulla anim in eu ad sit. ",
     };
   },
 };

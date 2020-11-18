@@ -43,7 +43,7 @@
                   <v-card-actions>
                     <p class="text-end pa-2">
                       {{ card.ProductName }}
-                     z {{ card.ProductID }}
+                      z {{ card.ProductID }}
                     </p>
                     <v-spacer></v-spacer>
                     <v-btn
@@ -99,7 +99,9 @@ export default {
   },
   mounted() {
     axios
-      .get("http://new-sku-back-end.herokuapp.com/library/getAll/1")
+      .get(
+        "http://new-sku-back-end.herokuapp.com/library/getAll/" + this.clientID
+      )
       .then((response) => {
         this.librarys = response.data[0];
 

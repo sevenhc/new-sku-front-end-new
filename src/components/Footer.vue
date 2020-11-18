@@ -8,8 +8,18 @@
           "
             >newSku</strong
           >
-
+          <div class="pa-3 ml-12">
+            <v-col>
+              <v-row>
+                <v-btn text>login</v-btn>
+              </v-row>
+              <v-row>
+                <v-btn text>signup</v-btn>
+              </v-row>
+            </v-col>
+          </div>
           <v-spacer></v-spacer>
+
           <v-btn
             text="asd"
             v-for="user in users"
@@ -27,7 +37,10 @@
         </v-card-title>
 
         <v-card-text class="py-2 white--text text-center">
-          <div>{{ new Date().getFullYear() }} — <strong>Seven|HC</strong></div>
+          <div>
+            {{ new Date().getFullYear() }} —
+            <a href="https://www.sevenhc.net/" class="a">Seven|HC</a>
+          </div>
         </v-card-text>
       </v-card>
     </v-flex>
@@ -38,8 +51,11 @@
 export default {
   data: () => ({
     icons: ["mdi-facebook", "mdi-linkedin"],
-    users: ["mdi-login", "mdi-account-plus"],
-    usersT: ["mdi-login", "mdi-account-plus"],
   }),
 };
 </script>
+<style scoped>
+.a {
+  color: #fff;
+}
+</style>
