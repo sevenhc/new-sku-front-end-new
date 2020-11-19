@@ -30,9 +30,7 @@
                 color="indigo darken-3"
                 outlined
               >
-                <v-icon left>
-                  mdi-fire
-                </v-icon>
+                <v-icon left> mdi-fire </v-icon>
                 {{ tag.LibraryName }}
               </v-chip>
             </v-chip-group>
@@ -55,9 +53,7 @@
               >
                 <v-card>
                   <v-img
-                    :src="
-                      'https://new-sku-back-end.herokuapp.com/' + card.Thumbnail
-                    "
+                    :src="'http://134.209.188.201:81/' + card.Thumbnail"
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="250px"
@@ -142,7 +138,7 @@ export default {
     newData() {
       axios
         .get(
-          "http://new-sku-back-end.herokuapp.com/library/items/getAll/" +
+          "library/items/getAll/" +
             this.LibraryNewID
         )
         .then((response) => {
@@ -156,15 +152,13 @@ export default {
     },
     download(path) {
       console.log(path);
-      window.location.href = "http://new-sku-back-end.herokuapp.com/" + path;
+      window.location.href = "http://134.209.188.201:81/" + path;
     },
   },
 
   mounted() {
     axios
-      .get(
-        "http://new-sku-back-end.herokuapp.com/library/getAll/" + this.clientID
-      )
+      .get("library/getAll/" + this.clientID)
       .then((response) => {
         this.librarys = response.data[0];
 
