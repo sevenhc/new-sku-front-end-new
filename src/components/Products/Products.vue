@@ -27,7 +27,7 @@
                 sm="11"
                 xs="11"
               >
-                <v-card>
+                <v-card flat>
                   <v-img
                     :src="'http://134.209.188.201:81/' + product.Thumbnail"
                     class="white--text align-end"

@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card to="/Products">
+    <v-card to="/Products" flat>
       <v-img
         class="white--text align-end"
         height="200px"

@@ -1,108 +1,71 @@
 <template>
-  <v-flex>
-    <v-layout row class="justify-space-between" >
-      <v-flex md3 xs11 to="/" class="ml-12">
-        <router-link to="/">
-          <v-img
-            width="50%"
-            height="50%"
-            class="shrink ma-3"
-            contain
-            src="../assets/logo.jpg"
-            transition="scale-transition"
-          ></v-img>
-        </router-link>
+  <div >
+    <v-layout row wrap justify-space-around>
+      <v-flex md1 xs5>
+        <div>
+          <v-img :src="require('../assets/logo.png')" min-width="200px" />
+        </div>
       </v-flex>
-      <v-flex md3 xs11 class="ml-3" align-self-end>
-        <v-row>
-          <v-btn
-            text
-            large
-            class=""
-            v-if="isLoggedIn == false"
-            disabled
-            to="/catagoriesScreen"
-            color="primary"
-            >category</v-btn
-          >
-          <v-btn
-            v-else
-            text
-            large
-            class=""
-            to="/catagoriesScreen"
-            color="#2c547c"
-            >category</v-btn
-          >
-          <v-btn text large class="" to="/InsightsList" color="#2c547c"
-            >Insights</v-btn
-          >
-          <v-btn text large class="" to="/MyLibrary" color="#2c547c"
-            >MyLibrary</v-btn
-          >
-        </v-row>
+      <v-flex md1 xs5>
+        <div>
+          <v-img :src="require('../assets/logo.png')" min-width="200px" />
+        </div>
       </v-flex>
-      <v-flex md3 xs7 class="ml-3  justify-xs-center" align-self-end >
-        <v-row v-if="isLoggedIn == false">
-          <v-btn text large class="" to="/LoginSignup" color="#2c547c"
-            >logIn</v-btn
+      <!-- <v-spacer class="d-none d-lg-block "></v-spacer> -->
+      <v-flex md9 xs3 align-self-center>
+        <div class="d-none d-lg-block ">
+          <v-layout row wrap>
+            <v-flex mdd2>
+              <v-btn text large class="" to="/catagoriesScreen" color="#2c547c"
+                >category</v-btn
+              >
+            </v-flex>
+          </v-layout>
+        </div>
+        <div class="d-lg-none">
+          <v-menu
+            class=""
+            offset-y
+            transition="scroll-x-reverse-transition"
+            min-width="100%"
+            padding-top="30%"
           >
-          <v-divider value="6" vertical></v-divider>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn icon v-bind="attrs" v-on="on" @click="expand = !expand">
+                <v-app-bar-nav-icon></v-app-bar-nav-icon>
+              </v-btn>
+            </template>
 
-          <v-btn text large class="" to="/CreateAccount" color="#2c547c"
-            >SignUp</v-btn
-          >
-        </v-row>
-        <v-row v-else>
-          <v-btn text large class="" color="#2c547c">{{ user }}</v-btn>
-          <v-divider value="6" vertical></v-divider>
-
-          <v-btn
-            text
-            large
-            class=""
-            to="/LoginSignup"
-            @click="logout"
-            color="#2c547c"
-            >Log Out</v-btn
-          >
-        </v-row>
+            <v-list>
+              <v-list-item v-for="(item, index) in items" :key="index">
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </div>
       </v-flex>
+      <!-- <v-spacer class="d-none d-lg-block "></v-spacer> -->
     </v-layout>
-    <v-divider></v-divider>
-  </v-flex>
+  </div>
 </template>
-
 <script>
-import { mapState, mapGetters } from "vuex";
-
 export default {
-  computed: {
-    ...mapState(["user", "userName"]),
-    ...mapGetters([
-      "userName",
-      "mobile",
-      "email",
-      "userId",
-      "town",
-      "fullName",
-      "landLine",
-      "isLoggedIn",
-      "deliveryAddress",
-    ]),
-  },
-  methods: {
-    logout() {
-      this.$store.dispatch("logout").then(() => {
-        this.$router.push("/").catch((err) => console.log(err));
-      });
-    },
-  },
+  data: () => ({
+    expand: false,
+    it: ["Foo", "Bar", "Fizz", "Buzz"],
+    items: [
+      { title: "Home" },
+      { title: "Contact Us" },
+      { title: "Packages" },
+      { title: "Shoot 1" },
+      { title: "Shoot 2" },
+      { title: "Shoot 3" },
+    ],
+  }),
 };
 </script>
-
-<style>
-.barLS {
-  color: #2c547c;
+<style scoped>
+.app_bar {
+  background-color: transparent;
 }
 </style>
