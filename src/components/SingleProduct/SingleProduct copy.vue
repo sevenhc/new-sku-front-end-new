@@ -30,7 +30,7 @@
             <v-layout>
               <v-flex md12>
                 <v-container fluid>
-                  <v-row dense>
+                  <!-- <v-row dense>
                     <v-col
                       class="pa-md-5"
                       v-for="image in newImages"
@@ -59,7 +59,13 @@
                         </v-img>
                       </v-card>
                     </v-col>
-                  </v-row>
+                  </v-row> -->
+                  <lingallery
+                    :iid.sync="currentId"
+                    :width="width"
+                    :height="height"
+                    :items="items"
+                  />
                 </v-container>
               </v-flex>
             </v-layout>
@@ -167,14 +173,28 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import axios from "axios";
 import LibraryModel from "../SingleProduct/libraryModel";
-
+import Lingallery from "lingallery";
 export default {
-  components: { LibraryModel },
+  components: { LibraryModel, Lingallery },
   data() {
     return {
       product: "",
       dialog: false,
       newImages: "",
+      width: 600,
+      height: 400,
+      items: [
+        {
+          src: "https://picsum.photos/600/400/?image=0",
+          thumbnail: "https://picsum.photos/64/64/?image=0",
+          caption: "Some Caption",
+          id: "someid1",
+        },
+        {
+          src: "https://picsum.photos/600/400/?image=10",
+          thumbnail: "https://picsum.photos/64/64/?image=10",
+        },
+      ],
     };
   },
   computed() {
