@@ -13,7 +13,7 @@
             largeCardText: $vuetify.breakpoint.mdAndUp,
           }"
         >
-          {{ CategoryName }} gfhjk</v-card-title
+          {{ CategoryName }}</v-card-title
         >
       </v-img>
       <v-layout>
