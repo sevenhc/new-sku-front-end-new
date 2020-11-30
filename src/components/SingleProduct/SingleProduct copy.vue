@@ -91,6 +91,7 @@
             </div>
             <span class="heading">Nutritional table:</span>
             <v-img
+            aspect-ratio="2.5"
               class="v-imagecontain"
               :src="'http://134.209.188.201:81/' + product.NutritionalTable"
             >
