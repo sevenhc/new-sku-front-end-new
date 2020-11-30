@@ -1,6 +1,8 @@
 <template>
   <div>
-    <Hero />
+    <div style="height:100vh;">
+      <Hero />
+    </div>
     <Category />
     <Subscription/>
   </div>

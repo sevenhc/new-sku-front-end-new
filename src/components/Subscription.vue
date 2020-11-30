@@ -23,11 +23,7 @@
               <div class="heading2 pa-3">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
                 consequatur amet dolorem harum numquam ipsam rem ea sequi sed,
-                et totam tempora repellendus autem quia beatae, aperiam ratione
-                hic saepe? Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Quae consequatur amet dolorem harum numquam ipsam rem ea
-                sequi sed, et totam tempora repellendus autem quia beatae,
-                aperiam ratione hic saepe?
+                et totam tempora repellendus autem quia beatae
               </div>
             </div>
           </v-flex>
@@ -35,17 +31,19 @@
             <v-form ref="form">
               <v-layout row wrap justify-center class="pa-2">
                 <v-flex md9 xs12>
-                  <p class="title text-center">Create an Account</p>
+                  <p class="heading text-center">
+                    Sign up for a 7 day free trial
+                  </p>
                   <v-form>
                     <v-flex md12 xs11>
                       <v-layout row wrap>
                         <v-flex md6>
-                          <v-card-title class="lables">clientName</v-card-title>
+                          <!-- <v-card-title class="lables">Name</v-card-title> -->
                           <div class="new">
                             <v-text-field
                               v-model="User.username"
                               solo
-                              label="Enter your username "
+                              label="Name *"
                               clearable
                               class="ml-4"
                               :rules="[
@@ -57,12 +55,12 @@
                           </div>
                         </v-flex>
                         <v-flex md6>
-                          <v-card-title class="lables">Company</v-card-title>
+                          <!-- <v-card-title class="lables">Company</v-card-title> -->
                           <div class="new">
                             <v-text-field
                               v-model="User.company"
                               solo
-                              label=" Company"
+                              label="Company *"
                               clearable
                               class="ml-4"
                               :rules="[
@@ -74,12 +72,12 @@
                           </div>
                         </v-flex>
                         <v-flex md6>
-                          <v-card-title class="lables">Email</v-card-title>
+                          <!-- <v-card-title class="lables">Email</v-card-title> -->
                           <div class="new">
                             <v-text-field
                               v-model="User.email"
                               solo
-                              label="Enter your e-mail"
+                              label="Email *"
                               clearable
                               class="ml-4"
                               :rules="[rules.required, rules.email]"
@@ -88,12 +86,12 @@
                         </v-flex>
 
                         <v-flex md6>
-                          <v-card-title class="lables">Mobile</v-card-title>
+                          <!-- <v-card-title class="lables">Telephone</v-card-title> -->
                           <div class="new">
                             <v-text-field
                               v-model="User.mobile"
                               solo
-                              label="Mobile"
+                              label="Telephone *"
                               clearable
                               class="ml-4"
                             ></v-text-field>
@@ -101,7 +99,7 @@
                         </v-flex>
 
                         <v-flex md6>
-                          <v-card-title class="lables">Password</v-card-title>
+                          <!-- <v-card-title class="lables">Password</v-card-title> -->
                           <div class="new">
                             <v-text-field
                               v-model="User.password"
@@ -109,7 +107,7 @@
                               :rules="[rules.required, rules.min]"
                               :type="show1 ? 'text' : 'password'"
                               solo
-                              label="Enter your password"
+                              label="Password *"
                               clearable
                               class="ml-4"
                               @click:append="show1 = !show1"
@@ -117,9 +115,7 @@
                           </div>
                         </v-flex>
                         <v-flex md6>
-                          <v-card-title class="lables"
-                            >Client Password</v-card-title
-                          >
+                          <!-- <v-card-title class="lables">Confirm Password</v-card-title>-->
                           <div class="new">
                             <v-text-field
                               v-model="User.confirmPassword"
@@ -127,7 +123,7 @@
                               :rules="[rules.required, rules.min]"
                               :type="show2 ? 'text' : 'password'"
                               solo
-                              label="Re-enter your password"
+                              label="Confirm password *"
                               clearable
                               class="ml-4"
                               @click:append="show2 = !show2"
@@ -217,48 +213,9 @@ export default {
           const passPattern = this.User.password == this.User.confirmPassword;
           return passPattern.test(value) || "Invalid password.";
         },
-      },
-      items: [
-        {
-          src:
-            "https://vfcadvisors.com/wp-content/uploads/2019/07/alcohol-2048x1365.jpg",
-        },
-      ],
-      cards: [
-        {
-          title: "Pre-fab homes",
-          src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
-          flex: 4,
-        },
-        {
-          title: "Pre-fab homes",
-          src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
-          flex: 4,
-        },
-        {
-          title: "Favorite road trips",
-          src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
-          flex: 4,
-        },
-        {
-          title: "Best airlines",
-          src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-          flex: 4,
-        },
-        {
-          title: "Favorite road trips",
-          src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
-          flex: 4,
-        },
-        {
-          title: "Best airlines",
-          src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-          flex: 4,
-        },
-      ],
-      slidesHeading: "welcome to NewSku.",
-      slideText:
-        "Consequat irure proident reprehenderit mollit elit magna nostrud labore aute deserunt. Esse id voluptate occaecat nisi velit nulla anim in eu ad sit. ",
+      }//,      
+      //slidesHeading: "welcome to NewSku.",
+      //slideText:"Consequat irure proident reprehenderit mollit elit magna nostrud labore aute deserunt. Esse id voluptate occaecat nisi velit nulla anim in eu ad sit. ",
     };
   },
 };

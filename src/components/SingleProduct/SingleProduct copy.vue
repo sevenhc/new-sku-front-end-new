@@ -4,7 +4,7 @@
       <v-card color="#f3f3f3">
         <v-layout row>
           <v-flex md7 xs12 align-self-center>
-            <div class="pa-5">
+            <!-- <div class="pa-5">
               <v-img
                 :src="'http://134.209.188.201:81/' + product.Thumbnail"
                 aspect-ratio="1.7"
@@ -19,14 +19,8 @@
                   >
                 </div>
               </v-img>
-            </div>
-            <div color="transparent" class="d-flex justify-center">
-              <libraryModel
-                :product_id="product.ProductID"
-                :mainImage="product.Thumbnail"
-                :productName="product.ProductName"
-              ></libraryModel>
-            </div>
+            </div> -->
+
             <v-layout>
               <v-flex md12>
                 <v-container fluid>
@@ -69,6 +63,13 @@
                 </v-container>
               </v-flex>
             </v-layout>
+            <div color="transparent" class="d-flex justify-center">
+              <libraryModel
+                :product_id="product.ProductID"
+                :mainImage="product.Thumbnail"
+                :productName="product.ProductName"
+              ></libraryModel>
+            </div>
           </v-flex>
 
           <v-flex md5 xs12 class="pa-md-12 pa-6">
@@ -82,7 +83,7 @@
               ></v-progress-linear>
             </div>
             <div class="heading3 mb-4">
-              {{ product.ProductName }} - {{ product.ProductName }}
+              {{ product.CategoryName }} - {{ product.SubCategoryName }}
             </div>
             <div class="heading2 mb-4">
               <span class="heading">Ingredients:</span>
@@ -93,7 +94,7 @@
               aspect-ratio="2.5"
               :src="'http://134.209.188.201:81/' + product.NutritionalTable"
             >
-              <div align="end" class=" align-self-baseline">
+              <div align="end" class="align-self-baseline">
                 <v-icon
                   color="success"
                   @click="
@@ -181,19 +182,18 @@ export default {
       product: "",
       dialog: false,
       newImages: "",
-      width: 600,
-      height: 400,
+      width: "100%",
+      height: "400px",
       items: [
         {
-          src: "https://picsum.photos/600/400/?image=0",
-          thumbnail: "https://picsum.photos/64/64/?image=0",
-          caption: "Some Caption",
-          id: "someid1",
+          src: "http://134.209.188.201:81/defaultnewskuimg.png",
+          thumbnail: "http://134.209.188.201:81/defaultnewskuimg.png",
         },
-        {
-          src: "https://picsum.photos/600/400/?image=10",
-          thumbnail: "https://picsum.photos/64/64/?image=10",
-        },
+        // ,
+        // {
+        //   src: "https://picsum.photos/600/400/?image=10",
+        //   thumbnail: "https://picsum.photos/64/64/?image=10",
+        // },
       ],
     };
   },
@@ -220,7 +220,7 @@ export default {
       const doc = new jsPDF();
       /** WITH CSS */
       var canvasElement = document.createElement("canvas");
-      html2canvas(this.$refs.content, { canvas: canvasElement }).then(function(
+      html2canvas(this.$refs.content, { canvas: canvasElement }).then(function (
         canvas
       ) {
         const img = canvas.toDataURL("image/jpeg", 0.8);
@@ -259,9 +259,18 @@ export default {
         this.product = response.data[0];
         this.images = response.data[0].Images;
         this.newImages = JSON.parse(this.images);
+        this.newImages.unshift(this.product.Thumbnail);
         // this.newImages = JSON.parse(this.images);
         console.log("product", response.data);
         console.log("Images", this.newImages);
+        var imgitems = [];
+        for (var i = 0, j = this.newImages.length; i < j; i++) {
+          imgitems.push({
+            src: "http://134.209.188.201:81/" + this.newImages[i],
+            thumbnail: "http://134.209.188.201:81/" + this.newImages[i],
+          });
+        }
+        this.items = imgitems;
         // this.response=console.log.data
       })
       .catch((error) => {

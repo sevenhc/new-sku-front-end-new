@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import SingleProduct from "../components/SingleProduct/SingleProduct";
+import SingleProduct from "../components/SingleProduct/SingleProduct copy";
 export default {
   components: {
     SingleProduct,

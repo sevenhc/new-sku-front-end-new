@@ -2,8 +2,8 @@
   <v-container class="mt-md-12">
     <v-layout>
       <v-flex xs12 md12>
-        <div class="heading">Search by category</div>
-        <div class="heading2 pa-3">
+        <div class="heading">How it works</div>
+        <div class="heading2 pa-3 text-center">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
           consequatur amet dolorem harum numquam ipsam rem ea sequi sed, et
           totam tempora repellendus autem quia beatae, aperiam ratione hic
@@ -30,8 +30,7 @@
                   :lazy-src="
                     'http://134.209.188.201:81/' + product.ThumbnailImage
                   "
-                  class="white--text align-end"
-                  gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+                  class="white--text align-end"                  
                   height="250px"
                 >
                   <div class="imageNameBack">
@@ -54,27 +53,27 @@
 
 <style scoped>
 .heading {
-  text-align: start;
+  text-align: center;
   font-weight: bold;
 
   font-size: 2rem;
   color: #2c547c;
 }
 .heading2 {
-  text-align: start;
+  text-align: center;
   font-size: 1rem;
   color: #2c547c;
 }
+
 .categoryTitle {
   text-align: center;
-}
-.categoryTitle {
-  text-align: center;
-  margin-bottom: 210px;
-  background-color: rgba(17, 17, 17, 0.671);
+  background-color: rgba(0,0,0,0.7);
   min-width: 100%;
   font-size: 1.4rem;
   padding: 3%;
+  position: absolute;
+  top: 0;
+  font-weight: bold;
 }
 </style>
 <script>

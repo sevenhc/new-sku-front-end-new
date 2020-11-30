@@ -68,14 +68,13 @@
 }
 .categoryTitle {
   text-align: center;
-}
-.categoryTitle {
-  text-align: center;
-  margin-bottom: 210px;
-  background-color: rgba(17, 17, 17, 0.671);
+  background-color: rgba(0, 0, 0, 0.7);
   min-width: 100%;
   font-size: 1.4rem;
   padding: 3%;
+  position: absolute;
+  top: 0;
+  font-weight: bold;
 }
 </style>
 <script>

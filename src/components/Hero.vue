@@ -1,42 +1,38 @@
 <template>
-  <v-carousel
-    style="height: 100% ,width=10%"
-    hide-delimiters
-    :show-arrows="false"
-  >
-    <v-carousel-item
-      v-for="(item, i) in items"
-      :key="i"
-      gradient="to bottom, rgba(0,0,0,.7), rgba(0,0,0,.8)"
-      :src="item.src"
-      reverse-transition="fade-transition"
-      transition="fade-transition"
-    >
-      <v-jumbotron dark>
-        <v-container fill-height>
-          <v-layout row align-center>
-            <v-flex md12 xs12>
-              <div
-                :class="{
-                  mobile: $vuetify.breakpoint.smAndDown,
-                  large: $vuetify.breakpoint.mdAndUp,
-                }"
-              >
-                {{ slidesHeading }}
-              </div>
-              <div
-                class="slideText"
-                :class="{
-                  mobile2: $vuetify.breakpoint.smAndDown,
-                  large2: $vuetify.breakpoint.mdAndUp,
-                }"
-              >
-                {{ slideText }}
-              </div>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </v-jumbotron>
+  <v-carousel v-model="model" hide-delimiters :show-arrows="false" height="100%">
+    <v-carousel-item v-for="(color, i) in colors" :key="color" :slideitem="i"> 
+      <v-sheet :color="color.bgcolor" height="100%" tile >
+        <v-row class="fill-height" align="center" justify="center">
+          <div class="">
+            <v-jumbotron dark>
+              <v-container fill-height>
+                <v-layout row align-center>
+                  <v-flex md12 xs12>
+                    <div
+                      :class="{
+                        mobile: $vuetify.breakpoint.smAndDown,
+                        large: $vuetify.breakpoint.mdAndUp,
+                      }"
+                    >
+                      {{ slidesHeading }}
+                    </div>
+                    <div
+                      class="slideText"
+                      :class="{
+                        mobile2: $vuetify.breakpoint.smAndDown,
+                        large2: $vuetify.breakpoint.mdAndUp,
+                      }"
+                    >
+                      {{ slideText }}
+                    </div>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-jumbotron>
+          </div>
+        </v-row>
+      </v-sheet>
+      <!-- <v-icon>{{ scrollicon }}</v-icon> -->
     </v-carousel-item>
   </v-carousel>
 </template>
@@ -87,12 +83,14 @@
 export default {
   data() {
     return {
-      items: [
+      colors: [
         {
           src:
             "https://vfcadvisors.com/wp-content/uploads/2019/07/alcohol-2048x1365.jpg",
+          bgcolor: "#2C547C",
         },
       ],
+      scrollicon:"mdiChevronTripleDown ",
       slidesHeading: "Welcome to NewSku.",
       slideText:
         "Consequat irure proident reprehenderit mollit elit magna nostrud labore aute deserunt. t magna nostrud labore aute deserunt. Esse id voluptate occaecat nisi velit nulla anim in eu ad sit. ",
