@@ -167,6 +167,10 @@
 .categoryTitle {
   text-align: center;
 }
+.v-image__image{
+  background-size: contain !important;
+}
+
 </style>
 
 <script>
