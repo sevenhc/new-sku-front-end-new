@@ -14,6 +14,7 @@
           >
             <div class="pa-9">
               <v-img
+              aspect-ratio="1.1"
                 :src="'http://134.209.188.201:81/' + product.Thumbnail"
                 :lazy-src="
                   'http://134.209.188.201:81/' + product.Thumbnail

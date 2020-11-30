@@ -123,12 +123,12 @@
                 Download Image
               </v-btn>
             </div>
-            <div class="pt-4">
+            <!-- <div class="pt-4">
               <v-btn text color="#2c547c" to="/products">
                 <v-icon left> mdi-arrow-left</v-icon>
                 back
               </v-btn>
-            </div>
+            </div> -->
           </v-flex>
         </v-layout>
       </v-card>
