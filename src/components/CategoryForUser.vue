@@ -83,7 +83,7 @@ export default {
   data() {
     return {
       products: "",
-
+      latestInsight: "",
       slidesHeading: "welcome to NewSku.",
       slideText:
         "Consequat irure proident reprehenderit mollit elit magna nostrud labore aute deserunt. Esse id voluptate occaecat nisi velit nulla anim in eu ad sit. ",
@@ -105,6 +105,18 @@ export default {
       .then((response) => {
         this.products = response.data;
         console.log("image path", response.data);
+
+        // this.response=console.log.data
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    axios
+      .get("insight/GetLatesInsight")
+
+      .then((response) => {
+        this.latestInsight = response.data;
+        console.log("Insight 😂", this.latestInsight);
 
         // this.response=console.log.data
       })

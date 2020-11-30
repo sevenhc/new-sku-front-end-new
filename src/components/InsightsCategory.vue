@@ -10,7 +10,8 @@
                 large: $vuetify.breakpoint.mdAndUp,
               }"
             >
-              will we ever embarace insects?
+              {{ latestInsight.InsightTitle }}
+              <!-- will we ever embarace insects? -->
             </div>
             <div
               :class="{
@@ -18,9 +19,10 @@
                 large2: $vuetify.breakpoint.mdAndUp,
               }"
             >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
+              {{ latestInsight.Description }}
+              <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
               consequatur amet dolorem harum numquam ipsam rem ea sequi sed, et
-              totam tempora repele, aperiam ratione hic saepe?
+              totam tempora repele, aperiam ratione hic saepe? -->
               <div class="text-left mt-3">
                 <v-btn to="/Insights" text color="#2c547c">
                   Read More
@@ -32,7 +34,8 @@
           <v-flex md8 xs12 class="text--center pa-3">
             <v-img
               aspect-ratio="2.6"
-              src="https://picsum.photos/510/300?random"
+              :src="'http://134.209.188.201:81/' + latestInsight.ThumbnailPath"
+              :lazy-src="'http://134.209.188.201:81/' + latestInsight.ThumbnailPath"
             ></v-img>
           </v-flex>
         </v-layout>
@@ -86,9 +89,11 @@
 }
 </style>
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
+      latestInsight: "",
       items: [
         {
           src:
@@ -131,6 +136,20 @@ export default {
       slideText:
         "Consequat irure proident reprehenderit mollit elit magna nostrud labore aute deserunt. Esse id voluptate occaecat nisi velit nulla anim in eu ad sit. ",
     };
+  },
+  mounted() {
+    axios
+      .get("insight/GetLatesInsight")
+
+      .then((response) => {
+        this.latestInsight = response.data.[0];
+        console.log("Insight 😂", this.latestInsight);
+
+        // this.response=console.log.data
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>

@@ -6,27 +6,21 @@
           <v-flex xs12>
             <div class="heading pt-9 pl-9">New Sku's out this week</div>
           </v-flex>
-          <v-flex md4 xs12>
+          <v-flex
+            md4
+            xs12
+            v-for="product in latestProducts"
+            :key="product.ProductID"
+          >
             <div class="pa-9">
-              <v-img src="https://picsum.photos/510/300?random"></v-img>
+              <v-img
+                :src="'http://134.209.188.201:81/' + product.Thumbnail"
+                :lazy-src="
+                  'http://134.209.188.201:81/' + product.Thumbnail
+                "
+              ></v-img>
               <div class="heading2 pa-3">
-                Lorem ipsum dolor sit aperiam ratione hic saepe
-              </div>
-            </div>
-          </v-flex>
-          <v-flex md4 xs12>
-            <div class="pa-9">
-              <v-img src="https://picsum.photos/510/300?random"></v-img>
-              <div class="heading2 pa-3">
-                Lorem ipsum dolor sit aperiam ratione hic saepe?
-              </div>
-            </div>
-          </v-flex>
-          <v-flex md4 xs12>
-            <div class="pa-9">
-              <v-img src="https://picsum.photos/510/300?random"></v-img>
-              <div class="heading2 pa-3">
-                Lorem ipsum dolor sit aperiam ratione hic saepe?
+                {{ product.ProductName }}
               </div>
             </div>
           </v-flex>
@@ -63,9 +57,11 @@
 }
 </style>
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
+      latestProducts: "",
       items: [
         {
           src:
@@ -108,6 +104,20 @@ export default {
       slideText:
         "Consequat irure proident reprehenderit mollit elit magna nostrud labore aute deserunt. Esse id voluptate occaecat nisi velit nulla anim in eu ad sit. ",
     };
+  },
+  mounted() {
+    axios
+      .get("product/getLatest")
+
+      .then((response) => {
+        this.latestProducts = response.data;
+        console.log("latest products -> 😂", this.latestProducts);
+
+        // this.response=console.log.data
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>
