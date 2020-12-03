@@ -1,7 +1,7 @@
 <template>
-  <v-container fluid>
-    <v-card>
-      <v-img
+  <v-container fluid class="mt-12">
+    <v-card class="mt-md-12">
+      <!-- <v-img
         class="white--text align-end"
         height="200px"
         src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
@@ -13,7 +13,18 @@
           }"
           >{{ subCategoryName }}</v-card-title
         >
-      </v-img>
+      </v-img> -->
+      <div class="header_pro" :style="cssVars">
+        <v-card-title
+          style="color:white"
+          :class="{
+            mobileCardText: $vuetify.breakpoint.smAndDown,
+            largeCardText: $vuetify.breakpoint.mdAndUp,
+          }"
+        >
+          {{ subCategoryName }}</v-card-title
+        >
+      </div>
       <v-layout>
         <v-flex md12>
           <v-container fluid>
@@ -55,6 +66,7 @@ import axios from "axios";
 export default {
   data: () => ({
     products: "",
+    Color: "",
     subCategoryName: "",
   }),
   methods: {
@@ -64,6 +76,14 @@ export default {
         console.log("id", ProductID),
         this.$router.push({ path: "/SingleProduct/" + ProductID })
       ); //?category=baverage
+    },
+  },
+  computed: {
+    cssVars() {
+      return {
+        /* variables you want to pass to css */
+        "--color": this.Color,
+      };
     },
   },
   mounted() {
@@ -82,7 +102,9 @@ export default {
       .get("subCategory/GetSubCategoryByID/" + this.$route.params.id)
       .then((response) => {
         this.subCategoryName = response.data[0].SubCategoryName;
+        this.Color = response.data[0].Color;
         console.log("subCategory-Name", this.subCategoryName);
+        console.log("😀", this.Color);
         (this.CategoryID = this.$route.params.id),
           console.log("wow", this.CategoryID);
         // this.response=console.log.data
@@ -100,6 +122,9 @@ export default {
   padding: 7%;
   font-weight: bold;
   font-size: 1.5rem;
+}
+.header_pro {
+  background-color: var(--color);
 }
 .largeCardText {
   padding: 4%;

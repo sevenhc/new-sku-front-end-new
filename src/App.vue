@@ -3,7 +3,7 @@
     <v-app-bar app>
       <Header />
     </v-app-bar>
-    <v-main>
+    <v-main >
       <router-view></router-view>
     </v-main>
 

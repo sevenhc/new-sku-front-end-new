@@ -1,19 +1,18 @@
 <template>
   <v-layout row class="justify-space-between">
-    <v-flex md2 xs6 to="/" class="ml-md-12" align-self-center>
+    <v-flex md2 xs6 sm3 to="/" class="ml-md-12" align-self-center>
       <router-link to="/">
         <v-img
           width="70%"
           height="70%"
-          class="shrink ma-3"
-          contain
+          class="shrink"
           src="../assets/logo.png"
           transition="scale-transition"
         ></v-img>
       </router-link>
     </v-flex>
-    <v-spacer></v-spacer>
-    <v-flex md3 xs11 align-self-center class="d-none d-lg-block ">
+    <!-- <v-spacer></v-spacer> -->
+    <v-flex md4 xs11 align-self-center class="d-none d-lg-block ">
       <v-row>
         <v-btn text v-if="isLoggedIn == false"></v-btn>
         <v-btn v-else text large class="" to="/catagoriesScreen" color="#2c547c"
@@ -28,7 +27,7 @@
         >
       </v-row>
     </v-flex>
-    <v-spacer></v-spacer>
+    <!-- <v-spacer></v-spacer> -->
     <v-flex
       md2
       xs7

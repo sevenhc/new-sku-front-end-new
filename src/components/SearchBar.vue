@@ -31,36 +31,11 @@
         </v-flex>
       </v-flex>
     </v-layout>
-    <v-card>
-      <v-layout row>
-        <v-flex xs12 v-if="seachProducts">
-          <div class="heading pt-9 pl-9">Results</div>
-        </v-flex>
-        <v-flex
-          md4
-          xs12
-          v-for="product in seachProducts"
-          :key="product.ProductID"
-        >
-          <div class="pa-9">
-            <v-img
-              aspect-ratio="1.1"
-              :src="'http://134.209.188.201:81/' + product.Thumbnail"
-              :lazy-src="'http://134.209.188.201:81/' + product.Thumbnail"
-              @click="singleItem(product.ProductID)"
-            ></v-img>
-            <div class="heading2 pa-3">
-              {{ product.ProductName }}
-            </div>
-          </div>
-        </v-flex>
-      </v-layout>
-    </v-card>
   </v-container>
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 export default {
   data() {
     return {
@@ -71,16 +46,18 @@ export default {
   methods: {
     search() {
       console.log("seach key--> 😀", this.searchKey);
-      axios
-        .get("product/getProductByKeyWord/" + this.searchKey)
-        .then((response) => {
-          this.seachProducts = response.data;
-          console.log("seachProducts ", this.seachProducts);
-          // this.response=console.log.data
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      this.$router.push({ path: "/SearchResult/" + this.searchKey });
+
+      // axios
+      //   .get("product/getProductByKeyWord/" + this.searchKey)
+      //   .then((response) => {
+      //     this.seachProducts = response.data;
+      //     console.log("seachProducts ", this.seachProducts);
+      //     // this.response=console.log.data
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
     },
     singleItem(ProductID) {
       return (

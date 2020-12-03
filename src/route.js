@@ -13,6 +13,7 @@ import InsightsList from "../src/components/insights/InsightsList.vue";
 import swiperLibrary from "./components/Library/swiperLibrary.vue";
 import ResetPassword from "./components/LogIn/ResetPassword.vue";
 import store from "./store";
+import SearchResult from "./components/SearchResult.vue";
 // import store from "./store";
 
 export default [
@@ -27,6 +28,19 @@ export default [
   {
     path: "/sub/:id",
     component: Sub,
+    beforeEnter: (to, from, next) => {
+      console.log(store.getters);
+      if (!store.getters["isLoggedIn"]) {
+        return next({
+          name: "LoginSignup",
+        });
+      }
+      next();
+    },
+  },
+  {
+    path: "/SearchResult/:id",
+    component: SearchResult,
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
       if (!store.getters["isLoggedIn"]) {

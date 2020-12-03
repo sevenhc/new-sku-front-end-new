@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <v-card>
+  <v-container class="mt-12">
+    <v-card class="mt-12">
       <v-img
         class="white--text align-end"
         height="200px"

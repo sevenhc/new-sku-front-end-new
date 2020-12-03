@@ -1,8 +1,8 @@
 <template>
-  <v-container fluid>
+  <v-container fluid class="mt-12">
     <DateAndFilter />
-    <v-card>
-      <v-img
+    <v-card class="mt-12">
+      <!-- <v-img
         class="white--text align-end"
         height="180px"
         src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
@@ -15,7 +15,18 @@
         >
           {{ CategoryName }}</v-card-title
         >
-      </v-img>
+      </v-img> -->
+      <div class="header_sub" :style="cssVars">
+        <v-card-title
+          style="color:white"
+          :class="{
+            mobileCardText: $vuetify.breakpoint.smAndDown,
+            largeCardText: $vuetify.breakpoint.mdAndUp,
+          }"
+        >
+          {{ CategoryName }}</v-card-title
+        >
+      </div>
       <v-layout>
         <v-flex md12>
           <v-container fluid>
@@ -58,9 +69,18 @@ export default {
   data: () => ({
     components: { DateAndFilter },
     products: "",
+    Color: "",
     CategoryName: "",
     // new: this.$route.params.id,
   }),
+  computed: {
+    cssVars() {
+      return {
+        /* variables you want to pass to css */
+        "--color": this.Color,
+      };
+    },
+  },
   methods: {
     singleItem(sub_category) {
       return (
@@ -89,7 +109,9 @@ export default {
       .get("http://134.209.188.201:81/category/GetCategoryByID/" + this.newId)
       .then((response) => {
         this.CategoryName = response.data[0].CategoryName;
+        this.Color = response.data[0].Color;
         console.log("subCategory-Name", this.CategoryName);
+        console.log("😀", this.Color);
         // this.response=console.log.data
       })
       .catch((error) => {
@@ -100,6 +122,9 @@ export default {
 </script>
 
 <style>
+.header_sub {
+  background-color: var(--color);
+}
 .mobileCardText {
   text-align: left;
   padding: 7%;

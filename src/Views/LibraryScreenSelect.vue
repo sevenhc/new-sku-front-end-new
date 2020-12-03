@@ -1,10 +1,10 @@
 <template>
-  <div class="container">
+  <div class="container mt-12" >
     <v-alert
       v-model="alert"
       dismissible
       color="cyan"
-      class="pa-5"
+      class="pa-2 mt-12"
       border="left"
       elevation="2"
       colored-border
@@ -12,7 +12,7 @@
     >
       Please select library names to view Products!
     </v-alert>
-    <v-card class="">
+    <v-card class="mt-12">
       <v-row justify="space-around">
         <v-col cols="12" sm="10" md="8">
           <v-sheet elevation="10" class="py-4 px-1">
