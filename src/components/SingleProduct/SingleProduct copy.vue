@@ -91,7 +91,8 @@
             </div>
             <span class="heading">Nutritional table:</span>
             <v-img
-              aspect-ratio="2.5"
+            aspect-ratio="2.5"
+              class="v-imagecontain"
               :src="'http://134.209.188.201:81/' + product.NutritionalTable"
             >
               <div align="end" class="align-self-baseline">
@@ -167,6 +168,10 @@
 .categoryTitle {
   text-align: center;
 }
+.v-imagecontain{
+  background-size: contain !important;
+}
+
 </style>
 
 <script>
