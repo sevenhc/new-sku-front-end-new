@@ -16,7 +16,7 @@
       <v-row>
         <v-btn text v-if="isLoggedIn == false"></v-btn>
         <v-btn v-else text large class="" to="/catagoriesScreen" color="#2c547c"
-          >category</v-btn
+          >Category</v-btn
         >
         <v-btn text large class="" to="/InsightsList" color="#2c547c"
           >Insights</v-btn

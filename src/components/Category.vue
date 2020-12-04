@@ -2,12 +2,10 @@
   <v-container class="mt-md-12">
     <v-layout>
       <v-flex xs12 md12>
-        <div class="heading">How it works</div>
+        <div class="heading">What We Do</div>
         <div class="heading2 pa-3 text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-          consequatur amet dolorem harum numquam ipsam rem ea sequi sed, et
-          totam tempora repellendus autem quia beatae, aperiam ratione hic
-          saepe?
+          Regularly updated product launches in food and drinks across 
+          all major UK retailers, including in-store photographs &amp; product information.
         </div>
       </v-flex>
     </v-layout>

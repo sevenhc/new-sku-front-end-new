@@ -2,17 +2,17 @@
   <v-container class="mt-12 mb-12">
     <v-layout>
       <v-flex xs12>
-        <div class="heading">Save time and money</div>
+        <div class="heading">The Benefits of Subscribing</div>
         <div class="heading2 pa-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-          consequatur amet dolorem harum numquam ipsam rem ea sequi sed, et
-          totam tempora repellendus autem quia beatae, aperiam ratione hic
-          saepe?
+          • New launch updates • In-store photography
+          • Product information (Ingredients, nutritionals, price, weight) 
+          • Save time 
+          • Categorised search function.
         </div>
       </v-flex>
     </v-layout>
-    <v-container fluid>
-      <v-card color="#e1e6e8">
+    <v-container fluid class="pt-10">
+      <v-card color="#e1e6e8" class="pa-5">
         <v-layout row>
           <v-flex md4 xs12 class="pa-md-1 align-center" align-self="center">
             <div class="pa-9">
@@ -21,9 +21,8 @@
                 height="20%"
               ></v-img>
               <div class="heading2 pa-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-                consequatur amet dolorem harum numquam ipsam rem ea sequi sed,
-                et totam tempora repellendus autem quia beatae
+                We launch soon with this year’s Winter products. 
+                Register your interest below to qualify for your free 7 day trial.
               </div>
             </div>
           </v-flex>

@@ -14,11 +14,10 @@
           >
             <div class="pa-9">
               <v-img
-              aspect-ratio="1.1"
+                aspect-ratio="1.1"
                 :src="'http://134.209.188.201:81/' + product.Thumbnail"
-                :lazy-src="
-                  'http://134.209.188.201:81/' + product.Thumbnail
-                "
+                :lazy-src="'http://134.209.188.201:81/' + product.Thumbnail"
+                @click="singleItem(product.ProductID)"
               ></v-img>
               <div class="heading2 pa-3">
                 {{ product.ProductName }}
@@ -119,6 +118,15 @@ export default {
       .catch((error) => {
         console.log(error);
       });
+  },
+  methods: {
+    singleItem(ProductID) {
+      return (
+        ProductID,
+        console.log("id", ProductID),
+        this.$router.push({ path: "/SingleProduct/" + ProductID })
+      ); //?category=baverage
+    },
   },
 };
 </script>

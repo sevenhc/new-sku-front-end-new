@@ -5,7 +5,7 @@
         <v-flex class="pa-3">
           <p class="heading mt-12 text-start">Keyword search</p>
         </v-flex>
-        <v-flex md12>
+        <v-flex md12 class="pr-0">
           <v-text-field
             solo
             v-model="searchKey"

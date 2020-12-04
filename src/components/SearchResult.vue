@@ -3,7 +3,7 @@
     <v-card mt-12 flat>
       <v-layout row>
         <v-flex xs12 v-if="seachProducts">
-          <div class="heading pt-9 pl-9">Results</div>
+          <div class="heading pt-9">Results</div>
         </v-flex>
         <v-flex
           md3
@@ -47,6 +47,15 @@ export default {
       .catch((error) => {
         console.log(error);
       });
+  },
+  methods: {
+    singleItem(ProductID) {
+      return (
+        ProductID,
+        console.log("id", ProductID),
+        this.$router.push({ path: "/SingleProduct/" + ProductID })
+      ); //?category=baverage
+    },
   },
 };
 </script>
