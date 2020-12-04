@@ -59,6 +59,7 @@
                     :width="width"
                     :height="height"
                     :items="items"
+                    @click="downloadWithAxios()"
                   />
                 </v-container>
               </v-flex>
@@ -68,7 +69,8 @@
                 :product_id="product.ProductID"
                 :mainImage="product.Thumbnail"
                 :productName="product.ProductName"
-              ></libraryModel>
+              >
+              </libraryModel>
             </div>
           </v-flex>
 
@@ -91,8 +93,6 @@
             </div>
             <span class="heading">Nutritional table:</span>
             <v-img
-            aspect-ratio="2.5"
-              class="v-imagecontain"
               :src="'http://134.209.188.201:81/' + product.NutritionalTable"
             >
               <div align="end" class="align-self-baseline">
@@ -168,10 +168,9 @@
 .categoryTitle {
   text-align: center;
 }
-.v-imagecontain{
+.v-imagecontain {
   background-size: contain !important;
 }
-
 </style>
 
 <script>
@@ -225,7 +224,7 @@ export default {
       const doc = new jsPDF();
       /** WITH CSS */
       var canvasElement = document.createElement("canvas");
-      html2canvas(this.$refs.content, { canvas: canvasElement }).then(function (
+      html2canvas(this.$refs.content, { canvas: canvasElement }).then(function(
         canvas
       ) {
         const img = canvas.toDataURL("image/jpeg", 0.8);
