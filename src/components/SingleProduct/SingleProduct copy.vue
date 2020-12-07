@@ -92,7 +92,8 @@
               {{ product.Ingredients }}
             </div>
             <span class="heading">Nutritional table:</span>
-            <v-img
+            <p class="heading2">{{ product.NutritionalTableDesc }}</p>
+            <!-- <v-img
               height="125"
               contain
               :src="'http://134.209.188.201:81/' + product.NutritionalTable"
@@ -109,14 +110,9 @@
                   >mdi-download</v-icon
                 >
               </div>
-            </v-img>
+            </v-img> -->
             <div class="pt-4">
-              <v-btn
-                @click="print()"
-                width="50%"
-                rounded
-                color="#c7ced5"
-              >
+              <v-btn @click="print()" width="50%" rounded color="#c7ced5">
                 Download Page
               </v-btn>
             </div>
@@ -187,7 +183,7 @@ import axios from "axios";
 import LibraryModel from "../SingleProduct/libraryModel";
 import Lingallery from "lingallery";
 import JSZip from "jszip";
-import { saveAs } from 'file-saver';
+import { saveAs } from "file-saver";
 export default {
   components: { LibraryModel, Lingallery },
   data() {
@@ -208,7 +204,7 @@ export default {
         //   thumbnail: "https://picsum.photos/64/64/?image=10",
         // },
       ],
-      canvascount: 0
+      canvascount: 0,
     };
   },
   computed() {
@@ -234,7 +230,7 @@ export default {
       const doc = new jsPDF();
       /** WITH CSS */
       var canvasElement = document.createElement("canvas");
-      html2canvas(this.$refs.content, { canvas: canvasElement }).then(function (
+      html2canvas(this.$refs.content, { canvas: canvasElement }).then(function(
         canvas
       ) {
         const img = canvas.toDataURL("image/jpeg", 0.8);
@@ -268,35 +264,35 @@ export default {
     downloadWithAxios2() {
       var zip = new JSZip();
       //var fileSaver = new fileSaver();
-      var img = zip.folder("images")
+      var img = zip.folder("images");
       for (var i = 0; i < this.items.length; i++) {
         var base64 = this.getBase64Image(this.items[i].src);
-        img.file(i+".png", base64);
+        img.file(i + ".png", base64);
       }
-      var myVar = setInterval(function(){
-          if(this.canvascount == this.items.length){
-            zip.generateAsync({
-              type: "blob"
-            }).then(function(content) {
+      var myVar = setInterval(function() {
+        if (this.canvascount == this.items.length) {
+          zip
+            .generateAsync({
+              type: "blob",
+            })
+            .then(function(content) {
               clearInterval(myVar);
-              saveAs(content, this.product.ProductName+".zip");            
+              saveAs(content, this.product.ProductName + ".zip");
             });
-          }
+        }
       }, 2000);
-      
     },
     getBase64Image(img) {
       var canvas = document.createElement("canvas");
       canvas.width = img.width;
       canvas.height = img.height;
       var ctx = canvas.getContext("2d");
-      setTimeout(function(){
+      setTimeout(function() {
         this.canvascount++;
-          ctx.drawImage(img, 0, 0);
+        ctx.drawImage(img, 0, 0);
         var dataURL = canvas.toDataURL("image/png");
         return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-
-      }, 2000) ;
+      }, 2000);
     },
     downloadWithAxios3(Thumbnail, ProductName) {
       var url = "http://134.209.188.201:81/" + Thumbnail;
