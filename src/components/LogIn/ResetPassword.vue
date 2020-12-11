@@ -97,7 +97,7 @@ export default {
   },
   created() {
     var currentUrl = window.location.pathname;
-    var newUrl = "http://localhost:8080" + currentUrl;
+    var newUrl = "" + currentUrl;
 
     console.log("url--->", currentUrl);
     console.log("url newUrl--->", newUrl);
@@ -110,7 +110,7 @@ export default {
       this.$refs.form.validate();
 
       try {
-        axios.put("http://localhost:3000" + currentUrln, {
+        axios.put("" + currentUrln, {
           ClientPassword: this.password,
         });
         console.log(this.password);
