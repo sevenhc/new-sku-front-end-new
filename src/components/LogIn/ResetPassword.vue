@@ -110,7 +110,7 @@ export default {
       this.$refs.form.validate();
 
       try {
-        axios.put("" + currentUrln, {
+        axios.put("http://134.209.188.201:81" + currentUrln, {
           ClientPassword: this.password,
         });
         console.log(this.password);
