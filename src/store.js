@@ -25,6 +25,7 @@ export default new Vuex.Store({
     },
     auth_error_new(state) {
       state.status = "error";
+      console.log("😀",state)
     },
     auth_success_new(state) {
       state.status = "abc";

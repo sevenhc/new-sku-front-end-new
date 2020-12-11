@@ -113,6 +113,20 @@
                 clearable
               ></v-text-field>
             </div>
+            <div>
+              <v-alert
+                color="#2c547c"
+                v-model="alert2"
+                class="ml-4"
+                elevation="24"
+                dismissible
+                width="97%"
+                text
+                type="success"
+                >Please check your email for password reset
+                instructions.!</v-alert
+              >
+            </div>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
@@ -151,6 +165,7 @@ export default {
   data() {
     return {
       alert: false,
+      alert2: false,
       username: "",
       password: "",
       dialog: false,
@@ -192,7 +207,7 @@ export default {
       console.log("status-->", this.$store.state.status);
       this.newStatus = this.$store.state.status;
       console.log("newStatus-->", this.newStatus);
-      if (this.newStatus == "fucked") {
+      if (this.newStatus == "error") {
         console.log("wrong password");
         this.alert = true;
       }
@@ -208,7 +223,11 @@ export default {
       console.log(this.email);
 
       try {
-        axios.post("http://134.209.188.201:81/client/forgetPassword/" + this.email);
+        axios
+          .post("http://134.209.188.201:81/client/forgetPassword/" + this.email)
+          .then(() => {
+            (this.alert2 = true), setTimeout(() => (this.dialog = false), 3000);
+          });
       } catch (error) {
         console.log(error);
       }
