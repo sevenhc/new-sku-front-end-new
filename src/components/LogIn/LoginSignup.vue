@@ -208,7 +208,7 @@ export default {
       console.log(this.email);
 
       try {
-        axios.post("https://new-sku-back-end.herokuapp.com/client/forgetPassword/" + this.email);
+        axios.post("http://134.209.188.201:81/client/forgetPassword/" + this.email);
       } catch (error) {
         console.log(error);
       }
