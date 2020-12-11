@@ -58,6 +58,19 @@
                       @click="validate"
                       >Update Password</v-btn
                     >
+                    <div>
+                      <v-alert
+                        color="#2c547c"
+                        v-model="alert2"
+                        class="ml-4"
+                        elevation="24"
+                        dismissible
+                        width="97%"
+                        text
+                        type="success"
+                        >Password Successfully changed.!</v-alert
+                      >
+                    </div>
                   </v-flex>
                 </v-form>
               </v-flex>
@@ -75,6 +88,7 @@ export default {
   data: () => ({
     show1: false,
     valid: true,
+    alert2: false,
     show2: false,
     currentUrl: "",
     newUrl: "",
@@ -110,9 +124,16 @@ export default {
       this.$refs.form.validate();
 
       try {
-        axios.put("http://134.209.188.201:81" + currentUrln, {
-          ClientPassword: this.password,
-        });
+        axios
+          .put("http://134.209.188.201:81" + currentUrln, {
+            ClientPassword: this.password,
+          })
+          .then((response) => {
+            console.log("res🥰", response);
+            this.alert2 = true;
+
+            setTimeout(() => this.$router.push("/LoginSignup"), 3000);
+          });
         console.log(this.password);
       } catch (error) {
         console.log(error);
