@@ -16,7 +16,7 @@
                     >
                       {{ slidesHeading }}
                     </div>
-                    <div
+                    <!-- <div
                       class="slideText"
                       :class="{
                         mobile2: $vuetify.breakpoint.smAndDown,
@@ -24,7 +24,7 @@
                       }"
                     >
                       {{ slideText }}
-                    </div>
+                    </div> -->
                   </v-flex>
                 </v-layout>
               </v-container>
