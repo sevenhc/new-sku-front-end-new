@@ -175,11 +175,13 @@ export default {
     console.log("getbydate", newItem);
     axios
       .post("/subCategory/GetSubCategoriesByMonth", newItem)
-      .then(
-        (response) => (this.libraryNameId = response.data),
-        console.log("Posted", newItem)
-        // this.singleItem(LibraryNameID)
-      )
+      .then((response) => {
+        console.log("Posted", newItem);
+        console.log("res", response);
+        this.products = response.data;
+      })
+      // this.singleItem(LibraryNameID)
+
       .catch((error) => {
         this.errorMessage = error.message;
         console.error("There was an error!", error);
@@ -189,7 +191,7 @@ export default {
     //     "http://134.209.188.201:81/subCategory/getAll/" + this.$route.params.id
     //   )
     //   .then((response) => {
-    //     this.products = response.data;
+    // this.products = response.data;
     //     console.log("sub", response.data);
     //     // this.response=console.log.data
     //   })

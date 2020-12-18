@@ -141,8 +141,11 @@ export default {
       axios
         .post("/product/getProductByMonth", newItem)
         .then(
-          (response) => (this.libraryNameId = response.data),
-          console.log("Posted", newItem)
+          (response) => {
+            console.log(response);
+            this.products = response.data;
+          }
+
           // this.singleItem(LibraryNameID)
         )
         .catch((error) => {
@@ -169,11 +172,10 @@ export default {
     console.log("getbydate", newItem);
     axios
       .post("/product/getProductByMonth", newItem)
-      .then(
-        (response) => (this.libraryNameId = response.data),
-        console.log("Posted", newItem)
-        // this.singleItem(LibraryNameID)
-      )
+      .then((response) => {
+        console.log(response);
+        this.products = response.data;
+      })
       .catch((error) => {
         this.errorMessage = error.message;
         console.error("There was an error!", error);

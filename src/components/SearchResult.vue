@@ -87,11 +87,10 @@ export default {
     console.log("itemToPost", newItem);
     axios
       .post("/product/GetProductsByMonthAndKeyword", newItem)
-      .then(
-        (response) => (this.libraryNameId = response.data),
-        console.log("Posted", newItem)
-        // this.singleItem(LibraryNameID)
-      )
+      .then((response) => {
+        console.log(response);
+        this.seachProducts = response.data;
+      })
       .catch((error) => {
         this.errorMessage = error.message;
         console.error("There was an error!", error);
@@ -120,8 +119,10 @@ export default {
       axios
         .post("/product/GetProductsByMonthAndKeyword", newItem)
         .then(
-          (response) => (this.libraryNameId = response.data),
-          console.log("Posted", newItem)
+          (response) => {
+            console.log(response);
+            this.seachProducts = response.data;
+          }
           // this.singleItem(LibraryNameID)
         )
         .catch((error) => {
