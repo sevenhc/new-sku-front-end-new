@@ -24,27 +24,38 @@
               sm="12"
               xs="12"
             >
-              <v-card>
-                <v-img
-                  :src="'http://134.209.188.201:81/' + product.ThumbnailImage"
-                  :lazy-src="
-                    'http://134.209.188.201:81/' + product.ThumbnailImage
-                  "
-                  class="white--text align-end"
-                  gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                  height="250px"
-                  @click="singleItem(product.CategoryID)"
-                >
-                  <div class="imageNameBack">
-                    <div>
-                      <p
-                        class="categoryTitle"
-                        v-text="product.CategoryName"
-                      ></p>
+              <v-hover v-slot="{ hover }">
+                <v-card>
+                  <v-img
+                    :src="'http://134.209.188.201:81/' + product.ThumbnailImage"
+                    :lazy-src="
+                      'http://134.209.188.201:81/' + product.ThumbnailImage
+                    "
+                    class="white--text align-end"
+                    gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+                    height="250px"
+                    @click="singleItem(product.CategoryID)"
+                  >
+                    <v-expand-transition>
+                      <div
+                        v-if="hover"
+                        class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-3 white--text"
+                        style="height: 100%;"
+                      >
+                        <p style="font-size:22px">Click for more info</p>
+                      </div>
+                    </v-expand-transition>
+                    <div class="imageNameBack">
+                      <div>
+                        <p
+                          class="categoryTitle"
+                          v-text="product.CategoryName"
+                        ></p>
+                      </div>
                     </div>
-                  </div>
-                </v-img>
-              </v-card>
+                  </v-img>
+                </v-card>
+              </v-hover>
             </v-col>
           </v-row>
         </v-container>
@@ -54,6 +65,14 @@
 </template>
 
 <style scoped>
+.v-card--reveal {
+  align-items: center;
+  bottom: 0;
+  justify-content: center;
+  opacity: 0.5;
+  position: absolute;
+  width: 100%;
+}
 .heading {
   text-align: start;
   font-weight: bold;
