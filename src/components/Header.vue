@@ -11,7 +11,7 @@
           :key="item.title"
           :to="item.path"
           :title="item.title"
-          flat
+          
           color="#fff"
           elevation="0"
           >{{ item.title }}</v-btn
@@ -23,7 +23,7 @@
         <v-btn          
           to="/LoginSignup"
           title="Login"
-          flat
+          
           color="#fff"
           elevation="0"
           >Login</v-btn>
@@ -35,7 +35,7 @@
         <v-btn          
           to="/MyLibrary"
           :title="user"
-          flat
+          
           color="#fff"
           elevation="0"
           >{{ user }}</v-btn>
@@ -43,7 +43,7 @@
           to="/"
           title="Log Out"
            @click="logout"
-          flat
+          
           color="#fff"
           elevation="0"
           >Log Out</v-btn>
@@ -74,7 +74,7 @@
         <v-list-item
            to="/LoginSignup"
           title="Login"
-          flat
+          
           color="#fff"
           elevation="0"
           link>          
@@ -86,7 +86,7 @@
         <v-list-item
           to="/MyLibrary"
           :title="user"
-          flat
+          
           color="#fff"
           elevation="0"
           link>          
@@ -96,7 +96,7 @@
            to="/"
           title="Log Out"
            @click="logout"
-          flat
+          
           color="#fff"
           elevation="0"
           link>          

@@ -82,7 +82,7 @@
                 xs="11"
               >
                 <v-hover v-slot="{ hover }">
-                  <v-card flat>
+                  <v-card>
                     <v-img
                       :src="
                         'http://134.209.188.201:81/' + product.ThumbnailImage
@@ -151,14 +151,12 @@ export default {
         CategoryID: this.newId,
         YearMonth: date,
       };
-      console.log("itemToPost", newItem);
+      console.log("itemToPosts", newItem);
       axios
         .post("/subCategory/GetSubCategoriesByMonth", newItem)
-        .then(
-          (response) => (this.libraryNameId = response.data),
-          console.log("Posted", newItem)
-          // this.singleItem(LibraryNameID)
-        )
+        .then((response) => {
+        this.products = response.data;
+      })
         .catch((error) => {
           this.errorMessage = error.message;
           console.error("There was an error!", error);
