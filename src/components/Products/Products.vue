@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid class="mt-12">
-    <v-card class="mt-md-12">
+  <v-container fluid class="">
+    <v-card class="">
       <!-- <v-img
         class="white--text align-end"
         height="200px"
@@ -88,15 +88,23 @@
                       height="250px"
                       @click="singleItem(product.ProductID)"
                     >
-                      <v-expand-transition>
-                        <div
+                      <v-fade-transition>
+                        <v-overlay
+                          v-if="hover"
+                          absolute
+                          color="#000000"
+                          style="cursor:pointer;"                          
+                        >
+                          <p style="font-size:22px; cursor: pointer;">View</p>
+                        </v-overlay>
+                        <!-- <div
                           v-if="hover"
                           class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-3 white--text"
                           style="height: 100%;"
                         >
-                          <p style="font-size:22px">Click for more info</p>
-                        </div>
-                      </v-expand-transition>
+                          <p style="font-size:22px">View</p>
+                        </div> -->
+                      </v-fade-transition>
                     </v-img>
                     <v-card-title class="cardTitle">
                       {{ product.ProductName }}

@@ -1,5 +1,5 @@
 <template>
-  <v-container class="mt-md-12">
+  <v-container class="">
     <v-layout>
       <v-flex xs12 md12>
         <div class="heading">Search by category</div>
@@ -36,15 +36,23 @@
                     height="250px"
                     @click="singleItem(product.CategoryID)"
                   >
-                    <v-expand-transition>
-                      <div
-                        v-if="hover"
-                        class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-3 white--text"
-                        style="height: 100%;"
-                      >
-                        <p style="font-size:22px">Click for more info</p>
-                      </div>
-                    </v-expand-transition>
+                    <v-fade-transition>
+                        <v-overlay
+                          v-if="hover"
+                          absolute
+                          color="#000000"
+                          style="cursor:pointer;"                          
+                        >
+                          <p style="font-size:22px; cursor: pointer;">View</p>
+                        </v-overlay>
+                        <!-- <div
+                          v-if="hover"
+                          class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-3 white--text"
+                          style="height: 100%;"
+                        >
+                          <p style="font-size:22px">View</p>
+                        </div> -->
+                      </v-fade-transition>
                     <div class="imageNameBack">
                       <div>
                         <p
