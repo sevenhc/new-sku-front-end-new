@@ -86,7 +86,7 @@ export default {
     };
     console.log("itemToPost", newItem);
     axios
-      .post(" product/GetProductsByMonthAndKeyword", newItem)
+      .post("/product/GetProductsByMonthAndKeyword", newItem)
       .then((response) => {
         console.log("res 🌘", response);
 
