@@ -71,6 +71,11 @@
       <v-layout>
         <v-flex md12>
           <v-container fluid>
+            <v-flex md12>
+              <p class="text-center pt-4" style="font-size: 20px;color:#2c547c">
+                {{ computedDateFormattedMomentjs }}
+              </p>
+            </v-flex>
             <v-row dense>
               <v-col
                 class="pa-4"
@@ -82,7 +87,7 @@
                 xs="11"
               >
                 <v-hover v-slot="{ hover }">
-                  <v-card>
+                  <v-card flat>
                     <v-img
                       :src="
                         'http://134.209.188.201:81/' + product.ThumbnailImage
@@ -125,6 +130,8 @@
 </template>
 
 <script>
+import moment from "moment";
+import { format } from "date-fns";
 import axios from "axios";
 import DateAndFilter from "./DateAndFilter";
 export default {
@@ -143,6 +150,12 @@ export default {
         /* variables you want to pass to css */
         "--color": this.Color,
       };
+    },
+    computedDateFormattedMomentjs() {
+      return this.date ? moment(this.date).format(" MMMM yyyy") : "";
+    },
+    computedDateFormattedDatefns() {
+      return this.date ? format(this.date, "EEEE, MMMM do yyyy") : "";
     },
   },
   methods: {

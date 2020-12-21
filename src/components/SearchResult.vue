@@ -1,45 +1,59 @@
 <template>
-  <v-container pt-12>
+  <v-container fluid pt-12 pa-5>
     <v-card mt-12 flat>
-      <v-layout row justify-center>
-        <v-flex xs12 md10 v-if="seachProducts">
-          <div class="heading pt-9">Results</div>
-          <div class="heading pt-9">
-            <v-menu
-              ref="menu"
-              v-model="menu"
-              :close-on-content-click="false"
-              :return-value.sync="date"
-              transition="scale-transition"
-              offset-y
-              max-width="290px"
-              min-width="290px"
-            >
-              <template v-slot:activator="{ on, attrs }">
-                <v-text-field
-                  v-model="date"
-                  label="Picker in menu"
-                  prepend-icon="mdi-calendar"
-                  readonly
-                  solo
-                  v-bind="attrs"
-                  v-on="on"
-                ></v-text-field>
-              </template>
-              <v-date-picker v-model="date" type="month" no-title scrollable>
-                <v-spacer></v-spacer>
-                <v-btn text color="primary" @click="menu = false">
-                  Cancel
-                </v-btn>
-                <v-btn
-                  text
-                  color="primary"
-                  @click="$refs.menu.save(date), newDate(date)"
+      <v-layout row >
+        <v-flex xs12 md12 v-if="seachProducts">
+          <div class="header_pro" :style="cssVars">
+            <v-layout row wrap align-center justify-space-between pa-6>
+              <v-flex md6>
+                <v-card-title
+                  style="color:white"
+                  :class="{
+                    mobileCardText: $vuetify.breakpoint.smAndDown,
+                    largeCardText: $vuetify.breakpoint.mdAndUp,
+                  }"
                 >
-                  OK
-                </v-btn>
-              </v-date-picker>
-            </v-menu>
+                  Results</v-card-title
+                >
+              </v-flex>
+              <v-flex md2 mt-5>
+                <v-menu
+                  ref="menu"
+                  v-model="menu"
+                  :close-on-content-click="false"
+                  :return-value.sync="date"
+                  transition="scale-transition"
+                  offset-y
+                  max-width="290px"
+                  min-width="290px"
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-text-field
+                      v-model="date"
+                      label="Picker in menu"
+                      prepend-icon="mdi-calendar"
+                      readonly
+                      solo
+                      v-bind="attrs"
+                      v-on="on"
+                    ></v-text-field>
+                  </template>
+                  <v-date-picker v-model="date" type="month" scrollable>
+                    <v-spacer></v-spacer>
+                    <v-btn text color="primary" @click="menu = false">
+                      Cancel
+                    </v-btn>
+                    <v-btn
+                      text
+                      color="primary"
+                      @click="$refs.menu.save(date), newDate(date)"
+                    >
+                      OK
+                    </v-btn>
+                  </v-date-picker>
+                </v-menu>
+              </v-flex>
+            </v-layout>
           </div>
         </v-flex>
 
@@ -51,7 +65,7 @@
         >
           <div class="pa-9">
             <v-img
-              aspect-ratio="1.1"
+              aspect-ratio="1.6"
               :src="'http://134.209.188.201:81/' + product.Thumbnail"
               :lazy-src="'http://134.209.188.201:81/' + product.Thumbnail"
               @click="singleItem(product.ProductID)"
@@ -142,4 +156,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.header_pro {
+  background-color: #2c547c;
+}
+</style>
