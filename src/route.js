@@ -80,6 +80,7 @@ export default [
   {
     path: "/Products/:id",
     component: Products,
+    name: "Products",
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
       if (!store.getters["isLoggedIn"]) {

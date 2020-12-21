@@ -49,7 +49,7 @@
                   v-on="on"
                 ></v-text-field>
               </template>
-              <v-date-picker v-model="date" type="month" no-title scrollable>
+              <v-date-picker v-model="date" type="month" scrollable>
                 <v-spacer></v-spacer>
                 <v-btn text color="primary" @click="menu = false">
                   Cancel
@@ -66,7 +66,12 @@
           </v-flex>
         </v-layout>
       </div>
-      <v-layout>
+      <v-layout row wrap justify-center>
+        <v-flex md12>
+          <p class="text-center pt-4" style="font-size: 20px;color:#2c547c">
+            {{ computedDateFormattedMomentjs }}
+          </p>
+        </v-flex>
         <v-flex md12>
           <v-container fluid>
             <v-row dense>
@@ -93,7 +98,7 @@
                           v-if="hover"
                           absolute
                           color="#000000"
-                          style="cursor:pointer;"                          
+                          style="cursor:pointer;"
                         >
                           <p style="font-size:22px; cursor: pointer;">View</p>
                         </v-overlay>
@@ -122,8 +127,11 @@
 
 <script>
 import axios from "axios";
+import moment from "moment";
+import { format } from "date-fns";
 
 export default {
+  props: ["aasd"],
   data: () => ({
     date: new Date().toISOString().substr(0, 7),
     menu: false,
@@ -169,9 +177,20 @@ export default {
         "--color": this.Color,
       };
     },
+    computedDateFormattedMomentjs() {
+      return this.date ? moment(this.date).format(" MMMM yyyy") : "";
+    },
+    computedDateFormattedDatefns() {
+      return this.date ? format(this.date, "EEEE, MMMM do yyyy") : "";
+    },
+  },
+  created() {
+    console.log("creatde 😀", this.$route.params.data);
+    this.date = this.$route.params.data;
+    // console.log("creatde 😀", this.$route.params.data);
   },
   mounted() {
-    this.newId = this.$route.params.id;
+    this.newId = this.$route.params.ID;
     console.log(this.newId);
     const newItem = {
       SubCategoryID: this.newId,
@@ -200,13 +219,13 @@ export default {
     //     console.log(error);
     //   });
     axios
-      .get("subCategory/GetSubCategoryByID/" + this.$route.params.id)
+      .get("subCategory/GetSubCategoryByID/" + this.$route.params.ID)
       .then((response) => {
         this.subCategoryName = response.data[0].SubCategoryName;
         this.Color = response.data[0].Color;
         console.log("subCategory-Name", this.subCategoryName);
         console.log("😀", this.Color);
-        (this.CategoryID = this.$route.params.id),
+        (this.CategoryID = this.$route.params.ID),
           console.log("wow", this.CategoryID);
         // this.response=console.log.data
       })

@@ -97,7 +97,7 @@
                           v-if="hover"
                           absolute
                           color="#000000"
-                          style="cursor:pointer;"                          
+                          style="cursor:pointer;"
                         >
                           <p style="font-size:22px; cursor: pointer;">View</p>
                         </v-overlay>
@@ -149,8 +149,12 @@ export default {
     singleItem(sub_category) {
       return (
         sub_category,
-        console.log(sub_category),
-        this.$router.push({ path: "/products/" + sub_category })
+        console.log("sing 🧏", sub_category),
+        this.$router.push({
+          // path: "/products/" + sub_category,
+          name: "Products",
+          params: { data: this.date, ID: sub_category },
+        })
       ); //?category=baverage
     },
     newDate(date) {
@@ -163,8 +167,8 @@ export default {
       axios
         .post("/subCategory/GetSubCategoriesByMonth", newItem)
         .then((response) => {
-        this.products = response.data;
-      })
+          this.products = response.data;
+        })
         .catch((error) => {
           this.errorMessage = error.message;
           console.error("There was an error!", error);
