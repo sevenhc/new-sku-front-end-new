@@ -1,7 +1,7 @@
 <template>
   <v-container fluid pt-12 pa-5>
     <v-card mt-12 flat>
-      <v-layout row >
+      <v-layout row>
         <v-flex xs12 md12 v-if="seachProducts">
           <div class="header_pro" :style="cssVars">
             <v-layout row wrap align-center justify-space-between pa-6>
@@ -16,6 +16,7 @@
                   Results</v-card-title
                 >
               </v-flex>
+
               <v-flex md2 mt-5>
                 <v-menu
                   ref="menu"
@@ -56,7 +57,11 @@
             </v-layout>
           </div>
         </v-flex>
-
+        <v-flex md12>
+          <p class="text-center pt-4" style="font-size: 20px;color:#2c547c">
+            {{ computedDateFormattedMomentjs }}
+          </p>
+        </v-flex>
         <v-flex
           md3
           xs12
@@ -82,6 +87,9 @@
 
 <script>
 import axios from "axios";
+import moment from "moment";
+import { format } from "date-fns";
+
 export default {
   data() {
     return {
@@ -121,6 +129,20 @@ export default {
     //   .catch((error) => {
     //     console.log(error);
     //   });
+  },
+  computed: {
+    cssVars() {
+      return {
+        /* variables you want to pass to css */
+        "--color": this.Color,
+      };
+    },
+    computedDateFormattedMomentjs() {
+      return this.date ? moment(this.date).format(" MMMM yyyy") : "";
+    },
+    computedDateFormattedDatefns() {
+      return this.date ? format(this.date, "EEEE, MMMM do yyyy") : "";
+    },
   },
   methods: {
     newDate(date) {
