@@ -222,7 +222,7 @@ export default {
     //     console.log(error);
     //   });
     axios
-      .get("http://134.209.188.201:81/category/GetCategoryByID/" + this.newId)
+      .get("/category/GetCategoryByID/" + this.newId)
       .then((response) => {
         this.CategoryName = response.data[0].CategoryName;
         this.Color = response.data[0].Color;
