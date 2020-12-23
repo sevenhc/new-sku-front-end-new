@@ -175,6 +175,7 @@ export default {
           // name: "Products",
           // params: { data: this.date, ID: sub_category },
         })
+        
       ); //?category=baverage
     },
     newDate(date) {
