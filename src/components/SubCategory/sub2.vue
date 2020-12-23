@@ -162,11 +162,18 @@ export default {
     singleItem(sub_category) {
       return (
         sub_category,
-        console.log("sing 🧏", sub_category),
+        console.log("subId 🧏", sub_category),
+        console.log("Date 📅", this.date),
+        (this.newData = sub_category + "~" + this.date),
+        console.log("New Data 🆕", this.newData),
+        (this.fields = this.newData.split("~")),
+        (this.newId = this.fields[0]),
+        (this.newDate = this.fields[1]),
+        console.log("split id 🖐️", this.newId, "Split Date 🖐️", this.newDate),
         this.$router.push({
-          // path: "/products/" + sub_category,
-          name: "Products",
-          params: { data: this.date, ID: sub_category },
+          path: "/products/" + this.newData,
+          // name: "Products",
+          // params: { data: this.date, ID: sub_category },
         })
       ); //?category=baverage
     },

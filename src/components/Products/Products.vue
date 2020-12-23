@@ -137,6 +137,7 @@ export default {
     menu: false,
     products: "",
     Color: "",
+    newId: "",
     subCategoryName: "",
   }),
   methods: {
@@ -185,12 +186,20 @@ export default {
     },
   },
   created() {
-    console.log("creatde 😀", this.$route.params.data);
-    this.date = this.$route.params.data;
+    console.log("creatde 😀", this.$route.params.id);
     // console.log("creatde 😀", this.$route.params.data);
+    // this.date = this.$route.params.data;
+    // console.log("creatde 😀", this.$route.params.data);
+    (this.newData = this.$route.params.id),
+      console.log("New Data 🆕", this.newData),
+      (this.fields = this.newData.split("~")),
+      (this.newId = this.fields[0]),
+      (this.newDate = this.fields[1]),
+      console.log("split id 🖐️", this.newId, "Split Date 🖐️", this.newDate);
   },
   mounted() {
-    this.newId = this.$route.params.ID;
+    // this.newId = this.$route.params.ID;
+
     console.log(this.newId);
     const newItem = {
       SubCategoryID: this.newId,
