@@ -1,6 +1,6 @@
 <template>
-  <v-container fluid pt-12 pa-5>
-    <v-card mt-12 flat>
+  <v-container fluid pa-5>
+    <v-card >
       <v-layout row>
         <v-flex xs12 md12 v-if="seachProducts">
           <div class="header_pro" :style="cssVars">
@@ -62,23 +62,53 @@
             {{ computedDateFormattedMomentjs }}
           </p>
         </v-flex>
-        <v-flex
-          md3
-          xs12
-          v-for="product in seachProducts"
-          :key="product.ProductID"
-        >
-          <div class="pa-9">
-            <v-img
-              aspect-ratio="1.6"
-              :src="'http://134.209.188.201:81/' + product.Thumbnail"
-              :lazy-src="'http://134.209.188.201:81/' + product.Thumbnail"
-              @click="singleItem(product.ProductID)"
-            ></v-img>
-            <div class="heading2 pa-3">
-              {{ product.ProductName }}
-            </div>
-          </div>
+        <v-flex md12>
+          <v-container fluid>
+            <v-row dense>
+              <v-col
+                class="pa-4"
+                v-for="product in seachProducts"
+                :key="product.id"
+                cols="12"
+                md="3"
+                sm="11"
+                xs="11"
+              >
+                <v-hover v-slot="{ hover }">
+                  <v-card flat>
+                    <v-img
+                      :src="'http://134.209.188.201:81/' + product.Thumbnail"
+                      class="white--text align-end"
+                      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+                      height="250px"
+                      @click="singleItem(product.ProductID)"
+                    >
+                      <v-fade-transition>
+                        <v-overlay
+                          v-if="hover"
+                          absolute
+                          color="#000000"
+                          style="cursor:pointer;"
+                        >
+                          <p style="font-size:22px; cursor: pointer;">View</p>
+                        </v-overlay>
+                        <!-- <div
+                          v-if="hover"
+                          class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-3 white--text"
+                          style="height: 100%;"
+                        >
+                          <p style="font-size:22px">View</p>
+                        </div> -->
+                      </v-fade-transition>
+                    </v-img>
+                    <v-card-title class="cardTitle">
+                      {{ product.ProductName }}
+                    </v-card-title>
+                  </v-card>
+                </v-hover>
+              </v-col>
+            </v-row>
+          </v-container>
         </v-flex>
       </v-layout>
     </v-card>
