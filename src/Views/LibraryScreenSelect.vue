@@ -1,6 +1,6 @@
 <template>
-  <div class="container mt-12" >
-    <v-alert
+  <div class="pa-5">
+    <!-- <v-alert
       v-model="alert"
       dismissible
       color="cyan"
@@ -11,13 +11,14 @@
       icon="mdi-earth-box-plus"
     >
       Please select library names to view Products!
-    </v-alert>
+    </v-alert> -->
     <v-card class="mt-12">
-      <v-row justify="space-around">
+      <!-- <v-row justify="space-around">
         <v-col cols="12" sm="10" md="8">
-          <v-sheet elevation="10" class="py-4 px-1">
-            <p class="text-center heading">Please select Library Name</p>
-            <v-chip-group
+          <v-sheet elevation="10" class="py-4 px-1"> -->
+      <!-- <p class="text-center heading">Please select or search Library Name</p> -->
+
+      <!-- <v-chip-group
               mandatory
               active-class="red--text text--accent-4 "
               justify="space-around"
@@ -33,11 +34,30 @@
                 <v-icon left> mdi-fire </v-icon>
                 {{ tag.LibraryName }}
               </v-chip>
-            </v-chip-group>
-          </v-sheet>
+            </v-chip-group> -->
+      <!-- </v-sheet>
         </v-col>
-      </v-row>
-      <p class="name pa-3">{{ LibraryName }}</p>
+      </v-row> -->
+      <v-layout row wrap justify-center pa-3 relative>
+        <v-flex md2 pl-12>
+          <v-autocomplete
+            v-model="LibraryNameID"
+            :disabled="isUpdating"
+            :items="librarys"
+            solo
+            @change="selectLibrary(LibraryNameID)"
+            color="blue-grey lighten-2"
+            label="Your Library"
+            item-text="LibraryName"
+            item-value="LibraryNameID"
+          ></v-autocomplete>
+        </v-flex>
+        <v-spacer></v-spacer>
+        <v-flex md12>
+          <p class="name text-center text-uppercase">{{ newLiName }}</p>
+        </v-flex>
+      </v-layout>
+
       <v-layout>
         <v-flex md12>
           <v-container fluid>
@@ -47,11 +67,11 @@
                 v-for="card in libary"
                 :key="card.ProductID"
                 cols="12"
-                md="4"
+                md="3"
                 sm="11"
                 xs="11"
               >
-                <v-card>
+                <v-card flat>
                   <v-img
                     :src="'http://134.209.188.201:81/' + card.Thumbnail"
                     class="white--text align-end"
@@ -114,11 +134,16 @@ export default {
     ]),
   },
   data: () => ({
+    loading: false,
+    items: [],
+    search: null,
+    select: null,
     librarys: "",
     newss: ["asd", "sasas"],
     news: [],
     names: [],
     products: "",
+    newLiName: "",
     alert: true,
     libary: "",
   }),
@@ -136,13 +161,13 @@ export default {
       ); //?category=baverage
     },
     newData() {
+      console.log("newData 🤩😘", this.LibraryNewID);
       axios
-        .get(
-          "library/items/getAll/" +
-            this.LibraryNewID
-        )
+        .get("library/items/getAll/" + this.LibraryNewID)
         .then((response) => {
           this.libary = response.data;
+          this.newLiName = response.data[0].LibraryName;
+          console.log(response.data[0].LibraryName);
           console.log("laibrary data-->", this.LibraryNewID);
           // this.response=console.log.data
         })
@@ -161,9 +186,11 @@ export default {
       .get("library/getAll/" + this.clientID)
       .then((response) => {
         this.librarys = response.data[0];
-
+        console.log("🥵", this.librarys);
         this.librarynames = response.data[0].LibraryName;
-
+        this.LibraryNewID = response.data[0][0].LibraryNameID;
+        console.log("👽", this.LibraryNewID);
+        this.newData(this.LibraryNewID);
         for (const i of Object.keys(this.librarys)) {
           this.news = this.librarys[i];
           this.names = this.news.LibraryName;
@@ -212,4 +239,3 @@ export default {
   color: #2c547c;
 }
 </style>
-
