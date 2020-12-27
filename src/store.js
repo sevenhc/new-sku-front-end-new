@@ -25,7 +25,7 @@ export default new Vuex.Store({
     },
     auth_error_new(state) {
       state.status = "error";
-      console.log("😀",state)
+      console.log("😀", state);
     },
     auth_success_new(state) {
       state.status = "abc";
@@ -40,7 +40,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "http://new-sku-back-end.herokuapp.com/client/logIn",
+          url: "/client/logIn",
           data: user,
           method: "POST",
         })
@@ -58,6 +58,16 @@ export default new Vuex.Store({
               console.log("ClientID", resp.data[0].ClientID);
               localStorage.setItem("token", token);
               localStorage.setItem("username", username);
+              var now = new Date();
+              console.log(now);
+              var time = now.getTime();
+              var expireTime = time + 60000;
+              now.setTime(expireTime);
+              // var tempExp = 'Wed, 31 Oct 2012 08:50:17 GMT';
+              // document.cookie = 'cookie=ok;expires='+now.toUTCString()+';path=/';
+              document.cookie =
+                "cookie=ok;expires=" + now.toGMTString() + ";path=/";
+
               localStorage.setItem("clientID", clientID);
               axios.defaults.headers.common["Authorization"] = token;
             }
@@ -76,7 +86,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         commit("auth_request");
         axios({
-          url: "http://new-sku-back-end.herokuapp.com/client/addNew",
+          url: "client/addNew",
           data: user,
           method: "POST",
         })

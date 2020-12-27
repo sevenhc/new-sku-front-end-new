@@ -171,6 +171,7 @@ export default {
       dialog: false,
       email: "",
       show1: false,
+      isLogged: false,
       rules: {
         required: (value) => !!value || "*Required.",
         counterMin: (value) =>

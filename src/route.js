@@ -16,10 +16,34 @@ import store from "./store";
 import SearchResult from "./components/SearchResult.vue";
 // import store from "./store";
 
+function getCookie() {
+  var name = "cookie" + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return true;
+    }
+  }
+  return false;
+}
 export default [
   {
     path: "/",
     component: Home,
+    beforeEnter: (to, from, next) => {
+      console.log(store.getters);
+      if (getCookie()) {
+        return next({
+          name: "CatagoriesScreen",
+        });
+      }
+      next();
+    },
   },
   {
     path: "/client/ResetPassword/:id",
@@ -30,7 +54,7 @@ export default [
     component: Sub,
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
-      if (!store.getters["isLoggedIn"]) {
+      if (!getCookie()) {
         return next({
           name: "LoginSignup",
         });
@@ -43,7 +67,7 @@ export default [
     component: SearchResult,
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
-      if (!store.getters["isLoggedIn"]) {
+      if (!getCookie()) {
         return next({
           name: "LoginSignup",
         });
@@ -54,13 +78,19 @@ export default [
   {
     path: "/CatagoriesScreen",
     component: CatagoriesScreen,
+    name: "CatagoriesScreen",
     beforeEnter: (to, from, next) => {
-      console.log(store.getters);
-      if (!store.getters["isLoggedIn"]) {
+      if (!getCookie()) {
         return next({
           name: "LoginSignup",
         });
       }
+      // console.log(store.getters);
+      // if (!getCookie()) {
+      //   return next({
+      //     name: "LoginSignup",
+      //   });
+      // }
       next();
     },
   },
@@ -69,7 +99,7 @@ export default [
     component: SubCategory,
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
-      if (!store.getters["isLoggedIn"]) {
+      if (!getCookie()) {
         return next({
           name: "LoginSignup",
         });
@@ -83,7 +113,7 @@ export default [
     name: "Products",
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
-      if (!store.getters["isLoggedIn"]) {
+      if (!getCookie()) {
         return next({
           name: "LoginSignup",
         });
@@ -97,7 +127,7 @@ export default [
     component: SingleProduct,
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
-      if (!store.getters["isLoggedIn"]) {
+      if (!getCookie()) {
         return next({
           name: "LoginSignup",
         });
@@ -110,7 +140,7 @@ export default [
     component: InsightsScreen,
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
-      if (!store.getters["isLoggedIn"]) {
+      if (!getCookie()) {
         return next({
           name: "LoginSignup",
         });
@@ -123,7 +153,7 @@ export default [
     component: InsightsList,
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
-      if (!store.getters["isLoggedIn"]) {
+      if (!getCookie()) {
         return next({
           name: "LoginSignup",
         });
@@ -136,7 +166,7 @@ export default [
     component: LibraryScreen,
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
-      if (!store.getters["isLoggedIn"]) {
+      if (!getCookie()) {
         return next({
           name: "LoginSignup",
         });
@@ -149,7 +179,7 @@ export default [
     component: LibraryScreenSelect,
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
-      if (!store.getters["isLoggedIn"]) {
+      if (!getCookie()) {
         return next({
           name: "LoginSignup",
         });
@@ -171,7 +201,7 @@ export default [
     component: swiperLibrary,
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
-      if (!store.getters["isLoggedIn"]) {
+      if (!getCookie()) {
         return next({
           name: "LoginSignup",
         });
