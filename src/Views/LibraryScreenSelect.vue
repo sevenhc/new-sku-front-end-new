@@ -99,7 +99,7 @@
           </v-container>
         </v-flex>
       </v-layout>
-      <v-row justify="space-between pa-12">
+      <!-- <v-row justify="space-between pa-12">
         <v-btn text color="#2c547c">
           <v-icon left> mdi-download-multiple</v-icon>
           Download All
@@ -109,7 +109,7 @@
           <v-icon left> mdi-arrow-left</v-icon>
           back
         </v-btn>
-      </v-row>
+      </v-row> -->
     </v-card>
   </div>
 </template>

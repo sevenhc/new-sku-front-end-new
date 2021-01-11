@@ -3,16 +3,7 @@
     <!-- <DateAndFilter /> -->
     <Products />
 
-    <div color="transparent" class="d-flex justify-center mb-6" flat>
-      <v-btn
-        to="/SubCategory"
-        color="#2c547c"
-        medium
-        class="d-flex justify-center"
-        text
-        >Back</v-btn
-      >
-    </div>
+    
   </div>
 </template>
 

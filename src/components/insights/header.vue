@@ -40,10 +40,10 @@
             <p class="heading2 mt-7">
               {{ insight.Description }}
             </p>
-            <v-btn text color="#2c547c" to="/">
+            <!-- <v-btn text color="#2c547c" to="/">
               <v-icon left> mdi-arrow-left</v-icon>
               back to home
-            </v-btn>
+            </v-btn> -->
           </v-container>
         </v-flex>
       </v-layout>
