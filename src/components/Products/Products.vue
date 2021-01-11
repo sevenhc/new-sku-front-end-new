@@ -133,11 +133,12 @@ import { format } from "date-fns";
 export default {
   props: ["aasd"],
   data: () => ({
-    date: new Date().toISOString().substr(0, 7),
     menu: false,
     products: "",
     Color: "",
     newId: "",
+    newDate: "",
+    date: "",
     subCategoryName: "",
   }),
   methods: {
@@ -195,7 +196,8 @@ export default {
       (this.fields = this.newData.split("~")),
       (this.newId = this.fields[0]),
       (this.newDate = this.fields[1]),
-      console.log("split id 🖐️", this.newId, "Split Date 🖐️", this.newDate);
+      (this.date = this.newDate);
+    console.log("split id 🖐️", this.newId, "Split Date 🖐️", this.newDate);
   },
   mounted() {
     // this.newId = this.$route.params.ID;
@@ -203,7 +205,7 @@ export default {
     console.log(this.newId);
     const newItem = {
       SubCategoryID: this.newId,
-      YearMonth: this.date,
+      YearMonth: this.newDate,
     };
     console.log("getbydate", newItem);
     axios
