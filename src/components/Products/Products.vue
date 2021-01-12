@@ -57,7 +57,7 @@
                 <v-btn
                   text
                   color="primary"
-                  @click="$refs.menu.save(date), newDate(date)"
+                  @click="$refs.menu.save(date), newDatePro(date)"
                 >
                   OK
                 </v-btn>
@@ -149,7 +149,7 @@ export default {
         this.$router.push({ path: "/SingleProduct/" + ProductID })
       ); //?category=baverage
     },
-    newDate(date) {
+    newDatePro(date) {
       console.log("🙌", date, this.newId);
       const newItem = {
         SubCategoryID: this.newId,
