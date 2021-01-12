@@ -2,7 +2,7 @@
   <v-layout>
     <v-toolbar flat color="#fff">
       <router-link to="/">
-        <img class="mr-3" :src="require('../assets/logo.png')" height="40" />
+        <img class="mr-3" :src="require('../assets/logo.png')" height="55" />
       </router-link>
       <v-spacer></v-spacer>
       <v-toolbar-items class="d-none d-sm-inline">

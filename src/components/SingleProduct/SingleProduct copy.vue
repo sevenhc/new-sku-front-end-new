@@ -1,8 +1,13 @@
 <template>
-  <v-container fluid class="mt-12 mb-12">
+  <v-container fluid class="mb-12">
     <div id="printMe">
       <v-card color="#f3f3f3">
         <v-layout row>
+          <v-flex md12>
+            <p class="text-center pt-4" style="font-size: 20px; color: #2c547c">
+              {{ computedDateFormattedMomentjs }}
+            </p>
+          </v-flex>
           <v-flex md7 xs12 align-self-center>
             <!-- <div class="pa-5">
               <v-img
@@ -184,6 +189,8 @@ import LibraryModel from "../SingleProduct/libraryModel";
 import Lingallery from "lingallery";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
+import moment from "moment";
+import { format } from "date-fns";
 export default {
   components: { LibraryModel, Lingallery },
   data() {
@@ -205,13 +212,21 @@ export default {
         // },
       ],
       canvascount: 0,
+      date: "",
     };
   },
-  computed() {
-    this.new = this.products;
-    console.log("asasas", this.products);
+  //computed() {
+  //  this.new = this.products;
+  //  console.log("asasas", this.products);
+  //},
+  computed: {
+    computedDateFormattedMomentjs() {
+      return this.date ? moment(this.date).format(" MMMM yyyy") : "";
+    },
+    computedDateFormattedDatefns() {
+      return this.date ? format(this.date, "EEEE, MMMM do yyyy") : "";
+    },
   },
-
   methods: {
     print() {
       // Pass the element id here
@@ -230,7 +245,7 @@ export default {
       const doc = new jsPDF();
       /** WITH CSS */
       var canvasElement = document.createElement("canvas");
-      html2canvas(this.$refs.content, { canvas: canvasElement }).then(function(
+      html2canvas(this.$refs.content, { canvas: canvasElement }).then(function (
         canvas
       ) {
         const img = canvas.toDataURL("image/jpeg", 0.8);
@@ -269,13 +284,13 @@ export default {
         var base64 = this.getBase64Image(this.items[i].src);
         img.file(i + ".png", base64);
       }
-      var myVar = setInterval(function() {
+      var myVar = setInterval(function () {
         if (this.canvascount == this.items.length) {
           zip
             .generateAsync({
               type: "blob",
             })
-            .then(function(content) {
+            .then(function (content) {
               clearInterval(myVar);
               saveAs(content, this.product.ProductName + ".zip");
             });
@@ -287,7 +302,7 @@ export default {
       canvas.width = img.width;
       canvas.height = img.height;
       var ctx = canvas.getContext("2d");
-      setTimeout(function() {
+      setTimeout(function () {
         this.canvascount++;
         ctx.drawImage(img, 0, 0);
         var dataURL = canvas.toDataURL("image/png");
@@ -309,7 +324,7 @@ export default {
     },
   },
   mounted() {
-    console.log(this.new);
+    //console.log(this.new);
     axios
       .get("product/getById/" + this.$route.params.id)
       .then((response) => {
@@ -317,8 +332,9 @@ export default {
         this.images = response.data[0].Images;
         this.newImages = JSON.parse(this.images);
         this.newImages.unshift(this.product.Thumbnail);
-        // this.newImages = JSON.parse(this.images);
-        console.log("product", response.data);
+        (this.date = response.data[0].ProductMonth),
+          // this.newImages = JSON.parse(this.images);
+          console.log("product", response.data);
         console.log("Images", this.newImages);
         var imgitems = [];
         for (var i = 0, j = this.newImages.length; i < j; i++) {

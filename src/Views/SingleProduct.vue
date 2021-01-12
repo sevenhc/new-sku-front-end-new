@@ -1,8 +1,8 @@
 <template>
   <v-container>
-    <div color="transparent" class="d-flex justify-center" flat>
+    <!-- <div color="transparent" class="d-flex justify-center" flat>
       <p class="month d-flex justify-center" text>February 2021</p>
-    </div>
+    </div> -->
     <SingleProduct />
   </v-container>
 </template>

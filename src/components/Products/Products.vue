@@ -230,7 +230,7 @@ export default {
     //     console.log(error);
     //   });
     axios
-      .get("subCategory/GetSubCategoryByID/" + this.$route.params.ID)
+      .get("subCategory/GetSubCategoryByID/" + this.newId)
       .then((response) => {
         this.subCategoryName = response.data[0].SubCategoryName;
         this.Color = response.data[0].Color;

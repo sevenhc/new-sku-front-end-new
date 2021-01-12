@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div style="height:100vh;">
+    <div style="height:70vh;">
       <Hero />
     </div>
     <Category />

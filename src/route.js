@@ -115,11 +115,11 @@ export default [
     component: TermsOfUse,
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
-      if (!getCookie()) {
-        return next({
-          name: "LoginSignup",
-        });
-      }
+      // if (!getCookie()) {
+      //   return next({
+      //     name: "LoginSignup",
+      //   });
+      // }
       next();
     },
   },
@@ -128,11 +128,11 @@ export default [
     component: Cookies,
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
-      if (!getCookie()) {
-        return next({
-          name: "LoginSignup",
-        });
-      }
+      // if (!getCookie()) {
+      //   return next({
+      //     name: "LoginSignup",
+      //   });
+      // }
       next();
     },
   },
@@ -141,11 +141,11 @@ export default [
     component: PrivacyPolicy,
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
-      if (!getCookie()) {
-        return next({
-          name: "LoginSignup",
-        });
-      }
+      //if (!getCookie()) {
+        //return next({
+        //  name: "LoginSignup",
+        //});
+      //}
       next();
     },
   },

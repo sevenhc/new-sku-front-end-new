@@ -3,7 +3,7 @@
     <v-carousel-item v-for="(color, i) in colors" :key="color" :slideitem="i"> 
       <v-sheet :color="color.bgcolor" height="100%" tile >
         <v-row class="fill-height" align="center" justify="center">
-          <div class="">
+          <v-col class="">
             <v-jumbotron dark>
               <v-container fill-height>
                 <v-layout row align-center>
@@ -29,7 +29,7 @@
                 </v-layout>
               </v-container>
             </v-jumbotron>
-          </div>
+          </v-col>
         </v-row>
       </v-sheet>
       <!-- <v-icon>{{ scrollicon }}</v-icon> -->

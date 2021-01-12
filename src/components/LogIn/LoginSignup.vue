@@ -16,7 +16,7 @@
                   :rules="[rules.required]"
                   label="Enter your Email"
                   clearable
-                  class="ml-4"
+                  
                   :append-icon="'mdi-badge-account'"
                 ></v-text-field>
               </div>
@@ -30,7 +30,7 @@
                   solo
                   label="Enter your password"
                   clearable
-                  class="ml-4"
+                  
                   @click:append="show1 = !show1"
                 ></v-text-field>
                 <div class="text-end mb-3">
@@ -41,8 +41,8 @@
               </div>
             </v-form>
             <v-btn
-              class="ml-4"
-              width="97%"
+              
+              
               large
               color="#2c547c"
               dark
@@ -52,15 +52,15 @@
             <v-alert
               color="red"
               v-model="alert"
-              class="ml-4"
+              
               elevation="24"
               dismissible
-              width="97%"
+              
               text
               type="error"
               >Username or Password invalied.!</v-alert
             >
-            <v-btn
+            <!-- <v-btn
               class="ml-4 mt-6"
               width="97%"
               large
@@ -68,34 +68,19 @@
               dark
               @click="logout"
               >log out</v-btn
-            >
+            > -->
             <!-- <v-btn text class medium color="orange" to="/LoginSignup"
               >Lost your password?</v-btn
             > -->
           </v-flex>
         </v-flex>
-        <v-flex md4 xs12>
-          <v-flex md12 xs12>
-            <v-card flat color="grey lighten-2">
-              <p class="title text-center">New Customer</p>
-            </v-card>
-            <v-card-title>Create a Account</v-card-title>
-            <v-card-subtitle
-              >Sign up for a free account at our store. Registration is quick
-              and easy. It allows you to be able to order from our shop. To
-              start shopping click register.</v-card-subtitle
-            >
-            <v-btn
-              class="mb-12 ml-4"
-              outlined
-              color="#2c547c"
-              to="/CreateAccount"
-              >Create A Acccount</v-btn
-            >
-          </v-flex>
-        </v-flex>
+        
       </v-layout>
     </v-card>
+
+
+
+
     <v-row justify="center">
       <v-dialog v-model="dialog" max-width="40%">
         <v-card>

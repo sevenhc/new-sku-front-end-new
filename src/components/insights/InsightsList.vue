@@ -1,6 +1,6 @@
 <template>
-  <v-container class="mt-12">
-    <v-card class="mt-12">
+  <v-container fluid class="">
+    <v-card class="">
       <v-img
         class="white--text align-end"
         height="200px"
@@ -23,9 +23,9 @@
                 v-for="product in products"
                 :key="product.id"
                 cols="12"
-                md="4"
-                sm="11"
-                xs="11"
+                md="3"
+                sm="12"
+                xs="12"
               >
                 <v-card>
                   <v-img

@@ -81,17 +81,17 @@
                   >
                   </v-img>
                   <v-card-actions>
-                    <p class="text-end pa-2">
+                    <p class="">
                       {{ card.ProductName }}
                     </p>
-                    <v-spacer></v-spacer>
+                    <!-- <v-spacer></v-spacer>
                     <v-btn
                       icon
                       @click="download(card.Thumbnail)"
                       class="text-end"
                     >
                       <v-icon>mdi-download</v-icon>
-                    </v-btn>
+                    </v-btn> -->
                   </v-card-actions>
                 </v-card>
               </v-col>

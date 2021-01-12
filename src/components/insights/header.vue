@@ -1,6 +1,6 @@
 <template>
-  <v-container class="mt-12">
-    <v-card class="mt-12">
+  <v-container fluid class="">
+    <v-card class="">
       <v-img
         class="white--text align-end"
         height="200px"
@@ -14,11 +14,11 @@
           >Insights</v-card-title
         >
       </v-img>
-      <v-layout>
+      <v-container>
         <v-flex md12>
           <v-container fluid class="pa-md-12">
             <p class="heading3">{{ insight.InsightTitle }}</p>
-            <p class="heading">{{ insight.CreatedDate }}</p>
+            <p class="insightdate">{{ genmonth }} {{ gendate }}<sup>{{ gennth }} </sup> {{genyear}}</p>
             <div class="pa-md-12">
               <v-img
                 class="pa-12"
@@ -26,7 +26,7 @@
                 height="50%"
                 :src="
                   'http://new-sku-back-end.herokuapp.com/' +
-                    insight.ThumbnailPath
+                  insight.ThumbnailPath
                 "
               >
               </v-img>
@@ -46,7 +46,7 @@
             </v-btn> -->
           </v-container>
         </v-flex>
-      </v-layout>
+      </v-container>
     </v-card>
   </v-container>
 </template>
@@ -60,6 +60,11 @@ export default {
     title: "Chilled fish and seafood",
     src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
     flex: 4,
+    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    gendate: "",
+    genmonth: "", 
+    genyear: "",
+    gennth:""
   }),
   mounted() {
     axios
@@ -71,12 +76,30 @@ export default {
       .then((response) => {
         this.insight = response.data[0];
         console.log("insight", this.insight);
-
+        this.gendate = new Date(this.insight.CreatedDate).getDate();
+        this.genmonth = this.months[new Date(this.insight.CreatedDate).getMonth()];
+        this.genyear = new Date(this.insight.CreatedDate).getFullYear();
+        this.gennth = this.getnth(this.gendate);
         // this.response=console.log.data
       })
       .catch((error) => {
         console.log(error);
       });
+  },
+  methods: {
+    getnth(d) {
+      if (d > 3 && d < 21) return "th";
+      switch (d % 10) {
+        case 1:
+          return "st";
+        case 2:
+          return "nd";
+        case 3:
+          return "rd";
+        default:
+          return "th";
+      }
+    },
   },
 };
 </script>
@@ -94,7 +117,7 @@ export default {
   font-size: 3rem;
   font-weight: bold;
 }
-.heading {
+.insightdate {
   text-align: start;
   font-weight: bold;
   font-size: 1.2rem;
@@ -117,5 +140,6 @@ export default {
   font-size: 2em;
   color: #2c547c;
   font-weight: bold;
+  margin-bottom: 0;
 }
 </style>

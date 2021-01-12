@@ -61,7 +61,7 @@ export default new Vuex.Store({
               var now = new Date();
               console.log(now);
               var time = now.getTime();
-              var expireTime = time + 60000;
+              var expireTime = time + (60000*60*24);
               now.setTime(expireTime);
               // var tempExp = 'Wed, 31 Oct 2012 08:50:17 GMT';
               // document.cookie = 'cookie=ok;expires='+now.toUTCString()+';path=/';
