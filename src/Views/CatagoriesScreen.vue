@@ -1,7 +1,7 @@
 <template>
   <v-container fluid >
-    <CategoryForUser></CategoryForUser>
     <SearchBar />
+    <CategoryForUser></CategoryForUser>    
     <RecentProducts />
     <InsightsCategory />
   </v-container>

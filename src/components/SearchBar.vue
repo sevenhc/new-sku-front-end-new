@@ -1,32 +1,33 @@
 <template>
   <v-container>
-    <v-layout row wrap class="justify-space-around">
+    <v-layout style="width:25%; float:right;" align-end class="justify-space-around">
       <v-flex>
-        <v-flex class="pa-3">
+        <!-- <v-flex class="pa-3">
           <p class="heading mt-12 text-start">Keyword search</p>
-        </v-flex>
-        <v-flex md12 class="pr-0">
+        </v-flex> -->
+        <v-flex class="pr-0">
           <v-text-field
             solo
             v-model="searchKey"
             rounded
             label="Search here..."
             type="text"
+            class="pr-0"
           >
-            <template v-slot:append>
+            <template v-slot:append> 
               <v-fade-transition leave-absolute>
-                <div class="ml-12">
+                <div class="">
                   <v-btn
                     rounded
                     large
                     color="#2c547c"
                     dark
                     @click="search(searchKey)"
-                    >search<v-icon class="ml-2">mdi-magnify</v-icon></v-btn
+                    ><v-icon class="">mdi-magnify</v-icon></v-btn
                   >
                 </div>
               </v-fade-transition>
-            </template>
+            </template> 
           </v-text-field>
         </v-flex>
       </v-flex>
@@ -89,5 +90,12 @@ export default {
   font-weight: bold;
   font-size: 2rem;
   color: #2c547c;
+}
+.v-input__slot{
+  padding-right: 0 !important;
+  margin-bottom: 0 !important;
+}
+.v-input__control{
+  min-height: 0 !important;
 }
 </style>
