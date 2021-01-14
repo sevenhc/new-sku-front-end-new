@@ -1,6 +1,6 @@
 <template>
-  <v-container class="">
-    <v-layout>
+  <v-container style="clear:both;">
+    <!-- <v-layout>
       <v-flex xs12 md12>
         <div class="heading">Search by category</div>
         <div class="heading2 pa-3">
@@ -10,8 +10,8 @@
           saepe?
         </div>
       </v-flex>
-    </v-layout>
-    <v-layout class="mt-md-12">
+    </v-layout> -->
+    <v-layout class="">
       <v-flex md12 xs12>
         <v-container fluid>
           <v-row dense>

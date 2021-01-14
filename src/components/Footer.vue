@@ -4,7 +4,7 @@
       <v-card class="flex" flat tile color="#2c547c">
         <v-card-title>
           <!-- <strong class="display-1">NewSku</strong> -->
-          <img :src="require('../assets/logo.png')" height="40" class="mr-3" />
+          <img :src="require('../assets/newskuwhite.png')" height="40" class="mr-3" />
           <!-- <div class="pa-3 ml-12">
             <v-col>
              <v-row>
@@ -16,11 +16,11 @@
             </v-col>
           </div>-->
           <v-spacer></v-spacer>
-          <v-btn text color="white" small to="/Cookies">Cookies</v-btn>
-          <v-btn text color="white" small to="/TermsOfUse">TermsOfUse</v-btn>
-          <v-btn text color="white" small to="/PrivacyPolicy"
-            >PrivacyPolicy</v-btn
-          >
+          <v-btn text color="white" small to="/PrivacyPolicy">Privacy Policy</v-btn>
+          <v-btn text color="white" small to="/TermsOfUse">Terms of Use</v-btn>
+          <v-btn text color="white" small to="/Cookies">Cookie Policy</v-btn>
+          
+          
           <v-spacer></v-spacer>
           <v-btn
             text="asd"
