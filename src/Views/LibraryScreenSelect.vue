@@ -39,7 +39,7 @@
         </v-col>
       </v-row> -->
       <v-layout row wrap justify-center pa-3 relative>
-        <v-flex md2 pl-12>
+        <v-flex md2 xs9 pl-12>
           <v-autocomplete
             v-model="LibraryNameID"
             :disabled="isUpdating"
@@ -53,7 +53,7 @@
           ></v-autocomplete>
         </v-flex>
         <v-spacer></v-spacer>
-        <v-flex md12>
+        <v-flex md12 xs12>
           <p class="name text-center text-uppercase">{{ newLiName }}</p>
         </v-flex>
       </v-layout>
@@ -63,7 +63,7 @@
           <v-container fluid>
             <v-row dense>
               <v-col
-                class="pa-4"
+                class="pa-md-4"
                 v-for="card in libary"
                 :key="card.ProductID"
                 cols="12"

@@ -1,7 +1,7 @@
 <template>
   <v-container>
-    <v-layout style="width:25%; float:right;" align-end class="justify-space-around">
-      <v-flex>
+    <v-layout style="width-md:25%; float:right;" align-end class="justify-space-around">
+      <v-flex >
         <!-- <v-flex class="pa-3">
           <p class="heading mt-12 text-start">Keyword search</p>
         </v-flex> -->

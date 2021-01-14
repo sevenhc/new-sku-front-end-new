@@ -16,7 +16,7 @@
       </v-img> -->
       <div class="header_pro" :style="cssVars">
         <v-layout row wrap align-center justify-space-between pa-6>
-          <v-flex md6>
+          <v-flex md6 xs12>
             <v-card-title
               style="color:white"
               :class="{
@@ -27,7 +27,7 @@
               {{ subCategoryName }}</v-card-title
             >
           </v-flex>
-          <v-flex md2 mt-5>
+          <v-flex md2 xs12 mt-5>
             <v-menu
               ref="menu"
               v-model="menu"
