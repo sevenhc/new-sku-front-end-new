@@ -61,7 +61,7 @@ export default new Vuex.Store({
               var now = new Date();
               console.log(now);
               var time = now.getTime();
-              var expireTime = time + (60000*60*24);
+              var expireTime = time + 60000 * 60 * 24;
               now.setTime(expireTime);
               // var tempExp = 'Wed, 31 Oct 2012 08:50:17 GMT';
               // document.cookie = 'cookie=ok;expires='+now.toUTCString()+';path=/';
@@ -115,6 +115,14 @@ export default new Vuex.Store({
         commit("logout");
         localStorage.removeItem("token");
         localStorage.removeItem("username");
+        var cookies = document.cookie.split(";");
+
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i];
+          var eqPos = cookie.indexOf("=");
+          var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+          document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
         delete axios.defaults.headers.common["Authorization"];
         resolve();
       });
