@@ -28,7 +28,7 @@
                       </v-flex>
                       <v-flex md6>
                         <v-card-title class="lables"
-                          >Client Password</v-card-title
+                          >Confirm Password</v-card-title
                         >
                         <div class="new">
                           <v-text-field
@@ -133,11 +133,27 @@ export default {
             this.alert2 = true;
 
             setTimeout(() => this.$router.push("/LoginSignup"), 3000);
+            this.success();
           });
-        console.log(this.password);
+        console.log(this.currentUrln);
       } catch (error) {
         console.log(error);
       }
+    },
+    success() {
+      var currentUrln = window.location.pathname;
+      axios
+        .put("http://134.209.188.201:81/passwordChanged" + currentUrln, {
+          ClientPassword: this.password,
+        })
+        .then((response) => {
+          console.log("res🥰", response);
+          this.alert2 = true;
+
+          setTimeout(() => this.$router.push("/LoginSignup"), 3000);
+          this.success();
+        });
+      console.log(this.currentUrln);
     },
   },
 };

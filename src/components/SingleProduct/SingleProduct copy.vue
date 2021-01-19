@@ -27,7 +27,7 @@
             </div> -->
 
             <v-layout>
-              <v-flex md12>
+              <v-flex md12 class="pa-5">
                 <v-container fluid>
                   <!-- <v-row dense>
                     <v-col
