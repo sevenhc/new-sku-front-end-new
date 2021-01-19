@@ -1,31 +1,36 @@
 <template>
   <v-container fluid class="">
     <v-card class="">
-      <v-img
-        class="white--text align-end"
-        height="200px"
-        src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-      >
-        <v-card-title
-          :class="{
-            mobileCardText: $vuetify.breakpoint.smAndDown,
-            largeCardText: $vuetify.breakpoint.mdAndUp,
-          }"
-          >Insights</v-card-title
-        >
-      </v-img>
+      <v-card class="">
+        <div class="header_sub" style="background-color: #2c547c">
+          <v-layout row wrap align-center justify-space-between pa-6>
+            <v-flex md6 xs12>
+              <v-card-title
+                style="color: white"
+                :class="{
+                  mobileCardText: $vuetify.breakpoint.smAndDown,
+                  largeCardText: $vuetify.breakpoint.mdAndUp,
+                }"
+                >Insights</v-card-title
+              >
+            </v-flex>
+          </v-layout>
+        </div>
+      </v-card>
       <v-container>
         <v-flex md12>
           <v-container fluid class="pa-md-12">
             <p class="heading3">{{ insight.InsightTitle }}</p>
-            <p class="insightdate">{{ genmonth }} {{ gendate }}<sup>{{ gennth }} </sup> {{genyear}}</p>
+            <p class="insightdate">
+              {{ genmonth }} {{ gendate }}<sup>{{ gennth }} </sup> {{ genyear }}
+            </p>
             <div class="pa-md-12">
               <v-img
                 class="pa-12"
                 width="100%"
                 height="50%"
                 :src="
-                  'http://new-sku-back-end.herokuapp.com/' +
+                  'http://134.209.188.201:81/' +
                   insight.ThumbnailPath
                 "
               >
@@ -34,12 +39,12 @@
             <p class="heading2 mt-12">
               {{ insight.Description }}
             </p>
-            <p class="heading2 mt-7">
+            <!-- <p class="heading2 mt-7">
               {{ insight.Description }}
             </p>
             <p class="heading2 mt-7">
               {{ insight.Description }}
-            </p>
+            </p> -->
             <!-- <v-btn text color="#2c547c" to="/">
               <v-icon left> mdi-arrow-left</v-icon>
               back to home
@@ -60,16 +65,29 @@ export default {
     title: "Chilled fish and seafood",
     src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
     flex: 4,
-    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    months: [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ],
     gendate: "",
-    genmonth: "", 
+    genmonth: "",
     genyear: "",
-    gennth:""
+    gennth: "",
   }),
   mounted() {
     axios
       .get(
-        "http://new-sku-back-end.herokuapp.com/insight/getInsById/" +
+        "http://134.209.188.201:81/insight/getInsById/" +
           this.$route.params.id
       )
 
@@ -77,7 +95,9 @@ export default {
         this.insight = response.data[0];
         console.log("insight", this.insight);
         this.gendate = new Date(this.insight.CreatedDate).getDate();
-        this.genmonth = this.months[new Date(this.insight.CreatedDate).getMonth()];
+        this.genmonth = this.months[
+          new Date(this.insight.CreatedDate).getMonth()
+        ];
         this.genyear = new Date(this.insight.CreatedDate).getFullYear();
         this.gennth = this.getnth(this.gendate);
         // this.response=console.log.data

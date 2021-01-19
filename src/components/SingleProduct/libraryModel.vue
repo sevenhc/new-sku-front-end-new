@@ -126,7 +126,7 @@ export default {
     lastname: "",
     nameRules: [
       (v) => !!v || "Library Name is required",
-      (v) => v.length <= 10 || "Name must be less than 10 characters",
+      (v) => v.length <= 1 || "Name must be less than 1 characters",
     ],
   }),
   methods: {
