@@ -11,7 +11,7 @@
                   <v-flex md12 xs11>
                     <v-layout row wrap>
                       <v-flex md6 xs12>
-                        <v-card-title class="lables">Password</v-card-title>
+                        <v-card-title class="lables">New Password</v-card-title>
                         <div class="new">
                           <v-text-field
                             v-model="password"
@@ -28,7 +28,7 @@
                       </v-flex>
                       <v-flex md6>
                         <v-card-title class="lables"
-                          >Client Password</v-card-title
+                          >Re-enter Password</v-card-title
                         >
                         <div class="new">
                           <v-text-field
