@@ -4,10 +4,9 @@
       <v-flex xs12>
         <div class="heading">The Benefits of Subscribing</div>
         <div class="heading2 pa-3">
-          • New launch updates • In-store photography
-          • Product information (Ingredients, nutritionals, price, weight) 
-          • Save time 
-          • Categorised search function.
+          • New launch updates • In-store photography • Product information
+          (Ingredients, nutritionals, price, weight) • Save time • Categorised
+          search function.
         </div>
       </v-flex>
     </v-layout>
@@ -21,8 +20,8 @@
                 height="20%"
               ></v-img>
               <div class="heading2 pa-3">
-                We launch soon with this year’s Winter products. 
-                Register your interest below to qualify for your free 7 day trial.
+                We launch soon with this year’s Winter products. Register your
+                interest below to qualify for your free 7 day trial.
               </div>
             </div>
           </v-flex>
@@ -183,6 +182,9 @@
 }
 </style>
 <script>
+import { mapState, mapGetters } from "vuex";
+// import axios from "axios";
+
 export default {
   data() {
     return {
@@ -194,6 +196,7 @@ export default {
         password: "",
         confirmPassword: "",
       },
+      isLogged: false,
       show1: false,
       show2: false,
       inputRules: [(v) => v.length >= 3 || "Minimum length is 3 characters"],
@@ -212,10 +215,53 @@ export default {
           const passPattern = this.User.password == this.User.confirmPassword;
           return passPattern.test(value) || "Invalid password.";
         },
-      }//,      
+      }, //,
       //slidesHeading: "welcome to NewSku.",
       //slideText:"Consequat irure proident reprehenderit mollit elit magna nostrud labore aute deserunt. Esse id voluptate occaecat nisi velit nulla anim in eu ad sit. ",
     };
+  },
+  computed: {
+    ...mapState(["user"]),
+    ...mapGetters([
+      "userName",
+      "mobile",
+      "email",
+      "userId",
+      "town",
+      "fullName",
+      "landLine",
+      "isLoggedIn",
+      "deliveryAddress",
+    ]),
+    count() {
+      return this.$store.state.status;
+    },
+  },
+  methods: {
+    register: function() {
+      if (this.$refs.form.validate()) {
+        let data = {
+          Email: this.User.email,
+          ClientName: this.User.username,
+          ClientPassword: this.User.password,
+          IsTrial: true,
+          Mobile: this.User.mobile,
+          Company: this.User.company,
+        };
+        console.log("asdasd", data);
+        this.$store
+          .dispatch("register", data)
+          .then(() => this.toRoute(this.isLoggedIn))
+          .catch((err) => console.log(err));
+      }
+    },
+    toRoute() {
+      // this.$router.push("/");
+      console.log("toRoute", this.isLoggedIn);
+
+      console.log("legedIn");
+      this.$router.push("/");
+    },
   },
 };
 </script>

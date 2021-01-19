@@ -23,27 +23,27 @@
               </v-row> 
             </v-col>
           </div>-->
-          <v-spacer></v-spacer>
-          <v-layout row wrap>
-            <v-flex xs4>
+          <!-- <v-spacer></v-spacer> -->
+          <v-layout row wrap justify-space-around text-center>
+            <v-flex md4 xs4>
               <v-btn text color="white" small to="/PrivacyPolicy"
                 >Privacy Policy</v-btn
               >
             </v-flex>
-            <v-flex xs4>
+            <v-flex md4 xs4>
               <v-btn text color="white" small to="/TermsOfUse"
                 >Terms of Use</v-btn
               >
             </v-flex>
-            <v-flex xs4>
+            <v-flex md4 xs4>
               <v-btn text color="white" small to="/Cookies"
                 >Cookie Policy</v-btn
               >
             </v-flex>
           </v-layout>
 
-          <v-spacer></v-spacer>
-          <v-btn
+          <!-- <v-spacer></v-spacer> -->
+          <!-- <v-btn
             text="asd"
             v-for="user in users"
             :key="user"
@@ -52,7 +52,7 @@
             icon
           >
             <v-icon size="24px">{{ user }}</v-icon>
-          </v-btn>
+          </v-btn> -->
 
           <!-- <v-btn v-for="icon in icons" :key="icon" class="mx-1" dark icon>
             <v-btn icon @click="icon.link" target="_blank"

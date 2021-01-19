@@ -91,17 +91,31 @@ export default new Vuex.Store({
           method: "POST",
         })
           .then((resp) => {
-            const token = resp.data.token;
-            const user = resp.data.user;
+            console.log("😃", resp.data);
+            const token = resp.data.accessToken;
             const username = resp.data.ClientName;
+            const clientID = resp.data.ClientID;
             console.log("user name", username);
             localStorage.setItem("username", username);
             localStorage.setItem("token", token);
-            console.log(token);
-            // Add the following line:
+            // console.log(token);
+            // // Add the following line:
+            // axios.defaults.headers.common["Authorization"] = token;
+            // commit("auth_success", token, user);
+            // resolve(resp);
+            var now = new Date();
+            console.log(now);
+            var time = now.getTime();
+            var expireTime = time + 60000 * 60 * 24;
+            now.setTime(expireTime);
+            // var tempExp = 'Wed, 31 Oct 2012 08:50:17 GMT';
+            // document.cookie = 'cookie=ok;expires='+now.toUTCString()+';path=/';
+            document.cookie =
+              "cookie=ok;expires=" + now.toGMTString() + ";path=/";
+
+            localStorage.setItem("clientID", clientID);
             axios.defaults.headers.common["Authorization"] = token;
-            commit("auth_success", token, user);
-            resolve(resp);
+            location.reload();
           })
           .catch((err) => {
             commit("auth_error", err);
