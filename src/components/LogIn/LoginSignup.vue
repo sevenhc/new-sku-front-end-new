@@ -2,11 +2,11 @@
   <v-container>
     <v-card flat>
       <v-layout >
-        <v-flex md4 xs12>
+        <v-flex md4 xs12 style="margin:auto;">
           <v-card flat color="grey lighten-2">
             <p class="title text-center">Log In</p>
           </v-card>
-          <v-flex md12 xs12 style="margin:auto;">
+          <v-flex md12 xs12>
             <v-form ref="form">
               <v-card-title>Email </v-card-title>
               <div class="new">
