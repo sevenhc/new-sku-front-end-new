@@ -1,12 +1,12 @@
 <template>
   <v-container>
     <v-card flat>
-      <v-layout row justify-space-around>
-        <v-flex md4 xs12>
+      <v-layout >
+        <v-flex md4 xs12 style="margin:auto;">
           <v-card flat color="grey lighten-2">
             <p class="title text-center">Log In</p>
           </v-card>
-          <v-flex md12 xs11>
+          <v-flex md12 xs12>
             <v-form ref="form">
               <v-card-title>Email </v-card-title>
               <div class="new">

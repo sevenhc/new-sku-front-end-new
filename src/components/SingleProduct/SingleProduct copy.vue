@@ -27,8 +27,8 @@
             </div> -->
 
             <v-layout>
-              <v-flex md12 class="pa-5">
-                <v-container fluid>
+              <v-flex md12>
+                <v-container fluid ml-6>
                   <!-- <v-row dense>
                     <v-col
                       class="pa-md-5"
@@ -69,7 +69,7 @@
                 </v-container>
               </v-flex>
             </v-layout>
-            <div color="transparent" class="d-flex justify-center">
+            <div color="transparent" class="d-flex justify-center mb-6">
               <libraryModel
                 :product_id="product.ProductID"
                 :mainImage="product.Thumbnail"
@@ -116,11 +116,11 @@
                 >
               </div>
             </v-img> -->
-            <div class="pt-4">
+            <!-- <div class="pt-4">
               <v-btn @click="print()" width="50%" rounded color="#c7ced5">
                 Download Page
               </v-btn>
-            </div>
+            </div> -->
             <div class="pt-4">
               <v-btn
                 @click="downloadWithAxios()"
