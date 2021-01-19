@@ -53,7 +53,7 @@
           <v-btn
             class="mx-1 pa-0"
             dark           
-            click="icon.link"
+            click="https://www.facebook.com/NewSkufoodanddrink/"
             target="_blank"
             outlined
             min-width="36px"
@@ -77,7 +77,7 @@
           <v-btn
            class="mx-1 pa-0"
             dark           
-            click="icon.link"
+            click="https://www.linkedin.com/company/new-sku"
             target="_blank"
             outlined
             min-width="36px"

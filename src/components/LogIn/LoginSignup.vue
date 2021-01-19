@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-card flat>
-      <v-layout row justify-space-around>
+      <v-layout >
         <v-flex md4 xs12>
           <v-card flat color="grey lighten-2">
             <p class="title text-center">Log In</p>
