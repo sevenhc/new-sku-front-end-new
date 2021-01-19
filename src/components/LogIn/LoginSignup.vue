@@ -6,7 +6,7 @@
           <v-card flat color="grey lighten-2">
             <p class="title text-center">Log In</p>
           </v-card>
-          <v-flex md12 xs11>
+          <v-flex md12 xs12 style="margin:auto;">
             <v-form ref="form">
               <v-card-title>Email </v-card-title>
               <div class="new">
