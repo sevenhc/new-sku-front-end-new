@@ -18,7 +18,9 @@
         <v-flex md12>
           <v-container fluid class="pa-md-12">
             <p class="heading3">{{ insight.InsightTitle }}</p>
-            <p class="insightdate">{{ genmonth }} {{ gendate }}<sup>{{ gennth }} </sup> {{genyear}}</p>
+            <p class="insightdate">
+              {{ genmonth }} {{ gendate }}<sup>{{ gennth }} </sup> {{ genyear }}
+            </p>
             <div class="pa-md-12">
               <v-img
                 class="pa-12"
@@ -26,12 +28,12 @@
                 height="50%"
                 :src="
                   'http://new-sku-back-end.herokuapp.com/' +
-                  insight.ThumbnailPath
+                    insight.ThumbnailPath
                 "
               >
               </v-img>
             </div>
-            <p class="heading2 mt-12">
+            <!-- <p class="heading2 mt-12">
               {{ insight.Description }}
             </p>
             <p class="heading2 mt-7">
@@ -39,7 +41,9 @@
             </p>
             <p class="heading2 mt-7">
               {{ insight.Description }}
-            </p>
+            </p> -->
+            <div v-html="insight.Description"></div>
+
             <!-- <v-btn text color="#2c547c" to="/">
               <v-icon left> mdi-arrow-left</v-icon>
               back to home
@@ -60,11 +64,24 @@ export default {
     title: "Chilled fish and seafood",
     src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
     flex: 4,
-    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    months: [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ],
     gendate: "",
-    genmonth: "", 
+    genmonth: "",
     genyear: "",
-    gennth:""
+    gennth: "",
   }),
   mounted() {
     axios
@@ -77,7 +94,9 @@ export default {
         this.insight = response.data[0];
         console.log("insight", this.insight);
         this.gendate = new Date(this.insight.CreatedDate).getDate();
-        this.genmonth = this.months[new Date(this.insight.CreatedDate).getMonth()];
+        this.genmonth = this.months[
+          new Date(this.insight.CreatedDate).getMonth()
+        ];
         this.genyear = new Date(this.insight.CreatedDate).getFullYear();
         this.gennth = this.getnth(this.gendate);
         // this.response=console.log.data

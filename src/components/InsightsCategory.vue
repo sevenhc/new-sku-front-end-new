@@ -19,15 +19,18 @@
                 large2: $vuetify.breakpoint.mdAndUp,
               }"
             >
-              {{ latestInsight.Description }}
+              <!-- {{ latestInsight.Description }} -->
               <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
               consequatur amet dolorem harum numquam ipsam rem ea sequi sed, et
               totam tempora repele, aperiam ratione hic saepe? -->
+              <div v-html="latestInsight.Description"></div>
+
               <div class="text-left mt-3">
-                <v-btn 
-                :href="'/Insights/'+ latestInsight.InsightID"
-                               
-                text color="#2c547c">
+                <v-btn
+                  :href="'/Insights/' + latestInsight.InsightID"
+                  text
+                  color="#2c547c"
+                >
                   Read More
                   <v-icon color="#2c547c"> mdi-arrow-right</v-icon>
                 </v-btn>
@@ -38,7 +41,9 @@
             <v-img
               aspect-ratio="2.6"
               :src="'http://134.209.188.201:81/' + latestInsight.ThumbnailPath"
-              :lazy-src="'http://134.209.188.201:81/' + latestInsight.ThumbnailPath"
+              :lazy-src="
+                'http://134.209.188.201:81/' + latestInsight.ThumbnailPath
+              "
             ></v-img>
           </v-flex>
         </v-layout>
@@ -96,8 +101,8 @@ import axios from "axios";
 export default {
   data() {
     return {
-      latestInsight: "",      
-      };
+      latestInsight: "",
+    };
   },
   mounted() {
     axios
