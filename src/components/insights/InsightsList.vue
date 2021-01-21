@@ -1,51 +1,52 @@
 <template>
   <v-container fluid class="">
     <v-card class="">
-      <v-img
-        class="white--text align-end"
-        height="200px"
-        src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-      >
-        <v-card-title
-          :class="{
-            mobileCardText: $vuetify.breakpoint.smAndDown,
-            largeCardText: $vuetify.breakpoint.mdAndUp,
-          }"
-          >{{ this.$route.params.id }}</v-card-title
-        >
-      </v-img>
-      <v-layout>
-        <v-flex md12>
-          <v-container fluid>
-            <v-row dense>
-              <v-col
-                class="pa-4"
-                v-for="product in products"
-                :key="product.id"
-                cols="12"
-                md="3"
-                sm="12"
-                xs="12"
-              >
-                <v-card>
-                  <v-img
-                    :src="'http://new-sku-back-end.herokuapp.com/' + product.ThumbnailPath"
-                    class="white--text align-end"
-                    gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                    height="250px"
-                    @click="singleItem(product.InsightID)"
-                  >
-                  </v-img>
-                  <v-card-title class="cardTitle">
-                    {{ product.InsightTitle }}
-                  </v-card-title>
-                </v-card>
-              </v-col>
-            </v-row>
-          </v-container>
-        </v-flex>
-      </v-layout>
+      <div class="header_sub" style="background-color: #2c547c">
+        <v-layout row wrap align-center justify-space-between pa-6>
+          <v-flex md6 xs12>
+            <v-card-title
+              style="color: white"
+              :class="{
+                mobileCardText: $vuetify.breakpoint.smAndDown,
+                largeCardText: $vuetify.breakpoint.mdAndUp,
+              }"
+              >Insights</v-card-title
+            >
+          </v-flex>
+        </v-layout>
+      </div>
     </v-card>
+    <v-layout>
+      <v-flex md12>
+        <v-container fluid>
+          <v-row dense>
+            <v-col
+              class="pa-4"
+              v-for="product in products"
+              :key="product.id"
+              cols="12"
+              md="3"
+              sm="12"
+              xs="12"
+            >
+              <v-card>
+                <v-img
+                  :src="'http://134.209.188.201:81/' + product.ThumbnailPath"
+                  class="white--text align-end"
+                  gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+                  height="250px"
+                  @click="singleItem(product.InsightID)"
+                >
+                </v-img>
+                <v-card-title class="cardTitle">
+                  {{ product.InsightTitle }}
+                </v-card-title>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-flex>
+    </v-layout>
   </v-container>
 </template>
 
@@ -69,7 +70,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://new-sku-back-end.herokuapp.com/insight/getAll")
+      .get("http://134.209.188.201:81/insight/getAll")
       .then((response) => {
         this.products = response.data;
         console.log(response);

@@ -1,19 +1,22 @@
 <template>
   <v-container fluid class="">
     <v-card class="">
-      <v-img
-        class="white--text align-end"
-        height="200px"
-        src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
-      >
-        <v-card-title
-          :class="{
-            mobileCardText: $vuetify.breakpoint.smAndDown,
-            largeCardText: $vuetify.breakpoint.mdAndUp,
-          }"
-          >Insights</v-card-title
-        >
-      </v-img>
+      <v-card class="">
+        <div class="header_sub" style="background-color: #2c547c">
+          <v-layout row wrap align-center justify-space-between pa-6>
+            <v-flex md6 xs12>
+              <v-card-title
+                style="color: white"
+                :class="{
+                  mobileCardText: $vuetify.breakpoint.smAndDown,
+                  largeCardText: $vuetify.breakpoint.mdAndUp,
+                }"
+                >Insights</v-card-title
+              >
+            </v-flex>
+          </v-layout>
+        </div>
+      </v-card>
       <v-container>
         <v-flex md12>
           <v-container fluid class="pa-md-12">
@@ -26,22 +29,11 @@
                 class="pa-12"
                 width="100%"
                 height="50%"
-                :src="
-                  'http://new-sku-back-end.herokuapp.com/' +
-                    insight.ThumbnailPath
-                "
+                :src="'http://134.209.188.201:81/' + insight.ThumbnailPath"
               >
               </v-img>
             </div>
-            <!-- <p class="heading2 mt-12">
-              {{ insight.Description }}
-            </p>
-            <p class="heading2 mt-7">
-              {{ insight.Description }}
-            </p>
-            <p class="heading2 mt-7">
-              {{ insight.Description }}
-            </p> -->
+
             <div v-html="insight.Description"></div>
 
             <!-- <v-btn text color="#2c547c" to="/">
@@ -86,8 +78,7 @@ export default {
   mounted() {
     axios
       .get(
-        "http://new-sku-back-end.herokuapp.com/insight/getInsById/" +
-          this.$route.params.id
+        "http://134.209.188.201:81/insight/getInsById/" + this.$route.params.id
       )
 
       .then((response) => {
