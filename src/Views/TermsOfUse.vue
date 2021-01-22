@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <p style="font-size: 36px">Terms of Website Use</p>
+  <v-container style="font-size:14px;">
+    <p style="font-size: 24px">Terms of Website Use</p>
     <p>
       These terms of use (together with the documents referred to in them) tells
       you the terms on which you may make use of our website www.newsku.co.uk
@@ -12,7 +12,7 @@
       you must not use our site.
     </p>
 
-    <p style="font-size: 24px">Other terms</p>
+    <p style="font-size: 20px">Other terms</p>
     <p>
       These terms of use refer to the following additional terms, which also
       apply to your use of our site:
@@ -33,21 +33,21 @@
       </li>
     </ul>
 
-    <p style="font-size: 24px">Information about us</p>
+    <p style="font-size: 20px">Information about us</p>
     <p>
       The site is operated by Newsku LTD ("We"), a company registered in England
       and Wales. Our company registration number is 12973199 > and our
       registered office is at 94 Comelybank Drive, Mexborough, Doncaster, S640EP
     </p>
 
-    <p style="font-size: 24px">Changes to these terms</p>
+    <p style="font-size: 20px">Changes to these terms</p>
     <p>
       We may revise these terms of use at any time by amending this page. Please
       check this page from time to time to take notice of any changes we made,
       as they are binding on you.
     </p>
 
-    <p style="font-size: 24px">Changes to our site</p>
+    <p style="font-size: 20px">Changes to our site</p>
     <p>
       We may update our site from time to time, and may change the content at
       any time. However, please note that any of the content on our site may be
@@ -56,7 +56,7 @@
       from errors or omissions.
     </p>
 
-    <p style="font-size: 24px">Accessing our site</p>
+    <p style="font-size: 20px">Accessing our site</p>
     <p></p>
     <p>
       We do not guarantee that our site, or any content on it, will always be
@@ -68,7 +68,7 @@
       to our site.
     </p>
 
-    <p style="font-size: 24px">Intellectual property rights</p>
+    <p style="font-size: 20px">Intellectual property rights</p>
     <p />
     <p>
       We are the owner or the licensee of all copyright, trademarks and other
@@ -95,7 +95,7 @@
       licensors.
     </p>
 
-    <p style="font-size: 24px">No reliance on information</p>
+    <p style="font-size: 20px">No reliance on information</p>
     <p>
       The content on our site is provided for general information only. It is
       not intended to amount to advice on which you should rely. Although we
@@ -104,7 +104,7 @@
       that the content on our site is accurate, complete or up to date.
     </p>
 
-    <p style="font-size: 24px">Limitation of our liability</p>
+    <p style="font-size: 20px">Limitation of our liability</p>
     <p>This site is for business use only and not for consumer use.</p>
     <p>
       Nothing in these terms of use excludes or limits our liability for death
@@ -144,7 +144,7 @@
       arise from your use of them.
     </p>
 
-    <p style="font-size: 24px">Viruses</p>
+    <p style="font-size: 20px">Viruses</p>
     <p>
       We do not guarantee that our site will be secure or free from bugs or
       viruses.
@@ -163,7 +163,7 @@
       service attack or a distributed denial of service attack.
     </p>
 
-    <p style="font-size: 24px">Linking to our site</p>
+    <p style="font-size: 20px">Linking to our site</p>
     <p>
       You may link to our site, provided you do so in a way that is fair and
       legal and does not damage our reputation or take advantage of it. You must
@@ -172,21 +172,21 @@
       right to withdraw linking permission without notice.
     </p>
 
-    <p style="font-size: 24px">Third party links and resources in our site</p>
+    <p style="font-size: 20px">Third party links and resources in our site</p>
     <p>
       Where our site contains links to other sites and resources provided by
       third parties, these links are provided for your information only. We have
       no control over the contents of those sites or resources.
     </p>
 
-    <p style="font-size: 24px">Applicable law</p>
+    <p style="font-size: 20px">Applicable law</p>
     <p>
       These terms of use, their subject matter and formation (and any
       noncontractual disputes or claims) are governed by English law. We both
       agree to the exclusive jurisdiction of the courts of England and Wales.
     </p>
 
-    <p style="font-size: 24px">Trade marks</p>
+    <p style="font-size: 20px">Trade marks</p>
     <p>
       Newsku, Danda and associated logos are unregistered trademarks of Newsku
       LTD. All rights reserved.

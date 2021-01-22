@@ -1,7 +1,7 @@
 <template>
-  <v-container grid-list-xs>
-    <p style="font-size: 36px">Cookies Policy</p>
-    <p style="font-size: 24px">INFORMATION ABOUT OUR USE OF COOKIES</p>
+  <v-container  style="font-size:14px;">
+    <p style="font-size: 24px">Cookies Policy</p>
+    <p style="font-size: 20px">INFORMATION ABOUT OUR USE OF COOKIES</p>
     <p>
       Our website uses cookies to distinguish you from other users of our
       website. This helps us to provide you with a good experience when you
@@ -34,7 +34,7 @@
       </a>
     </p>
 
-    <p style="font-size: 24px">Newsku SERVICE TERMS OF USE</p>
+    <p style="font-size: 20px">Newsku SERVICE TERMS OF USE</p>
     <p>
       These Terms of Use (together with the documents referred to in them)
       (“Terms”) govern your access to and use of the Newsku Service (defined
@@ -63,7 +63,7 @@
       came into force on 17/11/20
     </p>
 
-    <p style="font-size: 24px">About Us</p>
+    <p style="font-size: 20px">About Us</p>
     <p>
       1.1. The Newsku Service is provided by Newsku Limited whose registered
       office is at 94 Comelybank drive, Mexborough, Doncaster, S640EP (“Newsku”,
@@ -76,7 +76,7 @@
       – 17:00 Monday to Friday (excluding public holidays in England).
     </p>
 
-    <p style="font-size: 24px">The Newsku Service</p>
+    <p style="font-size: 20px">The Newsku Service</p>
     <p>
       2.1. The Newsku Service is a hosted service provided by us from the
       website at www.Newsku.co.uk, (as varied from time to time) (the “Newsku
@@ -93,7 +93,7 @@
       (“Subscription Term”).
     </p>
 
-    <p style="font-size: 24px">Other Terms</p>
+    <p style="font-size: 20px">Other Terms</p>
     <p>
       3.1. Our Privacy Policy, Cookie Policy and Terms of Website Use and any
       terms of business you have signed with us in relation to your use of the
@@ -102,7 +102,7 @@
       these Terms shall apply unless expressly agreed otherwise.
     </p>
 
-    <p style="font-size: 24px">How to Order</p>
+    <p style="font-size: 20px">How to Order</p>
     <p>
       4.1. Please contact us directly to place an order to subscribe to the
       Newsku Service.
@@ -114,7 +114,7 @@
       of dealing.
     </p>
 
-    <p style="font-size: 24px">Licence to use the Newsku Service</p>
+    <p style="font-size: 20px">Licence to use the Newsku Service</p>
     <p>
       5.1. Subject to you purchasing a subscription in accordance with these
       Terms, we hereby grant to you a nonexclusive, non transferable right to
@@ -313,7 +313,7 @@
       unauthorised access or use, promptly notify us.
     </p>
 
-    <p style="font-size: 24px">Subscription Term and Payment</p>
+    <p style="font-size: 20px">Subscription Term and Payment</p>
     <p>
       6.1. Unless otherwise agreed between us, each Subscription Term commences
       on the date set out in the written acceptance of your order by us
@@ -332,7 +332,7 @@
       invoice(s) at the appropriate rate.
     </p>
 
-    <p style="font-size: 24px">Customer Data</p>
+    <p style="font-size: 20px">Customer Data</p>
     <p>
       7.1. You shall own all rights, title and interest in and to all of your
       business information which you or your Authorised Users input into any of
@@ -358,7 +358,7 @@
       Policy, as amended from time to time.
     </p>
 
-    <p style="font-size: 24px">Intellectual Property Rights</p>
+    <p style="font-size: 20px">Intellectual Property Rights</p>
     <p>
       8.1. You acknowledge and agree that (save for the Customer Data) we and/or
       our licensors own all right, title and interest to and all intellectual
@@ -373,7 +373,7 @@
       the Newsku Service or Newsku Materials.
     </p>
 
-    <p style="font-size: 24px">Liability</p>
+    <p style="font-size: 20px">Liability</p>
     <p>
       9.1. This clause 9 sets out our entire financial liability (including any
       liability for the acts or omissions of our employees, agents and
@@ -427,7 +427,7 @@
       the claim arose.
     </p>
 
-    <p style="font-size: 24px">Term and Termination</p>
+    <p style="font-size: 20px">Term and Termination</p>
     <p>
       10.1. The Newsku Service shall, unless otherwise terminated in accordance
       with these Terms, commence on the Commencement Date and continue for the
@@ -478,7 +478,7 @@
       prejudiced.
     </p>
 
-    <p style="font-size: 24px">General</p>
+    <p style="font-size: 20px">General</p>
     <p>
       11.1. We shall have no liability to you or to any Authorised User if we
       are prevented from or delayed in performing our obligations under these
@@ -525,7 +525,7 @@
       Act 1999.
     </p>
 
-    <p style="font-size: 24px">Notices</p>
+    <p style="font-size: 20px">Notices</p>
     <p>
       12.1. Except as otherwise provided herein, all notices and other
       communications to you shall be in writing or displayed electronically in
@@ -536,7 +536,7 @@
       contact address shown on the Newsku Website.
     </p>
 
-    <p style="font-size: 24px">Governing Law and Jurisdiction</p>
+    <p style="font-size: 20px">Governing Law and Jurisdiction</p>
     <p>
       13.1. These Terms, their subject matter and formation (and any
       noncontractual disputes or claims) are governed by English law. We both

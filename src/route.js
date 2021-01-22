@@ -16,6 +16,7 @@ import store from "./store";
 import TermsOfUse from "./Views/TermsOfUse.vue";
 import PrivacyPolicy from "./Views/PrivacyPolicy.vue";
 import Cookies from "./Views/Cookies.vue";
+// import TermsandConditions from "./Views/TermsAndConditions.vue";
 import SearchResult from "./components/SearchResult.vue";
 import ContactUs from "./components/ContactUs.vue";
 // import store from "./store";
@@ -150,6 +151,19 @@ export default [
       next();
     },
   },
+  // {
+  //   path: "/TermsAndConditions",
+  //   component: TermsandConditions,
+  //   beforeEnter: (to, from, next) => {
+  //     console.log(store.getters);
+  //     // if (!getCookie()) {
+  //     //   return next({
+  //     //     name: "LoginSignup",
+  //     //   });
+  //     // }
+  //     next();
+  //   },
+  // },
   {
     path: "/PrivacyPolicy",
     component: PrivacyPolicy,

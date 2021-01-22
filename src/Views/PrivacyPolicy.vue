@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <p style="font-size: 36px">Privacy Policy</p>
+  <v-container style="font-size:14px;">
+    <p style="font-size: 24px">Privacy Policy</p>
     
     <p>
       Newsku Limited ("We") are committed to protecting and respecting your
@@ -19,7 +19,7 @@
       practices described in this policy.
     </p>
 
-    <p style="font-size: 24px">1. Who we are</p>
+    <p style="font-size: 20px">1. Who we are</p>
     <p>
       For the purpose of the Data Protection Act 1998 (the "Act"), the data
       controller is Newsku Limited, a company registered in England and Wales
@@ -46,7 +46,7 @@
       S640EP
     </p>
 
-    <p style="font-size: 24px">2. Information we may collect from you</p>
+    <p style="font-size: 20px">2. Information we may collect from you</p>
 
     <p>2.1 We may collect and process the following data about you:</p>
     <p>2.1.1 Information you give us.</p>
@@ -153,7 +153,7 @@
       data.
     </p>
 
-    <p style="font-size: 24px">3. How we use the information</p>
+    <p style="font-size: 20px">3. How we use the information</p>
     <p>3.1 We use information held about you in the following ways:</p>
     <p>3.1.1 Information you give to us.</p>
     <p>We will use this information:</p>
@@ -201,7 +201,7 @@
       types of information we receive).
     </p>
 
-    <p style="font-size: 24px">4. Lawful processing</p>
+    <p style="font-size: 20px">4. Lawful processing</p>
     <p>
       4.1 In order to process personal data, we must have a lawful reason. We
       always ensure that this is the case, and we set out our lawful bases below
@@ -293,7 +293,7 @@
       the right to withdraw consent to marketing at any time.
     </p>
 
-    <p style="font-size: 24px">5. Disclosure of your information</p>
+    <p style="font-size: 20px">5. Disclosure of your information</p>
     <p>
       5.1 We may share your personal information with any member of our group,
       which means our subsidiaries, our ultimate holding company and its
@@ -343,7 +343,7 @@
       credit risk reduction.
     </p>
 
-    <p style="font-size: 24px">6. Your rights</p>
+    <p style="font-size: 20px">6. Your rights</p>
     <p>
       6.1 You have the right to ask us not to process your personal data for
       marketing purposes. We will usually inform you (before collecting your
@@ -443,7 +443,7 @@
       >.
     </p>
 
-    <p style="font-size: 24px">
+    <p style="font-size: 20px">
       7. Where we store your personal information and for how long
     </p>
     <p>
@@ -486,7 +486,7 @@
       period for retention of some of your personal data.
     </p>
 
-    <p style="font-size: 24px">8 Cookies</p>
+    <p style="font-size: 20px">8 Cookies</p>
     <p>
       8.1 Our site service uses cookies to distinguish you from other users of
       our site. This helps us to provide you with a good experience when you
@@ -495,7 +495,7 @@
       see our Cookie policy
     </p>
 
-    <p style="font-size: 24px">9 Making a complaint</p>
+    <p style="font-size: 20px">9 Making a complaint</p>
     <p>
       9.1 The supervisory authority in the UK for data protection matters is the
       Information Commissioner (ICO). If you think your data protection rights
@@ -503,7 +503,7 @@
       the ICO.
     </p>
 
-    <p style="font-size: 24px">10 Changes to our Privacy Policy</p>
+    <p style="font-size: 20px">10 Changes to our Privacy Policy</p>
     <p>
       10.1 We reserve the right to update this privacy notice at any time, and
       we will provide you with a new privacy notice when we make any substantial

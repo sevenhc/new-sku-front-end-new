@@ -16,7 +16,7 @@
           <v-flex md4 xs12 class="pa-md-1 align-center" align-self="center">
             <div class="pa-9">
               <v-img
-                src="https://picsum.photos/510/300?random"
+                :src="require('../assets/NewSku-blur-supermarket.jpg')"
                 height="20%"
               ></v-img>
               <div class="heading2 pa-3">
