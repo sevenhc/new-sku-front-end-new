@@ -118,7 +118,7 @@
                           <v-text-field
                             v-model="User.confirmPassword"
                             :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                            :rules="[rules.required, rules.min, rules.password]"
+                            :rules="[rules.required, rules.min]"
                             :type="show2 ? 'text' : 'password'"
                             solo
                             label="Confirm password *"
