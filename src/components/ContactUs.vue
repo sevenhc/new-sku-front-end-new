@@ -6,14 +6,14 @@
           <p class="text-center" style="font-size: 40px;color:#2c547c">
             Contact Us
           </p>
-          <p class="text-center" style="font-size:20px;color:#2c547c">
+          <p class="text-center" style="color:#2c547c">
             Please fill in the form below , email or call us if you want to get
             in touch.
           </p>
         </v-flex>
         <v-flex md8>
           <v-form ref="form">
-            <v-flex md12 xs10>
+            <v-flex md12 xs12>
               <v-text-field
                 :rules="[rules.required]"
                 solo
@@ -22,7 +22,7 @@
                 id="id"
               ></v-text-field>
             </v-flex>
-            <v-flex md12 xs10>
+            <v-flex md12 xs12>
               <v-text-field
                 solo
                 :rules="[rules.email]"
@@ -32,7 +32,7 @@
               ></v-text-field>
             </v-flex>
 
-            <v-flex md12 xs10>
+            <v-flex md12 xs12>
               <v-textarea
                 :rules="[rules.required]"
                 solo
@@ -41,17 +41,18 @@
                 id="id"
               ></v-textarea>
             </v-flex>
-            <v-flex md12 xs10>
+            <v-flex md12 xs12>
               <div class="text-center">
                 <v-btn dark width="50%" color="#2c547c">Submit</v-btn>
               </div>
             </v-flex>
           </v-form>
         </v-flex>
-        <v-flex md8 xs10>
-          <p class="text-center pt-4" style="font-size:1vw;color:#2c547c">
-            Email: info@newsku.co.uk<br />
-            Landline: 01709581433<br />Mobile: 07415285460
+        <v-flex md8 xs12>
+          <p class="text-center pt-4" style="color:#2c547c">
+            Email: <a href="info@newsku.co.uk" target="_blank">info@newsku.co.uk</a><br />
+            Landline: <a href="01709581433" target="_blank">01709581433</a><br />
+            Mobile: <a href="07415285460" target="_blank">07415285460</a><br />
           </p>
         </v-flex>
       </v-layout>
