@@ -130,16 +130,17 @@ export default {
     ],
   }),
   methods: {
-    getAllLibraries() {
+    getAllLibraries(product_id) {
       console.log("getAll");
       axios
-        .get(
-          "library/getAll/" +
-            this.clientID
-        )
+        .get("library/getAll/" + this.clientID)
         .then((response) => {
           this.librarys = response.data[0];
-          console.log("library", response.data);
+          console.log("library", this.librarys);
+          console.log("library", this.librarys.slice(-1)[0]);
+          this.newLibID = this.librarys.slice(-1)[0].LibraryNameID;
+          console.log("newLibID", this.newLibID);
+          this.addItem2(product_id, this.newLibID);
           // this.response=console.log.data
         })
         .catch((error) => {
@@ -161,7 +162,7 @@ export default {
           ClientID: this.clientID,
         })
         .then((response) => {
-          const data = response.data;
+          const data = response;
           console.log("new Library", data);
           // this.librarys.push(data);
           this.getAllLibraries();
@@ -177,10 +178,32 @@ export default {
       };
       console.log("itemToPost", newItem);
       axios
-        .post(
-          "library/items/addNew",
-          newItem
+        .post("library/items/addNew", newItem)
+        .then(
+          (response) => (this.libraryNameId = response.data),
+          this.$forceUpdate(),
+          console.log("Posted", newItem),
+          // this.singleItem(LibraryNameID)
+          (this.alert = true),
+          setTimeout(() => (this.dialog = false), 2000),
+          setTimeout(() => (this.alert = false), 2000)
         )
+        .catch((error) => {
+          this.errorMessage = error.message;
+          console.error("There was an error!", error);
+        });
+    },
+    addItem2(product_id, LibraryNameID) {
+      console.log("32", product_id, this.newLibID);
+      this.newId = this.id;
+
+      const newItem = {
+        ProductID: this.product_id,
+        LibraryID: LibraryNameID,
+      };
+      console.log("itemToPost", newItem);
+      axios
+        .post("library/items/addNew", newItem)
         .then(
           (response) => (this.libraryNameId = response.data),
           this.$forceUpdate(),
@@ -198,9 +221,7 @@ export default {
   },
   mounted() {
     axios
-      .get(
-        "library/getAll/" + this.clientID
-      )
+      .get("library/getAll/" + this.clientID)
       .then((response) => {
         this.librarys = response.data[0];
         console.log("library", response.data);
