@@ -17,6 +17,7 @@ import TermsOfUse from "./Views/TermsOfUse.vue";
 import PrivacyPolicy from "./Views/PrivacyPolicy.vue";
 import Cookies from "./Views/Cookies.vue";
 import SearchResult from "./components/SearchResult.vue";
+import ContactUs from "./components/ContactUs.vue";
 // import store from "./store";
 
 function getCookie() {
@@ -111,6 +112,19 @@ export default [
     },
   },
   {
+    path: "/ContactUs",
+    component: ContactUs,
+    beforeEnter: (to, from, next) => {
+      console.log(store.getters);
+      if (!getCookie()) {
+        return next({
+          name: "ContactUs",
+        });
+      }
+      next();
+    },
+  },
+  {
     path: "/TermsOfUse",
     component: TermsOfUse,
     beforeEnter: (to, from, next) => {
@@ -142,9 +156,9 @@ export default [
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
       //if (!getCookie()) {
-        //return next({
-        //  name: "LoginSignup",
-        //});
+      //return next({
+      //  name: "LoginSignup",
+      //});
       //}
       next();
     },

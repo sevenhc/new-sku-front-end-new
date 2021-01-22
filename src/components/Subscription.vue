@@ -32,7 +32,7 @@
                   <p class="heading text-center">
                     Sign up for a 7 day free trial
                   </p>
-                  <v-form>
+                  <v-form ref="form">
                     <v-flex md12 xs11>
                       <v-layout row wrap>
                         <v-flex md6>

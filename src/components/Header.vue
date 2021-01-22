@@ -122,6 +122,7 @@ export default {
         { title: "Categories", path: "/catagoriesScreen", icon: "home" },
         { title: "Insights", path: "/InsightsList", icon: "face" },
         { title: "My Library", path: "/MyLibrary", icon: "lock_open" },
+        { title: "Contact Us", path: "/contactUs", icon: "lock_open" },
       ]
     };
   },
