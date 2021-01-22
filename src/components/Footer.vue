@@ -18,6 +18,7 @@
           <v-spacer></v-spacer>
           <v-btn text color="white" small to="/PrivacyPolicy">Privacy Policy</v-btn>
           <v-btn text color="white" small to="/TermsOfUse">Terms of Use</v-btn>
+          <!-- <v-btn text color="white" small to="/TermsAndConditions">Terms &amp; Conditions</v-btn> -->
           <v-btn text color="white" small to="/Cookies">Cookie Policy</v-btn>
           
           

@@ -25,7 +25,7 @@
                     <v-text-field
                       v-model="LibraryName"
                       :rules="nameRules"
-                      :counter="10"
+                      :counter="50"
                       required
                     ></v-text-field>
                     <v-btn
@@ -126,7 +126,7 @@ export default {
     lastname: "",
     nameRules: [
       (v) => !!v || "Library Name is required",
-      (v) => v.length <= 1 || "Name must be less than 1 characters",
+      (v) => v.length <= 50 || "Name must be less than 50 characters",
     ],
   }),
   methods: {
