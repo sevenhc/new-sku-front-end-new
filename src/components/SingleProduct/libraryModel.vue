@@ -19,7 +19,7 @@
             </v-flex>
             <v-flex md5>
               <p class="heading">Create a new library or search</p>
-              <v-form v-model="valid">
+              <v-form ref="form">
                 <v-container>
                   <v-row>
                     <v-text-field
@@ -155,18 +155,20 @@ export default {
       ); //?category=baverage
     },
     createLibrary() {
-      console.log(this.LibraryName);
-      axios
-        .post("library/addNew", {
-          LibraryName: this.LibraryName,
-          ClientID: this.clientID,
-        })
-        .then((response) => {
-          const data = response;
-          console.log("new Library", data);
-          // this.librarys.push(data);
-          this.getAllLibraries();
-        });
+      if (this.$refs.form.validate()) {
+        console.log(this.LibraryName);
+        axios
+          .post("library/addNew", {
+            LibraryName: this.LibraryName,
+            ClientID: this.clientID,
+          })
+          .then((response) => {
+            const data = response;
+            console.log("new Library", data);
+            // this.librarys.push(data);
+            this.getAllLibraries();
+          });
+      }
     },
     addItem(product_id, LibraryNameID) {
       console.log(product_id, LibraryNameID);

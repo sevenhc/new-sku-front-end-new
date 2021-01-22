@@ -26,124 +26,122 @@
             </div>
           </v-flex>
           <v-flex md8 xs12 class="pa-md-1 pa-6">
-            <v-form ref="form">
-              <v-layout row wrap justify-center class="pa-2">
-                <v-flex md9 xs12>
-                  <p class="heading text-center">
-                    Sign up for a 7 day free trial
-                  </p>
+            <v-layout row wrap justify-center class="pa-2">
+              <v-flex md9 xs12>
+                <p class="heading text-center">
+                  Sign up for a 7 day free trial
+                </p>
+                <v-flex md12 xs11>
                   <v-form ref="form">
-                    <v-flex md12 xs11>
-                      <v-layout row wrap>
-                        <v-flex md6>
-                          <!-- <v-card-title class="lables">Name</v-card-title> -->
-                          <div class="new">
-                            <v-text-field
-                              v-model="User.username"
-                              solo
-                              label="Name *"
-                              clearable
-                              class="ml-4"
-                              :rules="[
-                                rules.required,
-                                rules.counterMax,
-                                rules.counterMin,
-                              ]"
-                            ></v-text-field>
-                          </div>
-                        </v-flex>
-                        <v-flex md6>
-                          <!-- <v-card-title class="lables">Company</v-card-title> -->
-                          <div class="new">
-                            <v-text-field
-                              v-model="User.company"
-                              solo
-                              label="Company *"
-                              clearable
-                              class="ml-4"
-                              :rules="[
-                                rules.required,
-                                rules.counterMax,
-                                rules.counterMin,
-                              ]"
-                            ></v-text-field>
-                          </div>
-                        </v-flex>
-                        <v-flex md6>
-                          <!-- <v-card-title class="lables">Email</v-card-title> -->
-                          <div class="new">
-                            <v-text-field
-                              v-model="User.email"
-                              solo
-                              label="Email *"
-                              clearable
-                              class="ml-4"
-                              :rules="[rules.required, rules.email]"
-                            ></v-text-field>
-                          </div>
-                        </v-flex>
+                    <v-layout row wrap>
+                      <v-flex md>
+                        <!-- <v-card-title class="lables">Name</v-card-title> -->
+                        <div class="new">
+                          <v-text-field
+                            v-model="User.username"
+                            solo
+                            label="Name *"
+                            clearable
+                            class="ml-4"
+                            :rules="[
+                              rules.required,
+                              rules.counterMax,
+                              rules.counterMin,
+                            ]"
+                          ></v-text-field>
+                        </div>
+                      </v-flex>
+                      <v-flex md6>
+                        <!-- <v-card-title class="lables">Company</v-card-title> -->
+                        <div class="new">
+                          <v-text-field
+                            v-model="User.company"
+                            solo
+                            label="Company *"
+                            clearable
+                            class="ml-4"
+                            :rules="[
+                              rules.required,
+                              rules.counterMax,
+                              rules.counterMin,
+                            ]"
+                          ></v-text-field>
+                        </div>
+                      </v-flex>
+                      <v-flex md6>
+                        <!-- <v-card-title class="lables">Email</v-card-title> -->
+                        <div class="new">
+                          <v-text-field
+                            v-model="User.email"
+                            solo
+                            label="Email *"
+                            clearable
+                            class="ml-4"
+                            :rules="[rules.required, rules.email]"
+                          ></v-text-field>
+                        </div>
+                      </v-flex>
 
-                        <v-flex md6>
-                          <!-- <v-card-title class="lables">Telephone</v-card-title> -->
-                          <div class="new">
-                            <v-text-field
-                              v-model="User.mobile"
-                              solo
-                              label="Telephone *"
-                              clearable
-                              class="ml-4"
-                            ></v-text-field>
-                          </div>
-                        </v-flex>
+                      <v-flex md6>
+                        <!-- <v-card-title class="lables">Telephone</v-card-title> -->
+                        <div class="new">
+                          <v-text-field
+                            v-model="User.mobile"
+                            solo
+                            label="Telephone *"
+                            clearable
+                            class="ml-4"
+                          ></v-text-field>
+                        </div>
+                      </v-flex>
 
-                        <v-flex md6>
-                          <!-- <v-card-title class="lables">Password</v-card-title> -->
-                          <div class="new">
-                            <v-text-field
-                              v-model="User.password"
-                              :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                              :rules="[rules.required, rules.min]"
-                              :type="show1 ? 'text' : 'password'"
-                              solo
-                              label="Password *"
-                              clearable
-                              class="ml-4"
-                              @click:append="show1 = !show1"
-                            ></v-text-field>
-                          </div>
-                        </v-flex>
-                        <v-flex md6>
-                          <!-- <v-card-title class="lables">Confirm Password</v-card-title>-->
-                          <div class="new">
-                            <v-text-field
-                              v-model="User.confirmPassword"
-                              :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                              :rules="[rules.required, rules.min]"
-                              :type="show2 ? 'text' : 'password'"
-                              solo
-                              label="Confirm password *"
-                              clearable
-                              class="ml-4"
-                              @click:append="show2 = !show2"
-                            ></v-text-field>
-                          </div>
-                        </v-flex>
-                      </v-layout>
-
-                      <v-btn
-                        class="ml-4"
-                        width="97%"
-                        large
-                        color="#2c547c"
-                        dark
-                        @click="register"
-                        >Sign Up</v-btn
-                      >
-                    </v-flex>
+                      <v-flex md6>
+                        <!-- <v-card-title class="lables">Password</v-card-title> -->
+                        <div class="new">
+                          <v-text-field
+                            v-model="User.password"
+                            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                            :rules="[rules.required, rules.min]"
+                            :type="show1 ? 'text' : 'password'"
+                            solo
+                            label="Password *"
+                            clearable
+                            class="ml-4"
+                            @click:append="show1 = !show1"
+                          ></v-text-field>
+                        </div>
+                      </v-flex>
+                      <v-flex md6>
+                        <!-- <v-card-title class="lables">Confirm Password</v-card-title>-->
+                        <div class="new">
+                          <v-text-field
+                            v-model="User.confirmPassword"
+                            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                            :rules="[rules.required, rules.min]"
+                            :type="show2 ? 'text' : 'password'"
+                            solo
+                            label="Confirm password *"
+                            clearable
+                            class="ml-4"
+                            @click:append="show2 = !show2"
+                          ></v-text-field>
+                        </div>
+                      </v-flex>
+                    </v-layout>
                   </v-form>
+
+                  <v-btn
+                    class="ml-4"
+                    width="97%"
+                    large
+                    color="#2c547c"
+                    dark
+                    @click="register"
+                    >Sign Up</v-btn
+                  >
                 </v-flex>
-              </v-layout>
-            </v-form>
+              </v-flex>
+            </v-layout>
           </v-flex>
         </v-layout>
       </v-card>
