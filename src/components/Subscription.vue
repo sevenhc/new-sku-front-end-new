@@ -91,6 +91,7 @@
                             label="Telephone *"
                             clearable
                             class="ml-4"
+                            :rules="[rules.required]"
                           ></v-text-field>
                         </div>
                       </v-flex>
@@ -117,7 +118,7 @@
                           <v-text-field
                             v-model="User.confirmPassword"
                             :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                            :rules="[rules.required, rules.min]"
+                            :rules="[rules.required, rules.min, rules.password]"
                             :type="show2 ? 'text' : 'password'"
                             solo
                             label="Confirm password *"
@@ -203,7 +204,7 @@ export default {
         counterMin: (value) =>
           value.length >= 3 || "Minimum length is 3 characters",
         counterMax: (value) =>
-          value.length <= 20 || "Minimum length is 20 characters",
+          value.length <= 100 || "Minimum length is 100 characters",
         min: (v) => v.length >= 8 || "Min 8 characters",
         email: (value) => {
           const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

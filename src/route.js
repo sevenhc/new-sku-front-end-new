@@ -117,11 +117,11 @@ export default [
     component: ContactUs,
     beforeEnter: (to, from, next) => {
       console.log(store.getters);
-      if (!getCookie()) {
-        return next({
-          name: "ContactUs",
-        });
-      }
+      //if (!getCookie()) {
+     //   return next({
+     //     name: "ContactUs",
+      //  });
+      //}
       next();
     },
   },

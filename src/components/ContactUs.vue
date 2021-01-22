@@ -107,7 +107,7 @@ export default {
     contact() {
       if (this.$refs.form.validate()) {
         axios
-          .post("http://localhost:3000/contact", {
+          .post("/contact", {
             name: this.name,
             email: this.email,
             message: this.message,
