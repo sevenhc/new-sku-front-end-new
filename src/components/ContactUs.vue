@@ -63,7 +63,7 @@
       </v-layout>
     </v-card>
     <v-row justify="center">
-      <v-dialog v-model="dialog" persistent max-width="290">
+      <v-dialog v-model="dialog" persistent max-width="290" @click="dialog = false">
         <v-card justify="center" class="pa-12">
           <p class="text-center">
             Successfully Submited
@@ -71,7 +71,7 @@
 
           <!-- <v-card-actions class="text-center"> -->
           <div class="text-center">
-            <v-btn color="green darken-1" text @click="dialog = false">
+            <v-btn color="green darken-1" text >
               <v-icon size="50" color="#2c547c">mdi-check-all</v-icon>
             </v-btn>
           </div>
