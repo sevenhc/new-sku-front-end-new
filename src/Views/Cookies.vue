@@ -29,8 +29,8 @@
     </p>
     <p>
       To opt out of being tracked by Google Analytics across all websites visit
-      <a href="http://tools.google.com/dlpage/gaoptout" target="_blank">
-        http://tools.google.com/dlpage/gaoptout
+      <a href="https://tools.google.com/dlpage/gaoptout" target="_blank">
+        https://tools.google.com/dlpage/gaoptout
       </a>
     </p>
 

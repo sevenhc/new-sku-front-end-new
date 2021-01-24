@@ -31,7 +31,7 @@
             >
               <v-card>
                 <v-img
-                  :src="'http://134.209.188.201:81/' + product.ThumbnailPath"
+                  :src="'https://134.209.188.201:81/' + product.ThumbnailPath"
                   class="white--text align-end"
                   gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                   height="250px"
@@ -70,7 +70,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://134.209.188.201:81/insight/getAll")
+      .get("https://134.209.188.201:81/insight/getAll")
       .then((response) => {
         this.products = response.data;
         console.log(response);

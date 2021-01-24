@@ -33,7 +33,7 @@
                 <v-card>
                   <v-img
                     :src="
-                      'http://new-sku-back-end.herokuapp.com/' + card.Thumbnail
+                      'https://new-sku-back-end.herokuapp.com/' + card.Thumbnail
                     "
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
@@ -100,7 +100,7 @@ export default {
   mounted() {
     axios
       .get(
-        "http://new-sku-back-end.herokuapp.com/library/getAll/" + this.clientID
+        "https://new-sku-back-end.herokuapp.com/library/getAll/" + this.clientID
       )
       .then((response) => {
         this.librarys = response.data[0];
@@ -121,7 +121,7 @@ export default {
       });
 
     axios
-      .get("http://new-sku-back-end.herokuapp.com/library/items/getAll/" + 211)
+      .get("https://new-sku-back-end.herokuapp.com/library/items/getAll/" + 211)
       .then((response) => {
         this.libary = response.data;
         console.log("laibrary data-->", this.libary);

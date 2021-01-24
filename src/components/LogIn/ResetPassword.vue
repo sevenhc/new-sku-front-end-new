@@ -125,7 +125,7 @@ export default {
 
       try {
         axios
-          .put("http://134.209.188.201:81" + currentUrln, {
+          .put("https://134.209.188.201:81" + currentUrln, {
             ClientPassword: this.password,
           })
           .then((response) => {
@@ -143,7 +143,7 @@ export default {
     success() {
       var currentUrln = window.location.pathname;
       axios
-        .put("http://134.209.188.201:81/passwordChanged" + currentUrln, {
+        .put("https://134.209.188.201:81/passwordChanged" + currentUrln, {
           ClientPassword: this.password,
         })
         .then((response) => {

@@ -15,8 +15,8 @@
             <div class="pa-9">
               <v-img
                 aspect-ratio="1.1"
-                :src="'http://134.209.188.201:81/' + product.Thumbnail"
-                :lazy-src="'http://134.209.188.201:81/' + product.Thumbnail"
+                :src="'https://134.209.188.201:81/' + product.Thumbnail"
+                :lazy-src="'https://134.209.188.201:81/' + product.Thumbnail"
                 @click="singleItem(product.ProductID)"
               ></v-img>
               <div class="heading2 pa-3">

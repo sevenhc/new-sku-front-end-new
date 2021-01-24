@@ -6,7 +6,7 @@
           <v-flex md7 xs12 align-self-center>
             <div class="pa-5">
               <v-img
-                :src="'http://134.209.188.201:81/' + product.Thumbnail"
+                :src="'https://134.209.188.201:81/' + product.Thumbnail"
                 aspect-ratio="1.7"
               >
                 <div align="end" class=" align-self-baseline">
@@ -42,7 +42,7 @@
                     >
                       <v-card>
                         <v-img
-                          :src="'http://134.209.188.201:81/' + image"
+                          :src="'https://134.209.188.201:81/' + image"
                           aspect-ratio="1.7"
                           class="white--text align-end"
                           gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
@@ -85,7 +85,7 @@
             <span class="heading">Nutritional table:</span>
             <v-img
               aspect-ratio="2.5"
-              :src="'http://134.209.188.201:81/' + product.NutritionalTable"
+              :src="'https://134.209.188.201:81/' + product.NutritionalTable"
             >
               <div align="end" class=" align-self-baseline">
                 <v-icon
@@ -218,7 +218,7 @@ export default {
     },
 
     downloadWithAxios(Thumbnail, ProductName) {
-      var url = "http://134.209.188.201:81/" + Thumbnail;
+      var url = "https://134.209.188.201:81/" + Thumbnail;
       console.log(url, ProductName);
       axios({
         method: "get",

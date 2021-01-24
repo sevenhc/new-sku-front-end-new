@@ -210,7 +210,7 @@ export default {
 
       try {
         axios
-          .post("http://134.209.188.201:81/client/forgetPassword/" + this.email)
+          .post("https://134.209.188.201:81/client/forgetPassword/" + this.email)
           .then(() => {
             (this.alert2 = true), setTimeout(() => (this.dialog = false), 3000);
           });

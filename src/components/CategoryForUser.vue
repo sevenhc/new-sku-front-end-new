@@ -27,9 +27,9 @@
               <v-hover v-slot="{ hover }">
                 <v-card>
                   <v-img
-                    :src="'http://134.209.188.201:81/' + product.ThumbnailImage"
+                    :src="'https://134.209.188.201:81/' + product.ThumbnailImage"
                     :lazy-src="
-                      'http://134.209.188.201:81/' + product.ThumbnailImage
+                      'https://134.209.188.201:81/' + product.ThumbnailImage
                     "
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"

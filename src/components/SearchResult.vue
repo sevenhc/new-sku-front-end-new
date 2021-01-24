@@ -77,7 +77,7 @@
                 <v-hover v-slot="{ hover }">
                   <v-card flat>
                     <v-img
-                      :src="'http://134.209.188.201:81/' + product.Thumbnail"
+                      :src="'https://134.209.188.201:81/' + product.Thumbnail"
                       class="white--text align-end"
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                       height="250px"

@@ -6,7 +6,7 @@ import axios from "axios";
 import Routes from "./route";
 import store from "./store";
 import VueHtmlToPaper from "vue-html-to-paper";
-axios.defaults.baseURL = "http://134.209.188.201:81";
+axios.defaults.baseURL = "https://134.209.188.201:81";
 
 const options = {
   name: "_blank",

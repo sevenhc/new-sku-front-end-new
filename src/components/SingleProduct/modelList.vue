@@ -52,7 +52,7 @@ export default {
       console.log("itemToPost", newItem);
       axios
         .post(
-          "http://new-sku-back-end.herokuapp.com/library/items/addNew",
+          "https://new-sku-back-end.herokuapp.com/library/items/addNew",
           newItem
         )
         .then(
@@ -73,7 +73,7 @@ export default {
       };
       axios
         .post(
-          "http://new-sku-back-end.herokuapp.com/library/addLibrary",
+          "https://new-sku-back-end.herokuapp.com/library/addLibrary",
           article
         )
         .then(
@@ -88,7 +88,7 @@ export default {
   },
   mounted() {
     axios
-      .get("http://new-sku-back-end.herokuapp.com/library/getAll/2")
+      .get("https://new-sku-back-end.herokuapp.com/library/getAll/2")
       .then((response) => {
         this.librarys = response.data[0];
         console.log("library", response.data);

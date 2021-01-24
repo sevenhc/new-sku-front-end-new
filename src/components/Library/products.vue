@@ -17,7 +17,7 @@
               >
                 <v-card>
                   <v-img
-                    :src="'http://new-sku-back-end.herokuapp.com/' + card.Thumbnail"
+                    :src="'https://new-sku-back-end.herokuapp.com/' + card.Thumbnail"
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="250px"
@@ -64,7 +64,7 @@ export default {
   mounted() {
     axios
       .get(
-        "http://new-sku-back-end.herokuapp.com/library/items/getAll/" + this.$route.params.id
+        "https://new-sku-back-end.herokuapp.com/library/items/getAll/" + this.$route.params.id
       )
       .then((response) => {
         this.libary = response.data;
@@ -78,7 +78,7 @@ export default {
   methods: {
     download(path) {
       console.log(path);
-      window.location.href = "http://new-sku-back-end.herokuapp.com/" + path;
+      window.location.href = "https://new-sku-back-end.herokuapp.com/" + path;
     },
   },
 };
