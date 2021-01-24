@@ -62,7 +62,7 @@
           >
             <svg
               viewBox="-20 0 600 500"
-              xmlns="https://www.w3.org/2000/svg"
+              xmlns="http://www.w3.org/2000/svg"
               stroke="white"
               fill="white"
               width="25px"
@@ -86,7 +86,7 @@
           >
             <svg
               viewBox="-5 -5 35 35"
-              xmlns="https://www.w3.org/2000/svg"
+              xmlns="http://www.w3.org/2000/svg"
               stroke="white"
               fill="white"
               width="25px"
