@@ -40,9 +40,9 @@
           <v-flex md8 xs12 class="text--center pa-3">
             <v-img
               aspect-ratio="2.6"
-              :src="'https://134.209.188.201:81/' + latestInsight.ThumbnailPath"
+              :src="'https://api.newsku.co.uk/' + latestInsight.ThumbnailPath"
               :lazy-src="
-                'https://134.209.188.201:81/' + latestInsight.ThumbnailPath
+                'https://api.newsku.co.uk/' + latestInsight.ThumbnailPath
               "
             ></v-img>
           </v-flex>

@@ -13,7 +13,7 @@
                 <p class="heading3 mb-4">{{ productName }}</p>
                 <v-img
                   aspect-ratio="1.7"
-                  :src="'https://134.209.188.201:81/' + mainImage"
+                  :src="'https://api.newsku.co.uk/' + mainImage"
                 ></v-img>
               </div>
             </v-flex>

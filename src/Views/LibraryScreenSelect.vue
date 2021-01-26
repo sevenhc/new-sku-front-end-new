@@ -73,7 +73,7 @@
               >
                 <v-card flat>
                   <v-img
-                    :src="'https://134.209.188.201:81/' + card.Thumbnail"
+                    :src="'https://api.newsku.co.uk/' + card.Thumbnail"
                     class="white--text align-end"
                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                     height="250px"
@@ -177,7 +177,7 @@ export default {
     },
     download(path) {
       console.log(path);
-      window.location.href = "https://134.209.188.201:81/" + path;
+      window.location.href = "https://api.newsku.co.uk/" + path;
     },
   },
 

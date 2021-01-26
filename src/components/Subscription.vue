@@ -19,10 +19,10 @@
                 :src="require('../assets/NewSku-blur-supermarket.jpg')"
                 height="20%"
               ></v-img>
-              <div class="heading2 pa-3">
+              <!-- <div class="heading2 pa-3">
                 We launch soon with this year’s Winter products. Register your
                 interest below to qualify for your free 7 day trial.
-              </div>
+              </div> -->
             </div>
           </v-flex>
           <v-flex md8 xs12 class="pa-md-1 pa-6">

@@ -11,7 +11,7 @@
           <v-flex md7 xs12 align-self-center>
             <!-- <div class="pa-5">
               <v-img
-                :src="'https://134.209.188.201:81/' + product.Thumbnail"
+                :src="'https://api.newsku.co.uk/' + product.Thumbnail"
                 aspect-ratio="1.7"
               >
                 <div align="end" class=" align-self-baseline">
@@ -41,7 +41,7 @@
                     >
                       <v-card>
                         <v-img
-                          :src="'https://134.209.188.201:81/' + image"
+                          :src="'https://api.newsku.co.uk/' + image"
                           aspect-ratio="1.7"
                           class="white--text align-end"
                           gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
@@ -101,7 +101,7 @@
             <!-- <v-img
               height="125"
               contain
-              :src="'https://134.209.188.201:81/' + product.NutritionalTable"
+              :src="'https://api.newsku.co.uk/' + product.NutritionalTable"
             >
               <div align="end" class="align-self-baseline">
                 <v-icon
@@ -202,8 +202,8 @@ export default {
       height: "400px",
       items: [
         {
-          src: "https://134.209.188.201:81/defaultnewskuimg.png",
-          thumbnail: "https://134.209.188.201:81/defaultnewskuimg.png",
+          src: "https://api.newsku.co.uk/defaultnewskuimg.png",
+          thumbnail: "https://api.newsku.co.uk/defaultnewskuimg.png",
         },
         // ,
         // {
@@ -310,7 +310,7 @@ export default {
       }, 2000);
     },
     downloadWithAxios3(Thumbnail, ProductName) {
-      var url = "https://134.209.188.201:81/" + Thumbnail;
+      var url = "https://api.newsku.co.uk/" + Thumbnail;
       console.log(url, ProductName);
       axios({
         method: "get",
@@ -339,8 +339,8 @@ export default {
         var imgitems = [];
         for (var i = 0, j = this.newImages.length; i < j; i++) {
           imgitems.push({
-            src: "https://134.209.188.201:81/" + this.newImages[i],
-            thumbnail: "https://134.209.188.201:81/" + this.newImages[i],
+            src: "https://api.newsku.co.uk/" + this.newImages[i],
+            thumbnail: "https://api.newsku.co.uk/" + this.newImages[i],
           });
         }
         this.items = imgitems;

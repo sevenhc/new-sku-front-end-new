@@ -90,7 +90,7 @@
                   <v-card flat>
                     <v-img
                       :src="
-                        'https://134.209.188.201:81/' + product.ThumbnailImage
+                        'https://api.newsku.co.uk/' + product.ThumbnailImage
                       "
                       class="white--text align-end"
                       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
@@ -219,7 +219,7 @@ export default {
       });
     // axios
     //   .get(
-    //     "https://134.209.188.201:81/subCategory/getAll/" + this.$route.params.id
+    //     "https://api.newsku.co.uk/subCategory/getAll/" + this.$route.params.id
     //   )
     //   .then((response) => {
     // this.products = response.data;

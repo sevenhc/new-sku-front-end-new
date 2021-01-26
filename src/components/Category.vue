@@ -24,9 +24,9 @@
             >
               <v-card>
                 <v-img
-                  :src="'https://134.209.188.201:81/' + product.ThumbnailImage"
+                  :src="'https://api.newsku.co.uk/' + product.ThumbnailImage"
                   :lazy-src="
-                    'https://134.209.188.201:81/' + product.ThumbnailImage
+                    'https://api.newsku.co.uk/' + product.ThumbnailImage
                   "
                   class="white--text align-end"                  
                   height="250px"

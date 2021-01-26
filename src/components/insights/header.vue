@@ -29,7 +29,7 @@
                 class="pa-12"
                 width="100%"
                 height="50%"
-                :src="'https://134.209.188.201:81/' + insight.ThumbnailPath"
+                :src="'https://api.newsku.co.uk/' + insight.ThumbnailPath"
               >
               </v-img>
             </div>
@@ -78,7 +78,7 @@ export default {
   mounted() {
     axios
       .get(
-        "https://134.209.188.201:81/insight/getInsById/" + this.$route.params.id
+        "https://api.newsku.co.uk/insight/getInsById/" + this.$route.params.id
       )
 
       .then((response) => {
