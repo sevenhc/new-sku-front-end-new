@@ -63,7 +63,7 @@
       </v-layout>
     </v-card>
     <v-row justify="center">
-      <v-dialog v-model="dialog" persistent max-width="290" @click="dialog = false">
+      <v-dialog v-model="dialog" persistent max-width="290" >
         <v-card justify="center" class="pa-12">
           <p class="text-center">
             Successfully Submited
@@ -119,6 +119,9 @@ export default {
             this.name = "";
             this.email = "";
             this.message = "";
+            setTimeout(function(){
+              this.dialog = false;
+            }, 2500);
           })
           .catch((error) => {
             this.name = "";
