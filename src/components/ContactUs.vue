@@ -3,10 +3,10 @@
     <v-card color="#f1f1f1" class="pa-md-12 pa-5">
       <v-layout row wrap justify-center>
         <v-flex md12 xs12>
-          <p class="text-center" style="font-size: 40px;color:#2c547c">
+          <p class="text-center" style="font-size: 40px; color: #2c547c">
             Contact Us
           </p>
-          <p class="text-center" style="color:#2c547c">
+          <p class="text-center" style="color: #2c547c">
             Please fill in the form below , email or call us if you want to get
             in touch.
           </p>
@@ -51,7 +51,7 @@
           </v-form>
         </v-flex>
         <v-flex md8 xs12>
-          <p class="text-center pt-4" style="color:#2c547c">
+          <p class="text-center pt-4" style="color: #2c547c">
             Email:
             <a href="info@newsku.co.uk" target="_blank">info@newsku.co.uk</a
             ><br />
@@ -63,16 +63,22 @@
       </v-layout>
     </v-card>
     <v-row justify="center">
-      <v-dialog v-model="dialog" persistent max-width="290" >
+      <v-dialog v-model="dialog" persistent max-width="290">
         <v-card justify="center" class="pa-12">
-          <p class="text-center">
-            Successfully Submited
-          </p>
+          <v-btn
+            color="green darken-1"
+            text
+            style="position: absolute;right: 0;top: 0;"
+            @click="dialog = false"
+          >
+            <v-icon size="20" color="#2c547c">mdi-close</v-icon>
+          </v-btn>
+          <p class="text-center">Successfully Submited</p>
 
-          <!-- <v-card-actions class="text-center"> -->
+          <!-- <v-card-actions class="text-center"> mdi-check-all-->
           <div class="text-center">
-            <v-btn color="green darken-1" text >
-              <v-icon size="50" color="#2c547c">mdi-check-all</v-icon>
+            <v-btn color="green darken-1" text @click="dialog = false">
+              <v-icon size="20" color="#2c547c">mdi-check-all</v-icon>
             </v-btn>
           </div>
           <!-- </v-card-actions> -->
@@ -119,9 +125,6 @@ export default {
             this.name = "";
             this.email = "";
             this.message = "";
-            setTimeout(function(){
-              this.dialog = false;
-            }, 2500);
           })
           .catch((error) => {
             this.name = "";
