@@ -1,7 +1,7 @@
 <template>
   <v-carousel v-model="model" hide-delimiters :show-arrows="false" height="100%">
     <v-carousel-item v-for="(color, i) in colors" :key="color" :slideitem="i"> 
-      <v-sheet :color="color.bgcolor" height="100%" tile >
+      <v-sheet :color="color.bgcolor" height="100%" tile class="bgimg">
         <v-row class="fill-height" align="center" justify="center">
           <v-col class="">
             <v-jumbotron dark>
@@ -78,6 +78,10 @@
   margin-top: -44px;
   color: #ffffff;
 }
+.bgimg{
+  background-image: url(../assets/NewSku%20Hero.jpeg);
+  background-size: cover;
+}
 </style>
 <script>
 export default {
@@ -86,7 +90,7 @@ export default {
       colors: [
         {
           src:
-            "https://vfcadvisors.com/wp-content/uploads/2019/07/alcohol-2048x1365.jpg",
+            "../assets/NewSku%20Hero.jpeg",
           bgcolor: "#2C547C",
         },
       ],
