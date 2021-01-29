@@ -7,18 +7,48 @@
     <div class="text-center">
       <v-dialog v-model="dialog">
         <v-card class="rounded-card">
-          <v-layout row wrap class="pa-12 justify-space-between">
-            <v-flex md7>
-              <div class="pa-5">
-                <p class="heading3 mb-4">{{ productName }}</p>
+          <v-layout wrap class="pa-12 justify-space-between">
+            <v-flex md6 mb-xs-6 mb-md-0>
+              <div class="pr-5" :class="{
+                    mobilemargin: $vuetify.breakpoint.smAndDown,
+                    largemargin: $vuetify.breakpoint.mdAndUp,
+                  }">
+                <p
+                  class="mb-4"
+                  :class="{
+                    mobile2: $vuetify.breakpoint.smAndDown,
+                    large2: $vuetify.breakpoint.mdAndUp,
+                  }"
+                >
+                  {{ productName }}
+                </p>
                 <v-img
                   aspect-ratio="1.7"
                   :src="'https://api.newsku.co.uk/' + mainImage"
                 ></v-img>
               </div>
             </v-flex>
-            <v-flex md5>
-              <p class="heading">Create a new library or search</p>
+            <v-flex md6 mt-xs-6 mt-md-0>
+              <p
+                :class="{
+                  mobile2: $vuetify.breakpoint.smAndDown,
+                  large2: $vuetify.breakpoint.mdAndUp,
+                }"
+              >
+                Create a new library or search
+              </p>
+              <v-alert
+                v-model="alert"
+                dismissible
+                color="cyan"
+                class="pa-5"
+                border="left"
+                elevation="2"
+                colored-border
+                icon="mdi-earth-box-plus"
+              >
+                <strong>{{ productName }}</strong> added to your Library
+              </v-alert>
               <v-form ref="form">
                 <v-container>
                   <v-row>
@@ -39,48 +69,32 @@
                 </v-container>
               </v-form>
               <v-divider></v-divider>
-              <!-- <ModelList :product_id="product_id"></ModelList> -->
+              <!-- <ModelList :product_id="product_id"></ModelList>
+              @click="singleItem(item.id, item.title)" -->
               <v-card class="mx-auto" flat>
                 <v-list dense>
                   <v-list-item-group v-model="item" color="primary">
                     <v-list-item v-for="(item, i) in librarys" :key="i">
-                      <v-list-item-icon>
-                        <v-icon v-text="item.icon"></v-icon>
-                      </v-list-item-icon>
-                      <v-list-item-content
-                        @click="singleItem(item.id, item.title)"
-                      >
+                      <v-list-item-content>
                         <v-list-item-title
                           v-text="item.LibraryName"
                         ></v-list-item-title>
-                        <v-list-item-description
+                        <!-- <v-list-item-description
                           v-text="item.createdAt"
-                        ></v-list-item-description>
+                        ></v-list-item-description> -->
                       </v-list-item-content>
                       <v-list-item-action>
                         <v-btn
                           icon
                           @click="addItem(product_id, item.LibraryNameID)"
                         >
-                          <v-icon color="grey lighten-1"
+                          <v-icon color="black lighten-1"
                             >mdi-bookmark-plus</v-icon
                           >
                         </v-btn>
                       </v-list-item-action>
                     </v-list-item>
                   </v-list-item-group>
-                  <v-alert
-                    v-model="alert"
-                    dismissible
-                    color="cyan"
-                    class="pa-5"
-                    border="left"
-                    elevation="2"
-                    colored-border
-                    icon="mdi-earth-box-plus"
-                  >
-                    <strong>{{ productName }}</strong> added to your Library
-                  </v-alert>
                 </v-list>
               </v-card>
             </v-flex>
@@ -237,7 +251,7 @@ export default {
 </script>
 <style>
 .heading {
-  text-align: center;
+  text-align: start;
   font-weight: bold;
   color: #2c547c;
 }
@@ -245,9 +259,27 @@ export default {
   border-radius: 24px;
 }
 .heading3 {
-  text-align: start;
+  text-align: start !important;
   font-size: 1.5em;
   color: #2c547c;
   font-weight: bold;
+}
+.mobile2 {
+  text-align: start !important;
+  font-size: 0.8rem;
+  color: #2c547c;
+  font-weight: bold;
+}
+.large2 {
+  text-align: start !important;
+  font-size: 1.5em;
+  color: #2c547c;
+  font-weight: bold;
+}
+.mobilemargin{
+  margin-bottom: 50px;
+}
+.largemargin{
+  margin-bottom: 0;
 }
 </style>
