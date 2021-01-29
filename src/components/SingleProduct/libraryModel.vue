@@ -89,7 +89,7 @@
                           @click="addItem(product_id, item.LibraryNameID)"
                         >
                           <v-icon color="black lighten-1"
-                            >mdi-bookmark-plus</v-icon
+                            >mdi-plus-circle-outline</v-icon
                           >
                         </v-btn>
                       </v-list-item-action>
@@ -201,8 +201,8 @@ export default {
           console.log("Posted", newItem),
           // this.singleItem(LibraryNameID)
           (this.alert = true),
-          setTimeout(() => (this.dialog = false), 2000),
-          setTimeout(() => (this.alert = false), 2000)
+          //setTimeout(() => (this.dialog = false), 2000),
+          setTimeout(() => (this.alert = false), 5000)
         )
         .catch((error) => {
           this.errorMessage = error.message;
@@ -226,8 +226,8 @@ export default {
           console.log("Posted", newItem),
           // this.singleItem(LibraryNameID)
           (this.alert = true),
-          setTimeout(() => (this.dialog = false), 2000),
-          setTimeout(() => (this.alert = false), 2000)
+          //setTimeout(() => (this.dialog = false), 2000),
+          setTimeout(() => (this.alert = false), 5000)
         )
         .catch((error) => {
           this.errorMessage = error.message;

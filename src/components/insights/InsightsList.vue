@@ -29,6 +29,7 @@
               sm="12"
               xs="12"
             >
+            <v-hover v-slot="{ hover }">
               <v-card>
                 <v-img
                   :src="'https://api.newsku.co.uk/' + product.ThumbnailPath"
@@ -37,11 +38,23 @@
                   height="250px"
                   @click="singleItem(product.InsightID)"
                 >
+                <v-fade-transition>
+                        <v-overlay
+                          v-if="hover"
+                          absolute
+                          color="#000000"
+                          style="cursor:pointer;"
+                        >
+                          <p style="font-size:22px; cursor: pointer;">View</p>
+                        </v-overlay>
+                        
+                      </v-fade-transition>
                 </v-img>
                 <v-card-title class="cardTitle">
                   {{ product.InsightTitle }}
                 </v-card-title>
               </v-card>
+            </v-hover>
             </v-col>
           </v-row>
         </v-container>
