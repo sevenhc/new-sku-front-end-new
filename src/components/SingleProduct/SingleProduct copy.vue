@@ -94,7 +94,7 @@
             </div>
             <div class="heading2 mb-4">
               <span class="heading">Ingredients:</span>
-              {{ product.Ingredients }}
+              <span v-html="product.Ingredients"></span>
             </div>
             <span class="heading">Nutritional table:</span>
             <p class="heading2">{{ product.NutritionalTableDesc }}</p>
