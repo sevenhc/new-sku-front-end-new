@@ -27,6 +27,10 @@ export default new Vuex.Store({
       state.status = "error";
       console.log("😀", state);
     },
+    auth_error_expire(state) {
+      state.status = "expire";
+      console.log("😀", state);
+    },
     auth_success_new(state) {
       state.status = "abc";
     },
@@ -52,6 +56,8 @@ export default new Vuex.Store({
             console.log("data2", resp.data);
             if (resp.data[0].Message == "Username or Password invalied.") {
               commit("auth_error_new");
+            } else if(resp.data[0].Message == "Subscription expired. Please contact NewSku."){
+              commit("auth_error_expire");
             } else {
               commit("auth_success_new", token, username);
               console.log("user name", resp.data[0].ClientName);

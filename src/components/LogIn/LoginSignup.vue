@@ -60,6 +60,17 @@
               type="error"
               >Username or Password invalied.!</v-alert
             >
+            <v-alert
+              color="red"
+              v-model="alert3"
+              
+              elevation="24"
+              dismissible
+              
+              text
+              type="error"
+              >Subscription expired. Please contact NewSku.</v-alert
+            >
             <!-- <v-btn
               class="ml-4 mt-6"
               width="97%"
@@ -151,6 +162,7 @@ export default {
     return {
       alert: false,
       alert2: false,
+      alert3: false,
       username: "",
       password: "",
       dialog: false,
@@ -196,6 +208,10 @@ export default {
       if (this.newStatus == "error") {
         console.log("wrong password");
         this.alert = true;
+      }
+      if (this.newStatus == "expire") {
+        console.log("expire");
+        this.alert3 = true;
       }
       if (this.newStatus == "abc") {
         console.log("good");
