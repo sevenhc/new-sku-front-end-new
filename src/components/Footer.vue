@@ -129,7 +129,13 @@
         </v-card-text>
       </v-card>
     </v-flex>
-    <cookie-law theme="dark-lime"></cookie-law>
+    <cookie-law theme="blood-orange">
+      <div slot="message">
+        This website uses cookies to ensure you get the best experience on our
+        website. for more info
+        <router-link to="legal-notes">Click here</router-link>
+      </div>
+    </cookie-law>
   </v-footer>
 </template>
 
