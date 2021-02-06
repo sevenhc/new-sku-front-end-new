@@ -133,7 +133,7 @@
       <div slot="message">
         This website uses cookies to ensure you get the best experience on our
         website. for more info
-        <router-link to="legal-notes">Click here</router-link>
+        <router-link to="/Cookies">Click here</router-link>
       </div>
     </cookie-law>
   </v-footer>
